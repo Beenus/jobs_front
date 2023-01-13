@@ -9,7 +9,7 @@
                       v-if="index+1 <= isShowPaginated"/>
     </div>
 
-    <div class="setPage" @click="setPage" v-if="isLastPage">PAGE MORE</div>
+    <div class="show-more" @click="setPage" v-if="isLastPage">Show More ({{ isShowPaginated }}/{{list.length}})</div>
   </div>
 </template>
 
@@ -60,6 +60,25 @@ export default {
 
   @media (max-width: $screen-sm-max) {
     margin-top: 20px;
+  }
+
+  .show-more {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 20px;
+    color: #797979;
+    margin: 0 0 15px 0;
+    border-bottom: 1px solid #EEEEEE;
+    cursor: pointer;
+
+    &:hover {
+      color: #000000;
+    }
+
   }
 }
 </style>

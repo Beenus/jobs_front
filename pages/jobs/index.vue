@@ -1,6 +1,6 @@
 <template>
   <div class="jobs-page">
-    <div class="content">
+    <div class="list">
       <div class="sidebar left"></div>
       <div class="container">
         <div class="title-sort">
@@ -20,6 +20,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
+    <ContentBlock :keyword="search" content="lorem"/>
   </div>
 </template>
 
@@ -84,6 +85,7 @@ export default {
 <style scoped lang="scss">
 .jobs-page {
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   padding: 45px 15px 0;
@@ -116,7 +118,7 @@ export default {
     }
   }
 
-  .content {
+  .list {
     display: flex;
     justify-content: center;
     max-width: 1350px;
