@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  amazon_front:
+    build: ./
+    container_name: jobs_front
+    restart: always
+    ports:
+      - "3001:3001"
+    command: "npm run start"
+    networks:
+      - jobs_front-network
+networks:
+  jobs_front-network:
+    driver: bridge
