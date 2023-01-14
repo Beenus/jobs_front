@@ -63,6 +63,11 @@ export default {
   background-size: 1440px;
   background: #246BFD url("~/assets/img/homepage_bg.png") no-repeat 50% 100%;
 
+  @media (max-width: $screen-xs-max) {
+    min-height: 820px;
+    background-size: 1000px;
+  }
+
   .top {
     display: flex;
     justify-content: center;
