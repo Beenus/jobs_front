@@ -4,7 +4,7 @@
       <div class="sidebar left"></div>
       <div class="container">
         <div class="title-sort">
-          <div class="title desktop">Available jobs for "{{ search }}" in "{{ location }}"
+          <div class="title desktop">Available jobs {{ search ? `for " ${search}"` : '' }} in "{{ location }}"
           </div>
           <div class="title mobile">Available jobs founds in "{{ location }}"</div>
 
@@ -18,7 +18,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-<!--    <ContentBlock :keyword="search" content="lorem"/>-->
+    <!--    <ContentBlock :keyword="search" content="lorem"/>-->
   </div>
 </template>
 
@@ -38,9 +38,7 @@ export default {
     }
   },
   async asyncData({store, route, from, redirect}) {
-    if (!route.query.search) {
-      redirect(302, '/')
-    } else {
+    if (route.query.search) {
       await store.dispatch('setSearch', route.query.search)
     }
 

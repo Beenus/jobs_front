@@ -7,8 +7,7 @@
 
       <div class="inputs">
         <div class="input job">
-          <input type="text" placeholder="Search for a job or a company" v-model="searchValue" ref="search"
-                 :class="{error: isSearchError}"/>
+          <input type="text" placeholder="Search for a job or a company" v-model="searchValue" ref="search"/>
         </div>
         <div class="input city">
           <input type="text" placeholder="New York, NY" v-model="location" :class="{error: isLocationError}"/>
@@ -77,11 +76,7 @@ export default {
   },
   methods: {
     async search() {
-      if (this.searchValue) {
-        await this.$store.dispatch('jobs/getJobs')
-      } else {
-        await this.$store.dispatch('jobs/setErrors', 'Invalid Search')
-      }
+      await this.$store.dispatch('jobs/getJobs')
     }
   },
   mounted() {
