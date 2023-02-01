@@ -1,7 +1,7 @@
 version: "3.7"
 
 services:
-  amazon_front:
+  jobs_front:
     build: ./
     container_name: jobs_front
     restart: always

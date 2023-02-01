@@ -2,16 +2,16 @@
   <div class="list-item-desktop">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
     <div class="content-part">
-      <div class="title">{{ job.title }}</div>
+      <div class="title">{{ job.jobtitle }}</div>
       <div class="company-location">
         <div class="company">{{ job.company }}</div>
-        <div class="location">{{ job.location }}</div>
+        <div class="location">{{ job.formattedLocation }}</div>
       </div>
-      <div class="description">{{ job.description }}</div>
+      <div class="description" v-html="job.description" />
     </div>
     <div class="cta-part">
-      <CTA :link="job.link"/>
-      <a class="link" :href="job.link" target="_blank" :title="job.title">Apply Now</a>
+      <CTA :link="job.url" :onMouseDown="job.onmousedown"/>
+      <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown">Apply Now</a>
     </div>
   </div>
 </template>

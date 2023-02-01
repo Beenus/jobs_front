@@ -1,4 +1,4 @@
-# amazon_front
+# jobs_front
 
 ## Build Setup
 

@@ -1,5 +1,5 @@
 <template>
-  <a class="cta" :class="themeColor" target="_blank" :href="link">{{ text }}</a>
+  <a class="cta" :class="themeColor" target="_blank" :href="link" :onmousedown="onMouseDown">{{ text }}</a>
 </template>
 
 <script>
@@ -10,6 +10,10 @@ export default {
       require: true,
     },
     text: {
+      require: false,
+      default: 'More Info'
+    },
+    onMouseDown: {
       require: false,
       default: 'More Info'
     }

@@ -1,382 +1,82 @@
+import Pages from "@/pages/index.vue";
+
 export const state = () => ({
   list: [],
-  perPage: 10,
+  meta: {},
+  perPage: 15,
   page: 1,
+  error: null,
+  fetching: false,
 })
 
 export const getters = {}
 
 export const mutations = {
   SET_JOBS(state, payload) {
-    state.list = payload
+    state.list = [...new Map(state.list.concat(payload).map(item =>
+      [item['jobkey'], item])).values()]
   },
-  SET_PAGE_UP(state, payload) {
+  SET_JOBS_META(state, payload) {
+    state.meta = payload
+  },
+  SET_JOBS_CLEAR(state) {
+    state.list = []
+    state.meta = {}
+  },
+  SET_PAGE_UP(state) {
     state.page = state.page + 1
+  },
+  SET_ERROR(state, payload) {
+    state.error = payload
+  },
+  SET_FETCHING(state, payload) {
+    state.fetching = payload
   },
 }
 
 export const actions = {
-  async nuxtServerInit({dispatch}, {req}) {
-    // await dispatch('getMenu')
-  },
-  async getJobs({commit}) {
-    const list = [
-      {
-        ribbon: 'High Salary',
-        ribbon_color: 'green',
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        ribbon: 'No Experience',
-        ribbon_color: 'purple',
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        ribbon: 'Immediate Start',
-        ribbon_color: 'orange',
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-      {
-        title: 'Director of Product',
-        company: 'Apple Inc.',
-        location: 'New York, NY',
-        link: 'apple.com',
-        description: 'Applying for this position, you’ll work remotely from your home in Israel and report directly to our Head of Product Design. Work remotely from home in a modern SaaS, Product-led company that has a US customer base. This is a remote role so you will work from home which saves you commuting time'
-      },
-    ]
+  async getJobs({commit, rootState, rootGetters}) {
+    try {
+      commit('SET_ERROR', null)
+      commit('SET_FETCHING', true)
 
-    commit('SET_JOBS', list)
-  },
+      const params = {
+        ip: rootState.userIp,
+        search: rootState.search,
+        location: rootState.location || rootGetters['location'],
+        countryCode: rootState.userLocation.countryCode,
+        perPage: rootState.jobs.perPage,
+        page: rootState.jobs.page,
+      }
 
+      const {data} = await this.$axios.get('jobs', {params})
+
+      commit('SET_JOBS', data.list)
+      commit('SET_JOBS_META', data.meta)
+
+      await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
+    } catch (e) {
+      if (e?.response) {
+        const {data} = e?.response
+        if (data?.message) {
+          commit('SET_ERROR', data.message)
+        }
+      }
+      commit('SET_ERROR', 'Internal Server Error')
+
+    }
+    commit('SET_FETCHING', false)
+  },
+  clearJobs({commit}, payload) {
+    commit('SET_JOBS_CLEAR')
+  },
   setPage({commit}) {
     commit('SET_PAGE_UP')
-  }
+  },
+  clearErrors({commit}) {
+    commit('SET_ERROR', null)
+  },
+  setErrors({commit}, payload) {
+    commit('SET_ERROR', payload)
+  },
 }
-

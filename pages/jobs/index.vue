@@ -4,11 +4,9 @@
       <div class="sidebar left"></div>
       <div class="container">
         <div class="title-sort">
-          <div class="title desktop">{{ listItemsCount }} jobs are available for "{{ search }}" in "{{
-              location
-            }}"
+          <div class="title desktop">Available jobs for "{{ search }}" in "{{ location }}"
           </div>
-          <div class="title mobile">{{ listItemsCount }} founds in "{{ location }}"</div>
+          <div class="title mobile">Available jobs founds in "{{ location }}"</div>
 
           <div class="sort-counting">
             <div class="counting">{{ perPage }} of items per page</div>
@@ -20,7 +18,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-    <ContentBlock :keyword="search" content="lorem"/>
+<!--    <ContentBlock :keyword="search" content="lorem"/>-->
   </div>
 </template>
 
@@ -39,8 +37,20 @@ export default {
       ]
     }
   },
-  asyncData({store}) {
-    store.dispatch('jobs/getJobs')
+  async asyncData({store, route, from, redirect}) {
+    if (!route.query.search) {
+      redirect(302, '/')
+    } else {
+      await store.dispatch('setSearch', route.query.search)
+    }
+
+    if (route.query.location) {
+      await store.dispatch('setLocation', route.query.location)
+    }
+
+    if (!from) {
+      await store.dispatch('jobs/getJobs')
+    }
 
     return {
       windowSize: null,
@@ -51,13 +61,13 @@ export default {
       return this.windowSize ? this.windowSize?.x < 768 : false
     },
     listItemsCount() {
-      return this.$store.state.jobs.list.length
+      return this.$store.state.jobs.meta.totalJobs
     },
     search() {
       return this.$store.state.search
     },
     location() {
-      return this.$store.state.location
+      return this.$store.state.location || this.$store.getters['location'];
     },
     perPage() {
       return this.$store.state.jobs.perPage
@@ -78,6 +88,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
+    this.$store.dispatch('jobs/clearJobs')
   }
 }
 </script>

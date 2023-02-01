@@ -4,11 +4,17 @@ export const state = () => ({
     title: ' | ' + new Date().getFullYear() + ' | Recommended-Jobs.com'
   },
   isShowContentModal: false,
-  location: 'New York, NY',
-  search: 'Amazon',
+  location: '',
+  userLocation: {},
+  search: '',
+  userIp: '',
 })
 
-export const getters = {}
+export const getters = {
+  location(state) {
+    return `${state.userLocation.city}, ${state.userLocation.region}`
+  }
+}
 
 export const mutations = {
   SET_CONTENT_MODAL(state, payload) {
@@ -20,11 +26,29 @@ export const mutations = {
   SET_SEARCH(state, payload) {
     state.search = payload
   },
+  SET_USER_LOCATION(state, payload) {
+    state.userLocation = payload
+  },
+  SET_USER_IP (state, payload) {
+    state.userIp = payload
+  }
 }
 
 export const actions = {
   async nuxtServerInit({dispatch}, {req}) {
-    // await dispatch('getMenu')
+    // let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
+    const ip = '173.239.211.33'
+    const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
+    if (data && ip) {
+      dispatch('setUserLocation', data)
+    } else {
+      dispatch('setUserLocation', {
+        city: 'New York',
+        region: 'NY',
+        countryCode: 'US'
+      })
+    }
+    dispatch('setUserIp', ip)
   },
   async toggleContentModal({commit}, payload) {
     commit('SET_CONTENT_MODAL', payload)
@@ -34,6 +58,12 @@ export const actions = {
   },
   async setSearch({commit}, payload) {
     commit('SET_SEARCH', payload)
+  },
+  async setUserLocation({commit}, payload) {
+    commit('SET_USER_LOCATION', payload)
+  },
+  async setUserIp({commit}, payload) {
+    commit('SET_USER_IP', payload)
   },
 }
 

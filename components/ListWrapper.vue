@@ -1,16 +1,15 @@
 <template>
-  <div class="list-wrapper">
+  <div class="list-wrapper" v-if="list.length">
     <div class="desktop" v-if="!isMobileWidth">
-      <ListItemDesktop v-for="(job, index) in list" :key="index" :job="job" :index="index+1"
-                       v-if="index+1 <= isShowPaginated"/>
+      <ListItemDesktop v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
     </div>
     <div class="mobile" v-else>
-      <ListItemMobile v-for="(job, index) in list" :key="index" :job="job" :index="index+1"
-                      v-if="index+1 <= isShowPaginated"/>
+      <ListItemMobile v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
     </div>
 
-    <div class="show-more" @click="setPage" v-if="isLastPage">Show More ({{ isShowPaginated }}/{{list.length}})</div>
+    <div class="show-more" @click="setPage">Show More</div>
   </div>
+  <div class="list-wrapper" v-else>No Results</div>
 </template>
 
 <script>
@@ -31,24 +30,22 @@ export default {
   },
   computed: {
     list() {
-      return this.$store.state.jobs.list
+      return this.$store.state.jobs?.list
     },
     page() {
       return this.$store.state.jobs.page
     },
+    totalJobs() {
+      return this.$store.state.jobs.meta.totalJobs
+    },
     perPage() {
       return this.$store.state.jobs.perPage
-    },
-    isShowPaginated() {
-      return this.page * this.perPage
-    },
-    isLastPage() {
-      return this.isShowPaginated <= this.list.length
     },
   },
   methods: {
     setPage() {
       this.$store.dispatch('jobs/setPage')
+      this.$store.dispatch('jobs/getJobs')
     }
   },
 }

@@ -7,14 +7,16 @@
 
       <div class="inputs">
         <div class="input job">
-          <input type="text" placeholder="Search for a job or a company" v-model="searchValue"/>
+          <input type="text" placeholder="Search for a job or a company" v-model="searchValue" ref="search"
+                 :class="{error: isSearchError}"/>
         </div>
         <div class="input city">
-          <input type="text" placeholder="New York, NY" v-model="locationValue"/>
+          <input type="text" placeholder="New York, NY" v-model="location" :class="{error: isLocationError}"/>
         </div>
       </div>
 
-      <div class="search" @click="search">Search Jobs</div>
+      <div class="search" v-if="!fetching" @click="search">Search Jobs</div>
+      <div class="search fetching" v-else>Searching...</div>
     </div>
     <div class="inner">
     </div>
@@ -38,16 +40,54 @@ export default {
   },
   asyncData({store}) {
     return {
-      searchValue: store.state.search,
-      locationValue: store.state.location,
+      locationValue: store.state.userLocation,
     }
+  },
+  computed: {
+    searchValue: {
+      get() {
+        return this.$store.state.search
+      },
+      async set(val) {
+        await this.$store.dispatch('jobs/clearErrors')
+        await this.$store.dispatch('setSearch', val)
+      },
+    },
+    location: {
+      get() {
+        return this.$store.state.location || this.$store.getters['location'];
+      },
+      async set(val) {
+        await this.$store.dispatch('jobs/clearErrors')
+        await this.$store.dispatch('setLocation', val)
+      }
+    },
+    errors() {
+      return this.$store.state.jobs.error
+    },
+    isLocationError() {
+      return this.errors && this.errors.includes('Invalid Location')
+    },
+    isSearchError() {
+      return this.errors && this.errors.includes('Invalid Search')
+    },
+    fetching() {
+      return this.$store.state.jobs.fetching
+    },
   },
   methods: {
     async search() {
-      await this.$store.dispatch('setSearch', this.searchValue)
-      await this.$store.dispatch('setLocation', this.locationValue)
-      await this.$router.push('jobs')
+      if (this.searchValue) {
+        await this.$store.dispatch('jobs/getJobs')
+      } else {
+        await this.$store.dispatch('jobs/setErrors', 'Invalid Search')
+      }
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.search.focus()
+    })
   }
 }
 </script>
@@ -171,6 +211,11 @@ export default {
           color: #000000;
           padding: 20px 20px 20px 50px;
           border: none;
+
+          &.error {
+            border: 2px solid red;
+            color: red;
+          }
         }
       }
     }

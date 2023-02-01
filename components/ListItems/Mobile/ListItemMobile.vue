@@ -2,13 +2,13 @@
   <div class="list-item-mobile">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
 
-    <div class="title">{{ job.title }}</div>
+    <div class="title">{{ job.jobtitle }}</div>
     <div class="company-location">
       <div class="company">{{ job.company }}</div>
-      <div class="location">{{ job.location }}</div>
+      <div class="location">{{ job.formattedLocation }}</div>
     </div>
-    <div class="description">{{ job.description }}</div>
-    <CTA :link="job.link" text="Apply Now"/>
+    <div class="description" v-html="job.description" />
+    <CTA :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" />
   </div>
 </template>
 
