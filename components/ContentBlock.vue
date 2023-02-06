@@ -3,8 +3,8 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h2>Everything you should know about finding a job at Amazon</h2>
-          <div class="content-text" v-html="content"></div>
+          <h2>Everything you should know about finding a job at {{ keyword }}</h2>
+          <div class="content-text" v-html="parsedContent"></div>
         </div>
         <div class="content-sidebar">
           <div class="ad">Ad</div>
@@ -21,7 +21,10 @@ export default {
   computed: {
     getFullYear() {
       return new Date().getFullYear()
-    }
+    },
+    parsedContent() {
+      return this.content.trimLeft().replace(/\n\n/g, "<br />").replace(/\n/g, "<br />");
+    },
   }
 }
 </script>

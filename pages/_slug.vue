@@ -4,7 +4,8 @@
       <div class="sidebar left"></div>
       <div class="container">
         <div class="title-sort">
-          <div class="title desktop">Available jobs {{ search ? `for " ${search}"` : '' }} in "{{ location }}"
+          <div class="title desktop">Available jobs {{ pageData.keyword ? `for "${pageData.keyword}"` : '' }} in
+            "{{ location }}"
           </div>
           <div class="title mobile">Available jobs founds in "{{ location }}"</div>
 
@@ -18,16 +19,15 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-    <!--    <ContentBlock :keyword="search" content="lorem"/>-->
+    <ContentBlock :keyword="pageData.keyword" :content="pageData.description"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index.vue",
   head() {
     return {
-      title: 'Jobs' + this.$store.state.global.title,
+      title: this.pageData.title + this.$store.state.global.title,
       meta: [
         {
           hid: 'description',
@@ -37,35 +37,29 @@ export default {
       ]
     }
   },
-  async asyncData({store, route, from, redirect}) {
-    if (route.query.search) {
-      await store.dispatch('setSearch', route.query.search)
-    }
+  async asyncData({store, route, error}) {
+    try {
+      const page = await store.dispatch('pages/getPageData', route.params.slug)
 
-    if (route.query.location) {
-      await store.dispatch('setLocation', route.query.location)
-    }
+      await store.dispatch('setSearch', page.keyword)
+      await store.dispatch('jobs/getJobs', route.name)
 
-    if (!from) {
-      await store.dispatch('jobs/getJobs')
-    }
-
-    return {
-      windowSize: null,
+      return {
+        windowSize: null,
+      }
+    } catch {
+      error({statusCode: 404, message: 'Page not found'})
     }
   },
   computed: {
     isMobileWidth() {
       return this.windowSize ? this.windowSize?.x < 768 : false
     },
-    listItemsCount() {
-      return this.$store.state.jobs.meta.totalJobs
-    },
-    search() {
-      return this.$store.state.search
+    pageData() {
+      return this.$store.state.pages.pageData
     },
     location() {
-      return this.$store.state.location || this.$store.getters['location'];
+      return this.$store.getters['location'];
     },
     perPage() {
       return this.$store.state.jobs.perPage
@@ -86,7 +80,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
-    this.$store.dispatch('jobs/clearJobs')
+    this.$store.dispatch('pages/clearPageData')
   }
 }
 </script>

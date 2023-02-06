@@ -35,7 +35,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async getJobs({commit, rootState, rootGetters}) {
+  async getJobs({commit, rootState, rootGetters}, route) {
     try {
       commit('SET_ERROR', null)
       commit('SET_FETCHING', true)
@@ -43,7 +43,7 @@ export const actions = {
       const params = {
         ip: rootState.userIp,
         search: rootState.search,
-        location: rootState.location || rootGetters['location'],
+        location: rootGetters['location'],
         countryCode: rootState.userLocation.countryCode,
         perPage: rootState.jobs.perPage,
         page: rootState.jobs.page,
@@ -54,7 +54,9 @@ export const actions = {
       commit('SET_JOBS', data.list)
       commit('SET_JOBS_META', data.meta)
 
-      await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
+      if (route !== 'slug') {
+        await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
+      }
     } catch (e) {
       if (e?.response) {
         const {data} = e?.response

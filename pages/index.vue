@@ -7,10 +7,10 @@
 
       <div class="inputs">
         <div class="input job">
-          <input type="text" placeholder="Search for a job or a company" v-model="searchValue" ref="search"/>
+          <KeywordSearch/>
         </div>
         <div class="input city">
-          <input type="text" placeholder="New York, NY" v-model="location" :class="{error: isLocationError}"/>
+          <CitySearch/>
         </div>
       </div>
 
@@ -24,7 +24,6 @@
 
 <script>
 export default {
-  name: "Index",
   head() {
     return {
       title: 'Homepage' + this.$store.state.global.title,
@@ -37,53 +36,16 @@ export default {
       ]
     }
   },
-  asyncData({store}) {
-    return {
-      locationValue: store.state.userLocation,
-    }
-  },
   computed: {
-    searchValue: {
-      get() {
-        return this.$store.state.search
-      },
-      async set(val) {
-        await this.$store.dispatch('jobs/clearErrors')
-        await this.$store.dispatch('setSearch', val)
-      },
-    },
-    location: {
-      get() {
-        return this.$store.state.location || this.$store.getters['location'];
-      },
-      async set(val) {
-        await this.$store.dispatch('jobs/clearErrors')
-        await this.$store.dispatch('setLocation', val)
-      }
-    },
-    errors() {
-      return this.$store.state.jobs.error
-    },
-    isLocationError() {
-      return this.errors && this.errors.includes('Invalid Location')
-    },
-    isSearchError() {
-      return this.errors && this.errors.includes('Invalid Search')
-    },
     fetching() {
       return this.$store.state.jobs.fetching
     },
   },
   methods: {
     async search() {
-      await this.$store.dispatch('jobs/getJobs')
+      await this.$store.dispatch('jobs/getJobs', this.$route.name)
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.$refs.search.focus()
-    })
-  }
 }
 </script>
 
@@ -157,7 +119,7 @@ export default {
         margin-top: 25px;
       }
 
-      .input {
+      ::v-deep(.input) {
         width: 100%;
         position: relative;
 
@@ -170,6 +132,7 @@ export default {
           transform: translateY(-50%);
           left: 20px;
           pointer-events: none;
+          z-index: 1;
         }
 
         &.job {

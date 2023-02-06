@@ -16,18 +16,6 @@ import Footer from "~/components/layout/Footer.vue";
 export default {
   name: "default",
   components: {Footer, Header},
-  head() {
-    return {
-      title: this.title + this.$store.state.global.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: `Description`,
-        }
-      ]
-    }
-  },
   computed: {
     isShowContentModal() {
       return this.$store.state.isShowContentModal

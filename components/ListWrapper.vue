@@ -45,7 +45,7 @@ export default {
   methods: {
     setPage() {
       this.$store.dispatch('jobs/setPage')
-      this.$store.dispatch('jobs/getJobs')
+      this.$store.dispatch('jobs/getJobs', this.$route.name)
     }
   },
 }
