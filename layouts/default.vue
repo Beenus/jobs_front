@@ -23,7 +23,7 @@ export default {
     isHomepage() {
       return this.$route.path === '/'
     }
-  }
+  },
 }
 </script>
 

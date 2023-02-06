@@ -8,6 +8,7 @@ export const state = () => ({
   userLocation: {},
   search: '',
   userIp: '',
+  source: null,
 })
 
 export const getters = {
@@ -31,7 +32,10 @@ export const mutations = {
   },
   SET_USER_IP(state, payload) {
     state.userIp = payload
-  }
+  },
+  SET_SOURCE(state, payload) {
+    state.source = payload
+  },
 }
 
 export const actions = {
@@ -68,13 +72,30 @@ export const actions = {
   async setUserIp({commit}, payload) {
     commit('SET_USER_IP', payload)
   },
-  async getCities({commit}, params) {
-    const {data} = await this.$axios.get('cities', {params})
+  async getCities({commit, state}, params) {
+    if (state.source) {
+      state.source.cancel('Canceled')
+    }
+    const cancelToken = this.$axios.CancelToken;
+    const source = cancelToken.source()
+    commit('SET_SOURCE', source)
+
+    const {data} = await this.$axios.get('cities', {params, cancelToken: state.source.token})
     return data
   },
-  async getSuggestions({commit}, params) {
-    const {data} = await this.$axios.get('suggestions', {params})
+  async getSuggestions({commit, state}, params) {
+    if (state.source) {
+      state.source.cancel()
+    }
+    const cancelToken = this.$axios.CancelToken;
+    const source = cancelToken.source('Canceled')
+    commit('SET_SOURCE', source)
+
+    const {data} = await this.$axios.get('suggestions', {params, cancelToken: state.source.token})
     return data?.suggestions
   },
+  async setSource({commit}) {
+
+  }
 }
 
