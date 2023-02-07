@@ -6,7 +6,7 @@
         <div class="title-sort">
           <div class="title desktop">Available jobs {{ search ? `for "${search}"` : '' }} in "{{ location }}"
           </div>
-          <div class="title mobile">Available jobs founds in "{{ location }}"</div>
+          <div class="title mobile">{{ jobsCount }} founds in "{{ location }}"</div>
 
           <div class="sort-counting">
             <div class="counting">{{ perPage }} of items per page</div>
@@ -50,7 +50,7 @@ export default {
         params.city = location[0].trim()
         params.countryCode = location[1].trim()
       } else {
-        if (location && location[0]){
+        if (location && location[0]) {
           const {cities} = await store.dispatch('getCities', {q: location[0].trim()});
 
           if (cities.length) {
@@ -74,9 +74,6 @@ export default {
     isMobileWidth() {
       return this.windowSize ? this.windowSize?.x < 768 : false
     },
-    listItemsCount() {
-      return this.$store.state.jobs.meta.totalJobs
-    },
     search() {
       return this.$store.state.search
     },
@@ -86,6 +83,9 @@ export default {
     perPage() {
       return this.$store.state.jobs.perPage
     },
+    jobsCount() {
+      return this.$store.state.jobs.list.length
+    }
   },
   methods: {
     onResize() {
@@ -171,11 +171,19 @@ export default {
 
         @media (max-width: $screen-xs-max) {
           display: flex;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 16px;
+          color: #000000;
         }
       }
     }
 
     .sort-counting {
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
+
       .counting {
         font-weight: 400;
         font-size: 16px;

@@ -4,11 +4,12 @@
 
     <div class="title">{{ job.jobtitle }}</div>
     <div class="company-location">
-      <div class="company">{{ job.company }}</div>
-      <div class="location">{{ job.formattedLocation }}</div>
+      <div class="company">{{ companyShort }}</div>
+      <div class="location">{{ locationShort }}</div>
     </div>
-    <div class="description" v-html="job.description" />
-    <CTA :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" />
+    <div class="description" v-html="job.description"/>
+    <CTA v-if="!isVisited" :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
+    <CTA v-else :visited="true"/>
   </div>
 </template>
 
@@ -22,9 +23,25 @@ export default {
     CTA,
   },
   data() {
-    return {}
+    return {
+      isVisited: false,
+    }
   },
-  methods: {}
+  methods: {
+    visitedJob() {
+      setTimeout(() => {
+        this.isVisited = true
+      }, 100)
+    },
+  },
+  computed: {
+    companyShort() {
+      return this.job.company.length > 12 ? this.job.company.substring(0, 12).concat('...') : this.job.company
+    },
+    locationShort() {
+      return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
+    },
+  }
 }
 </script>
 
@@ -35,7 +52,7 @@ export default {
   margin-bottom: 10px;
   border-radius: 28px;
   position: relative;
-  padding: 30px 20px;
+  padding: 30px 20px 25px;
 
   .ribbon {
     position: absolute;

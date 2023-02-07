@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item-desktop">
+  <div class="list-item-desktop" :class="{ribbon: job.ribbon}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
     <div class="content-part">
       <div class="title">{{ job.jobtitle }}</div>
@@ -7,11 +7,17 @@
         <div class="company">{{ job.company }}</div>
         <div class="location">{{ job.formattedLocation }}</div>
       </div>
-      <div class="description" v-html="job.description" />
+      <div class="description" v-html="job.description"/>
     </div>
     <div class="cta-part">
-      <CTA :link="job.url" :onMouseDown="job.onmousedown"/>
-      <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown">Apply Now</a>
+      <CTA v-if="!isVisited" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
+      <CTA v-else :visited="true"/>
+      <a class="link" v-if="!isVisited" :href="job.url" target="_blank" :title="job.jobtitle"
+         :onmousedown="job.onmousedown"
+         @click="visitedJob">
+        Apply Now
+      </a>
+      <a class="link visited" v-else :title="job.jobtitle">Apply Now</a>
     </div>
   </div>
 </template>
@@ -23,7 +29,18 @@ export default {
   name: 'ListItemDesktop',
   components: {CTA},
   props: ['job', 'index'],
-  methods: {},
+  data() {
+    return {
+      isVisited: false,
+    }
+  },
+  methods: {
+    visitedJob() {
+      setTimeout(() => {
+        this.isVisited = true
+      }, 100)
+    }
+  },
   computed: {}
 }
 </script>
@@ -33,12 +50,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px 0 30px 40px;
+  padding: 30px 0 30px 30px;
   margin-bottom: 10px;
   background: #FFFFFF;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   position: relative;
+
+  &.ribbon {
+    padding-top: 40px;
+  }
 
   .content-part {
     width: 100%;
@@ -49,7 +70,7 @@ export default {
       font-size: 22px;
       line-height: 20px;
       color: #000000;
-      margin-bottom: 5px;
+      margin-bottom: 7px;
     }
 
     .company-location {
@@ -61,7 +82,10 @@ export default {
 
       > div {
         display: flex;
-        align-items: center;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        color: #606060;
 
         &::before {
           content: '';
@@ -88,6 +112,13 @@ export default {
         }
       }
     }
+
+    .description {
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 20px;
+      color: #000000;
+    }
   }
 
   .cta-part {
@@ -104,6 +135,11 @@ export default {
       font-size: 15px;
       line-height: 100%;
       color: #000000;
+      text-decoration: underline;
+
+      &.visited {
+        cursor: not-allowed;
+      }
     }
   }
 

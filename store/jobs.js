@@ -13,8 +13,8 @@ export const getters = {}
 
 export const mutations = {
   SET_JOBS(state, payload) {
-    state.list = [...new Map(state.list.concat(payload).map(item =>
-      [item['jobkey'], item])).values()]
+    // state.list = [...new Map(state.list.concat(payload).map(item => [item['jobkey'], item])).values()]
+    state.list = [...new Map(payload.map(item => [item['jobkey'], item])).values()]
   },
   SET_JOBS_META(state, payload) {
     state.meta = payload

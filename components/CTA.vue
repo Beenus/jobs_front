@@ -1,5 +1,5 @@
 <template>
-  <a class="cta" :class="themeColor" target="_blank" :href="link" :onmousedown="onMouseDown">{{ text }}</a>
+  <a class="cta" :class="{themeColor, visited}" target="_blank" :href="link" :onmousedown="onMouseDown">{{ text }}</a>
 </template>
 
 <script>
@@ -16,10 +16,14 @@ export default {
     onMouseDown: {
       require: false,
       default: 'More Info'
+    },
+    visited: {
+      require: false,
+      default: false
     }
   },
   computed: {
-    themeColor () {
+    themeColor() {
       return this.$store.state.themeColor
     }
   }
@@ -40,6 +44,11 @@ export default {
   background: #FEC461;
   border-radius: 25px;
   transition: .3s;
+
+  &.visited {
+    cursor: not-allowed;
+    background: #f5d090;
+  }
 
   &:hover {
     background: #f5d090;
