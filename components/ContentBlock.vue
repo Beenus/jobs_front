@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h2>Everything you should know about {{ keyword }}</h2>
+          <h2>{{ title }}</h2>
           <div class="content-text" v-html="parsedContent"></div>
         </div>
         <div class="content-sidebar">
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "ContentBlock",
-  props: ['content', 'keyword'],
+  props: ['content', 'title'],
   computed: {
     getFullYear() {
       return new Date().getFullYear()

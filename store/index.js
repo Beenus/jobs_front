@@ -40,8 +40,8 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({dispatch, getters}, {req}) {
-    let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
-    // const ip = '173.239.211.33'
+    // let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
+    const ip = '173.239.211.33'
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
     if (data && ip) {

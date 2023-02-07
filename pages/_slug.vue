@@ -19,7 +19,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-    <ContentBlock v-if="pageData.keyword && pageData.description" :keyword="pageData.keyword" :content="pageData.description"/>
+    <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title" :content="pageData.description"/>
   </div>
 </template>
 
