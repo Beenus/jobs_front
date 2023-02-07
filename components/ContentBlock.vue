@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h2>{{ title }}</h2>
+          <h1>{{ title }}</h1>
           <div class="content-text" v-html="parsedContent"></div>
         </div>
         <div class="content-sidebar">
