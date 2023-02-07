@@ -27,7 +27,7 @@
 export default {
   head() {
     return {
-      title: this.pageData.title + this.$store.state.global.title,
+      title: (this.pageData.seo_title || this.pageData.title) + this.$store.state.global.title,
       meta: [
         {
           hid: 'description',
