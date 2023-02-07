@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h2>Everything you should know about finding a job at {{ keyword }}</h2>
+          <h2>Everything you should know about {{ keyword }}</h2>
           <div class="content-text" v-html="parsedContent"></div>
         </div>
         <div class="content-sidebar">
