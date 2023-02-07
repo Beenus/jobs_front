@@ -94,8 +94,5 @@ export const actions = {
     const {data} = await this.$axios.get('suggestions', {params, cancelToken: state.source.token})
     return data?.suggestions
   },
-  async setSource({commit}) {
-
-  }
 }
 

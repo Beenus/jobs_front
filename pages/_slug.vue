@@ -19,7 +19,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-    <ContentBlock :keyword="pageData.keyword" :content="pageData.description"/>
+    <ContentBlock v-if="pageData.keyword && pageData.description" :keyword="pageData.keyword" :content="pageData.description"/>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: 'Description',
+          content: this.pageData.seo_description || this.pageData.title || 'Description',
         }
       ]
     }

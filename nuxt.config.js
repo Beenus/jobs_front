@@ -12,7 +12,7 @@ export default {
       {name: 'format-detection', content: 'telephone=no'}
     ],
     link: [
-      {rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg'}
+      {rel: 'icon', type: 'image/png', href: '/favicon.png?v2'}
     ],
   },
 
@@ -34,7 +34,7 @@ export default {
   },
 
   gtm: {
-    id: '', // Used as fallback if no runtime config is provided
+    id: 'GTM-5FWC6ZJ', // Used as fallback if no runtime config is provided
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -73,6 +73,7 @@ export default {
     '@nuxt/image',
     '@nuxtjs/gtm',
     '@nuxtjs/style-resources',
+    '@nuxtjs/sitemap',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
