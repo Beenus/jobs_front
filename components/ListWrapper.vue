@@ -46,8 +46,8 @@ export default {
     async setPage() {
       await this.$store.dispatch('jobs/setPage')
       await this.$store.dispatch('jobs/getJobs', this.$route.name)
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
+      // document.body.scrollTop = 0;
+      // document.documentElement.scrollTop = 0;
     }
   },
 }
