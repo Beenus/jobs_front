@@ -42,7 +42,7 @@ export default {
     checkVisited() {
       let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
       this.isVisited = inStorage.includes(this.job.jobkey)
-    }
+    },
   },
   computed: {},
   mounted() {
@@ -70,11 +70,9 @@ export default {
   }
 
   &.visited {
-    //background: red;
     &::after {
       content: '';
       position: absolute;
-      background: red;
       top: 0;
       left: 0;
       width: 100%;
@@ -82,6 +80,7 @@ export default {
       background: rgba(255, 255, 255, 0.6);
       pointer-events: none;
       z-index: 2;
+      border-radius: 8px;
     }
   }
 

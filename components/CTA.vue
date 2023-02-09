@@ -15,7 +15,7 @@ export default {
     },
     onMouseDown: {
       require: false,
-      default: 'More Info'
+      default: '',
     },
     visited: {
       require: false,

@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item-mobile">
+  <div class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
 
     <div class="title">{{ job.jobtitle }}</div>
@@ -8,8 +8,7 @@
       <div class="location">{{ locationShort }}</div>
     </div>
     <div class="description" v-html="job.description"/>
-    <CTA v-if="!isVisited" :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
-    <CTA v-else :visited="true"/>
+    <CTA :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
   </div>
 </template>
 
@@ -29,9 +28,15 @@ export default {
   },
   methods: {
     visitedJob() {
-      setTimeout(() => {
-        this.isVisited = true
-      }, 100)
+      let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
+      inStorage.push(this.job.jobkey)
+      localStorage.setItem('visitedJobs', JSON.stringify(inStorage))
+
+      this.checkVisited()
+    },
+    checkVisited() {
+      let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
+      this.isVisited = inStorage.includes(this.job.jobkey)
     },
   },
   computed: {
@@ -41,6 +46,11 @@ export default {
     locationShort() {
       return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
     },
+  },
+  mounted() {
+    if (process.browser) {
+      this.checkVisited()
+    }
   }
 }
 </script>
@@ -52,6 +62,21 @@ export default {
   border-radius: 28px;
   position: relative;
   padding: 30px 20px 25px;
+
+  &.visited {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+      z-index: 2;
+      border-radius: 28px;
+    }
+  }
 
   .ribbon {
     position: absolute;
