@@ -6,11 +6,9 @@
         <div class="title-sort">
           <div class="title desktop">Available jobs {{ search ? `for "${search}"` : '' }} in "{{ location }}"
           </div>
-          <div class="title mobile">{{ jobsCount }} founds in "{{ location }}"</div>
+          <div class="title mobile">Jobs founds in "{{ location }}"</div>
 
-          <div class="sort-counting">
-            <div class="counting">{{ perPage }} of items per page</div>
-          </div>
+          <div class="sort-counting"></div>
         </div>
         <ListWrapper :isMobileWidth="isMobileWidth"/>
       </div>
@@ -68,14 +66,12 @@ export default {
 
     return {
       windowSize: null,
+      search: store.state.search,
     }
   },
   computed: {
     isMobileWidth() {
       return this.windowSize ? this.windowSize?.x < 768 : false
-    },
-    search() {
-      return this.$store.state.search
     },
     location() {
       return this.$store.getters['location'];
@@ -85,11 +81,21 @@ export default {
     },
     jobsCount() {
       return this.$store.state.jobs.list.length
-    }
+    },
+    jobsFetching() {
+      return this.$store.state.jobs.fetching
+    },
   },
   methods: {
     onResize() {
       this.windowSize = {x: window.innerWidth, y: window.innerHeight}
+    },
+  },
+  watch:{
+    jobsFetching(val, oldVal) {
+      if (val !== oldVal) {
+        this.search = this.$store.state.search
+      }
     },
   },
   mounted() {

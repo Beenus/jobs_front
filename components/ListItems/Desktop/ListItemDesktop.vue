@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item-desktop" :class="{ribbon: job.ribbon}">
+  <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
     <div class="content-part">
       <div class="title">{{ job.jobtitle }}</div>
@@ -10,14 +10,11 @@
       <div class="description" v-html="job.description"/>
     </div>
     <div class="cta-part">
-      <CTA v-if="!isVisited" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
-      <CTA v-else :visited="true"/>
-      <a class="link" v-if="!isVisited" :href="job.url" target="_blank" :title="job.jobtitle"
-         :onmousedown="job.onmousedown"
+      <CTA class="big" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob" text="Salary & More Info"/>
+      <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
          @click="visitedJob">
         Apply Now
       </a>
-      <a class="link visited" v-else :title="job.jobtitle">Apply Now</a>
     </div>
   </div>
 </template>
@@ -36,12 +33,23 @@ export default {
   },
   methods: {
     visitedJob() {
-      setTimeout(() => {
-        this.isVisited = true
-      }, 100)
+      let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
+      inStorage.push(this.job.jobkey)
+      localStorage.setItem('visitedJobs', JSON.stringify(inStorage))
+
+      this.checkVisited()
+    },
+    checkVisited() {
+      let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
+      this.isVisited = inStorage.includes(this.job.jobkey)
     }
   },
-  computed: {}
+  computed: {},
+  mounted() {
+    if (process.browser) {
+      this.checkVisited()
+    }
+  }
 }
 </script>
 
@@ -59,6 +67,22 @@ export default {
 
   &.ribbon {
     padding-top: 40px;
+  }
+
+  &.visited {
+    //background: red;
+    &::after {
+      content: '';
+      position: absolute;
+      background: red;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+      z-index: 2;
+    }
   }
 
   .content-part {
@@ -85,7 +109,7 @@ export default {
         font-weight: 400;
         font-size: 15px;
         line-height: 20px;
-        color: #606060;
+        color: rgba(96, 96, 96, 0.6);
 
         &::before {
           content: '';
@@ -106,7 +130,7 @@ export default {
           margin-left: 10px;
 
           &::before {
-            background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
+            background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
             width: 11px;
           }
         }
@@ -117,7 +141,7 @@ export default {
       font-weight: 300;
       font-size: 15px;
       line-height: 20px;
-      color: #000000;
+      color: rgba(0, 6, 57, 0.6);
     }
   }
 

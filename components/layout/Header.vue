@@ -12,7 +12,14 @@
             </div>
           </div>
 
-          <div class="search-wrapper">
+          <div class="search-inputs">
+            <div class="inputs">
+              <KeywordSearch/>
+              <CitySearch/>
+              <div class="search desktop" v-if="!fetching" @click="search">Search Jobs</div>
+              <div class="search fetching" v-else>Searching...</div>
+              <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>
+            </div>
           </div>
         </div>
       </div>
@@ -28,11 +35,17 @@ export default {
       searchOpen: false,
     }
   },
+  computed: {
+    fetching() {
+      return this.$store.state.jobs.fetching
+    },
+  },
   methods: {
-    toggleContentModal(event, forceValue) {
-      const value = forceValue ? forceValue : !this.searchOpen
-      this.$store.dispatch('toggleContentModal', value)
-      this.searchOpen = value
+    async search() {
+      await this.$store.dispatch('jobs/getJobs', this.$route.name)
+    },
+    searchMobile() {
+      this.$router.push('/')
     }
   }
 }
@@ -52,14 +65,17 @@ export default {
   .logo-menu {
     display: flex;
     align-items: center;
+    margin-right: 10px;
 
     @media (max-width: $screen-xs-max) {
       width: 100%;
+      margin-right: 0;
     }
 
     .menu-button {
       margin-right: 15px;
       cursor: pointer;
+      display: none;
 
       &::before {
         content: '';
@@ -73,11 +89,7 @@ export default {
     .logo {
       display: flex;
       max-height: 50px;
-      max-width: 310px;
-
-      @media (max-width: $screen-xs-max) {
-        margin: 0 auto;
-      }
+      max-width: 225px;
 
       img {
         margin-top: 4px;
@@ -93,8 +105,67 @@ export default {
     align-items: center;
   }
 
-  .search-wrapper {
+  .search-inputs {
+    display: flex;
+    align-items: center;
+    max-width: 640px;
+    width: 100%;
 
+    @media (max-width: $screen-xs-max) {
+      max-width: 120px;
+    }
+
+    .inputs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .search-wrapper {
+        width: 100%;
+        position: relative;
+
+        @media (max-width: $screen-xs-max) {
+          display: none;
+        }
+      }
+
+      .search {
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+        max-width: 120px;
+        min-width: 100px;
+        height: 40px;
+        background: #FEC461;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+
+        &:hover {
+          background: #f5d090;
+        }
+
+        &.desktop {
+          @media (max-width: $screen-xs-max) {
+            display: none;
+          }
+        }
+
+        &.mobile {
+          display: none;
+
+          @media (max-width: $screen-xs-max) {
+            display: flex;
+          }
+        }
+      }
+    }
   }
 }
 </style>

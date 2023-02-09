@@ -6,12 +6,8 @@
       <div class="sub-title">Over 167,457 jobs are available in our site, go ahead and find yours.</div>
 
       <div class="inputs">
-        <div class="input job">
-          <KeywordSearch/>
-        </div>
-        <div class="input city">
-          <CitySearch/>
-        </div>
+        <KeywordSearch class="hp"/>
+        <CitySearch class="hp"/>
       </div>
 
       <div class="search" v-if="!fetching" @click="search">Search Jobs</div>
@@ -117,64 +113,6 @@ export default {
       @media (max-width: $screen-xs-max) {
         flex-flow: column;
         margin-top: 25px;
-      }
-
-      ::v-deep(.input) {
-        width: 100%;
-        position: relative;
-
-        &::before {
-          content: '';
-          display: block;
-          height: 23px;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: 20px;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        &.job {
-          margin-right: 10px;
-
-          @media (max-width: $screen-xs-max) {
-            margin-right: 0;
-            margin-bottom: 10px;
-          }
-
-          &::before {
-            background: url("~/assets/img/svg/magnify_glass.svg") center / cover no-repeat;
-            width: 20px;
-          }
-        }
-
-        &.city {
-          &::before {
-            background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
-            width: 16px;
-          }
-        }
-
-        input {
-          width: 100%;
-          max-width: 375px;
-          height: 55px;
-          background: #FFFFFF;
-          border-radius: 25px;
-          outline: none;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 16px;
-          color: #000000;
-          padding: 20px 20px 20px 50px;
-          border: none;
-
-          &.error {
-            border: 2px solid red;
-            color: red;
-          }
-        }
       }
     }
 

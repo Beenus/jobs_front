@@ -45,6 +45,10 @@ export default {
   border-radius: 25px;
   transition: .3s;
 
+  &.big {
+    width: 200px;
+  }
+
   &.visited {
     cursor: not-allowed;
     background: #f5d090;

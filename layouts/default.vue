@@ -14,6 +14,7 @@
         </div>
       </transition>
     </client-only>
+    <Cookies/>
   </div>
 </template>
 

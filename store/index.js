@@ -6,6 +6,7 @@ export const state = () => ({
   isShowContentModal: false,
   location: '',
   userLocation: {},
+  userOriginalLocation: {},
   search: '',
   userIp: '',
   source: null,
@@ -30,6 +31,9 @@ export const mutations = {
   SET_USER_LOCATION(state, payload) {
     state.userLocation = payload
   },
+  SET_USER_ORIGINAL_LOCATION(state, payload) {
+    state.userOriginalLocation = payload
+  },
   SET_USER_IP(state, payload) {
     state.userIp = payload
   },
@@ -41,13 +45,20 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({dispatch, getters}, {req}) {
     let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
-    // const ip = '173.239.211.33'
+    // const ip = '173.239.211.33' //US
+    // const ip = '84.247.59.200' //DE
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
     if (data && ip) {
       dispatch('setUserLocation', data)
+      dispatch('setUserOriginalLocation', data)
     } else {
       dispatch('setUserLocation', {
+        city: 'New York',
+        country: 'United States',
+        countryCode: 'US'
+      })
+      dispatch('setUserOriginalLocation', {
         city: 'New York',
         country: 'United States',
         countryCode: 'US'
@@ -68,6 +79,9 @@ export const actions = {
   },
   async setUserLocation({commit}, payload) {
     commit('SET_USER_LOCATION', payload)
+  },
+  async setUserOriginalLocation({commit}, payload) {
+    commit('SET_USER_ORIGINAL_LOCATION', payload)
   },
   async setUserIp({commit}, payload) {
     commit('SET_USER_IP', payload)

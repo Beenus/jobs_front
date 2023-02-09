@@ -48,7 +48,6 @@ export default {
 <style scoped lang="scss">
 .list-item-mobile {
   border: 1px solid #EEEEEE;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
   border-radius: 28px;
   position: relative;
@@ -104,8 +103,7 @@ export default {
       align-items: center;
       font-size: 16px;
       line-height: 16px;
-
-      color: #707070;
+      color: rgba(96, 96, 96, 0.6);
 
 
       &::before {
@@ -127,7 +125,7 @@ export default {
         margin-left: 10px;
 
         &::before {
-          background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
+          background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
           width: 11px;
         }
       }
@@ -139,7 +137,7 @@ export default {
     font-weight: 300;
     font-size: 15px;
     line-height: 20px;
-    color: #000000;
+    color: rgba(96, 96, 96, 0.6);
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

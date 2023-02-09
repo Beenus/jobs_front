@@ -9,9 +9,7 @@
           </div>
           <div class="title mobile">Available jobs founds in "{{ location }}"</div>
 
-          <div class="sort-counting">
-            <div class="counting">{{ perPage }} of items per page</div>
-          </div>
+          <div class="sort-counting"></div>
         </div>
         <ListWrapper :isMobileWidth="isMobileWidth"/>
       </div>

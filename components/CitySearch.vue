@@ -1,6 +1,6 @@
 <template>
-  <div class="search-wrapper">
-    <input type="text" placeholder="New York, US" v-model="location" :class="{error: isLocationError}"/>
+  <div class="search-wrapper city">
+    <input class="input" type="text" placeholder="New York, US" v-model="location" :class="{error: isLocationError}"/>
     <div class="search-results" v-if="location && cities.length">
       <div class="city" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
         {{ city.city }}, {{ city.countryCode }}
@@ -52,6 +52,18 @@ export default {
 <style scoped lang="scss">
 .search-wrapper {
   position: relative;
+  width: 50%;
+
+  @media (max-width: $screen-xs-max) {
+    max-width: 375px;
+    width: 100%;
+  }
+
+  &.hp {
+    input {
+      height: 50px;
+    }
+  }
 
   .search-results {
     position: absolute;
@@ -61,8 +73,9 @@ export default {
     background: #fff;
     border-radius: 5px;
     padding: 5px 0;
+    z-index: 1;
 
-    .city {
+    .item {
       padding: 5px 10px;
       background: #fff;
       cursor: pointer;
@@ -71,6 +84,40 @@ export default {
         background: #e8e8e8;
       }
     }
+  }
+
+  input {
+    width: 100%;
+    max-width: 375px;
+    height: 40px;
+    background: #FFFFFF;
+    border-radius: 25px;
+    outline: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #000000;
+    padding: 20px 20px 20px 50px;
+    border: none;
+
+    &.error {
+      border: 2px solid red;
+      color: red;
+    }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    height: 23px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    pointer-events: none;
+    z-index: 1;
+    background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
+    width: 16px;
   }
 }
 </style>
