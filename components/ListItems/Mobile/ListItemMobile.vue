@@ -62,6 +62,7 @@ export default {
   border-radius: 28px;
   position: relative;
   padding: 30px 20px 25px;
+  background: #ffffff;
 
   &.visited {
     &::after {

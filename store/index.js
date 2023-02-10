@@ -43,7 +43,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({dispatch, getters}, {req}) {
+  async nuxtServerInit({dispatch, getters}, {req, route}) {
     let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
     // const ip = '173.239.211.33' //US
     // const ip = '84.247.59.200' //DE
@@ -68,7 +68,7 @@ export const actions = {
     dispatch('setLocation', getters['location'])
     dispatch('setUserIp', ip)
 
-    await dispatch('pages/getPopularPages')
+    await dispatch('pages/getPopularPages', route?.params?.slug)
   },
   async toggleContentModal({commit}, payload) {
     commit('SET_CONTENT_MODAL', payload)

@@ -70,6 +70,10 @@ export default {
       position: relative;
       text-decoration: none;
 
+      @media (max-width: $screen-xs-max) {
+        background: #fff;
+      }
+
       &:hover {
         background: #e4e6e7;
       }

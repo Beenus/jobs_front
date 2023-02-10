@@ -36,7 +36,10 @@ export const actions = {
       const {data} = await this.$axios.get(`page/${slug}`,)
 
       commit('SET_PAGE_DATA', data.page)
-      commit('SET_FETCHING', false)
+
+      setTimeout(() => {
+        commit('SET_FETCHING', false)
+      }, 300)
 
       return data?.page
     } catch (e) {
@@ -51,8 +54,8 @@ export const actions = {
 
     }
   },
-  async getPopularPages({commit}) {
-    const {data} = await this.$axios.get(`popular`,)
+  async getPopularPages({commit}, route) {
+    const {data} = await this.$axios.get(`popular`, {params: {route}})
     commit('SET_POPULAR_PAGES', data?.popularPages)
   },
   clearPageData({commit}) {

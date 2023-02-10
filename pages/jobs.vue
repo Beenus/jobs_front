@@ -122,6 +122,10 @@ export default {
   align-items: center;
   padding: 45px 15px 40px;
 
+  @media (max-width: $screen-sm-max) {
+    background: #f5f5f5;
+  }
+
   .sidebar {
     width: 100%;
     max-width: 195px;
