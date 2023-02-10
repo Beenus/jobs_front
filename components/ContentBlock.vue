@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h1>{{ title }}</h1>
+          <h2>{{ title }}</h2>
           <div class="content-text" v-html="parsedContent"></div>
         </div>
         <div class="content-sidebar">
@@ -33,7 +33,6 @@ export default {
 .content {
   &-block {
     padding: 0 15px;
-    margin-bottom: 30px;
     width: 100%;
     margin-top: 40px;
 

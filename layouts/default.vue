@@ -33,7 +33,7 @@ export default {
       return this.$route.path === '/'
     },
     isFetching() {
-      return this.$store.state.jobs.fetching
+      return this.$store.state.jobs.fetching || this.$store.state.pages.fetching
     },
   },
 }
@@ -55,8 +55,12 @@ export default {
     }
   }
 
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
+  .fade-enter-active {
+    transition: opacity .1s
+  }
+
+  .fade-leave-active {
+    transition: opacity .3s
   }
 
   .fade-enter, .fade-leave-to {

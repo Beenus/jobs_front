@@ -1,5 +1,6 @@
 <template>
   <div class="jobs-page">
+    <PopularPages v-if="!search"/>
     <div class="list">
       <div class="sidebar left"></div>
       <div class="container">
@@ -16,6 +17,7 @@
         <div class="ad">Ad</div>
       </div>
     </div>
+    <PopularPages/>
   </div>
 </template>
 
@@ -61,7 +63,7 @@ export default {
     }
 
     if (!from) {
-      await store.dispatch('jobs/getJobs', route.name)
+      await store.dispatch('jobs/getJobs', {route: route.name})
     }
 
     return {
@@ -91,7 +93,7 @@ export default {
       this.windowSize = {x: window.innerWidth, y: window.innerHeight}
     },
   },
-  watch:{
+  watch: {
     jobsFetching(val, oldVal) {
       if (val !== oldVal) {
         this.search = this.$store.state.search
@@ -108,7 +110,6 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
-    this.$store.dispatch('jobs/clearJobs')
   }
 }
 </script>
@@ -119,7 +120,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 15px 0;
+  padding: 45px 15px 40px;
 
   .sidebar {
     width: 100%;

@@ -17,7 +17,9 @@
         <div class="ad">Ad</div>
       </div>
     </div>
-    <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title" :content="pageData.description"/>
+    <PopularPages/>
+    <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title"
+                  :content="pageData.description"/>
   </div>
 </template>
 
@@ -40,7 +42,7 @@ export default {
       const page = await store.dispatch('pages/getPageData', route.params.slug)
 
       await store.dispatch('setSearch', page.keyword)
-      await store.dispatch('jobs/getJobs', route.name)
+      await store.dispatch('jobs/getJobs', {route: route.name, clear: true})
 
       return {
         windowSize: null,
@@ -78,7 +80,6 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize)
-    this.$store.dispatch('pages/clearPageData')
   }
 }
 </script>
@@ -89,7 +90,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 15px 0;
+  padding: 45px 15px 40px;
 
   .sidebar {
     width: 100%;

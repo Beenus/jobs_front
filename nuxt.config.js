@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -84,4 +86,13 @@ export default {
       'recommended-jobs.com',
     ]
   },
+
+  sitemap: {
+    exclude: ['/'],
+    routes: async () => {
+      const {data} = await axios.get(`${process.env.API_URL}/sitemap`)
+      return data.routes
+    },
+    gzip: false
+  }
 }

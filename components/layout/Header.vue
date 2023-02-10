@@ -42,7 +42,7 @@ export default {
   },
   methods: {
     async search() {
-      await this.$store.dispatch('jobs/getJobs', this.$route.name)
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: true, force: true})
     },
     searchMobile() {
       this.$router.push('/')

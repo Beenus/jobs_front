@@ -121,11 +121,5 @@ export default {
     width: 20px;
   }
 
-  &.city {
-    &::before {
-      background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
-      width: 16px;
-    }
-  }
 }
 </style>

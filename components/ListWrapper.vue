@@ -45,7 +45,7 @@ export default {
   methods: {
     async setPage() {
       await this.$store.dispatch('jobs/setPage')
-      await this.$store.dispatch('jobs/getJobs', this.$route.name)
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false})
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
     }
@@ -71,7 +71,6 @@ export default {
     line-height: 20px;
     color: #797979;
     margin: 0 0 15px 0;
-    border-bottom: 1px solid #EEEEEE;
     cursor: pointer;
 
     &:hover {

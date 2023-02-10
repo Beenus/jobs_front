@@ -2,6 +2,7 @@ import Pages from "@/pages/index.vue";
 
 export const state = () => ({
   pageData: {},
+  popularPages: {},
   error: {},
   fetching: false,
 })
@@ -21,6 +22,9 @@ export const mutations = {
   SET_FETCHING(state, payload) {
     state.fetching = payload
   },
+  SET_POPULAR_PAGES(state, payload) {
+    state.popularPages = payload
+  },
 }
 
 export const actions = {
@@ -31,7 +35,8 @@ export const actions = {
 
       const {data} = await this.$axios.get(`page/${slug}`,)
 
-      commit('SET_PAGE_DATA', data?.page)
+      commit('SET_PAGE_DATA', data.page)
+      commit('SET_FETCHING', false)
 
       return data?.page
     } catch (e) {
@@ -42,9 +47,13 @@ export const actions = {
         }
       }
       commit('SET_ERROR', 'Internal Server Error')
+      commit('SET_FETCHING', false)
 
     }
-    commit('SET_FETCHING', false)
+  },
+  async getPopularPages({commit}) {
+    const {data} = await this.$axios.get(`popular`,)
+    commit('SET_POPULAR_PAGES', data?.popularPages)
   },
   clearPageData({commit}) {
     commit('SET_PAGE_DATA_CLEAR')

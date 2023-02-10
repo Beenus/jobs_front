@@ -13,8 +13,11 @@ export const getters = {}
 
 export const mutations = {
   SET_JOBS(state, payload) {
-    state.list = [...new Map(state.list.concat(payload).map(item => [item['jobkey'], item])).values()]
-    // state.list = [...new Map(payload.map(item => [item['jobkey'], item])).values()]
+    if (payload.clear) {
+      state.list = [...new Map(payload.list.map(item => [item['jobkey'], item])).values()]
+    } else {
+      state.list = [...new Map(state.list.concat(payload.list).map(item => [item['jobkey'], item])).values()]
+    }
   },
   SET_JOBS_META(state, payload) {
     state.meta = payload
@@ -35,7 +38,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async getJobs({commit, rootState, rootGetters}, route) {
+  async getJobs({commit, rootState, rootGetters}, payload) {
     try {
       commit('SET_ERROR', null)
       commit('SET_FETCHING', true)
@@ -50,11 +53,10 @@ export const actions = {
       }
 
       const {data} = await this.$axios.get('jobs', {params})
-
-      commit('SET_JOBS', data.list)
+      commit('SET_JOBS', {list: data.list, clear: payload.clear})
       commit('SET_JOBS_META', data.meta)
 
-      if (route !== 'slug') {
+      if (payload.clear === undefined || payload.force) {
         await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
       }
     } catch (e) {
