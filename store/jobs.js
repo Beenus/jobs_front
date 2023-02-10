@@ -55,6 +55,7 @@ export const actions = {
       const {data} = await this.$axios.get('jobs', {params})
       commit('SET_JOBS', {list: data.list, clear: payload.clear})
       commit('SET_JOBS_META', data.meta)
+      commit('SET_FETCHING', false)
 
       if (payload.clear === undefined || payload.force) {
         await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
@@ -67,9 +68,8 @@ export const actions = {
         }
       }
       commit('SET_ERROR', 'Internal Server Error')
-
+      commit('SET_FETCHING', false)
     }
-    commit('SET_FETCHING', false)
   },
   clearJobs({commit}, payload) {
     commit('SET_JOBS_CLEAR')
