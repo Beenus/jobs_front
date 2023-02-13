@@ -5,6 +5,8 @@
         <div class="content-part">
           <h2>{{ title }}</h2>
           <div class="content-text" v-html="parsedContent"></div>
+
+          <FAQ :faq="faq"/>
         </div>
         <div class="content-sidebar">
           <div class="ad">Ad</div>
@@ -17,7 +19,7 @@
 <script>
 export default {
   name: "ContentBlock",
-  props: ['content', 'title'],
+  props: ['content', 'title', 'faq'],
   computed: {
     getFullYear() {
       return new Date().getFullYear()

@@ -19,7 +19,7 @@
     </div>
     <PopularPages/>
     <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title"
-                  :content="pageData.description"/>
+                  :content="pageData.description" :faq="pageData.faq"/>
   </div>
 </template>
 
