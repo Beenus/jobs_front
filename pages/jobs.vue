@@ -63,7 +63,7 @@ export default {
     }
 
     if (!from) {
-      await store.dispatch('jobs/getJobs', {route: route.name})
+      await store.dispatch('jobs/getJobs', {route: route.name, loader: true})
     }
 
     return {

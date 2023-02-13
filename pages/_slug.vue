@@ -42,7 +42,7 @@ export default {
       const page = await store.dispatch('pages/getPageData', route.params.slug)
 
       await store.dispatch('setSearch', page.keyword)
-      await store.dispatch('jobs/getJobs', {route: route.name, clear: true})
+      await store.dispatch('jobs/getJobs', {route: route.name, clear: true, loader: true})
 
       return {
         windowSize: null,

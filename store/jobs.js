@@ -41,7 +41,10 @@ export const actions = {
   async getJobs({commit, rootState, rootGetters}, payload) {
     try {
       commit('SET_ERROR', null)
-      commit('SET_FETCHING', true)
+
+      if (payload.loader) {
+        commit('SET_FETCHING', true)
+      }
 
       const params = {
         ip: rootState.userIp,

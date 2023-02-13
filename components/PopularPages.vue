@@ -62,7 +62,7 @@ export default {
       background: #F1F3F4;
       border-radius: 50px;
       padding: 5px 20px;
-      height: 38px;
+      height: 48px;
       font-weight: 500;
       font-size: 14px;
       line-height: 15px;

@@ -7,7 +7,7 @@
       <ListItemMobile v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
     </div>
 
-    <div class="show-more" @click="setPage">Show More</div>
+    <div class="show-more" @click="setPage" ref="showMore">Show More</div>
   </div>
   <div class="list-wrapper" v-else>No Results</div>
 </template>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       isShowMore: false,
+      isLoading: false,
     }
   },
   computed: {
@@ -45,11 +46,28 @@ export default {
   methods: {
     async setPage() {
       await this.$store.dispatch('jobs/setPage')
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false})
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: true})
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
-    }
+    },
+    scroll() {
+      if (process.browser) {
+        window.onscroll = async () => {
+          // let position = window.scrollY + window.innerHeight
+          let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 500
+          if ((showMorePosition < 100 && showMorePosition > -500) && !this.isLoading) {
+            this.isLoading = true
+            await this.$store.dispatch('jobs/setPage')
+            await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: false})
+            this.isLoading = false
+          }
+        }
+      }
+    },
   },
+  mounted() {
+    this.scroll()
+  }
 }
 </script>
 
