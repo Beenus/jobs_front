@@ -10,19 +10,19 @@
       conditions, do not to use the Service.</p>
     <p><strong>2. REGISTRATION AND ACCOUNT</strong></p>
     <p>2.1. Subject to your agreement and continuing compliance with these Terms of Use and any other relevant policies
-      and terms and conditions, Gammeon grants you a non-exclusive, non-transferable, non-sublicensable, revocable
+      and terms and conditions, Recommended-Jobs.com grants you a non-exclusive, non-transferable, non-sublicensable, revocable
       limited license subject to the limitations below to access and use the Service for your own non-commercial
       entertainment purposes. You agree not to use the Service for any other purpose.</p>
-    <p>Gammeon offers a great variety of games on its portals and on other platforms such as application stores. These
+    <p>Recommended-Jobs.com offers a great variety of games on its portals and on other platforms such as application stores. These
       games are free to play unless indicated otherwise. However, you are solely responsible for any costs you may incur
       using the Service through any wireless or other communication service. In certain games you <em>may</em> purchase
       virtual items (such as a virtual game element or virtual coins) or a subscription to download a game. For the
-      processing of any payments on the SPIL Sites or any other platform, Gammeon may use third party payment providers
+      processing of any payments on the SPIL Sites or any other platform, Recommended-Jobs.com may use third party payment providers
       as set out in Section 6.</p>
     <p>2.2. You may create an account on the Service (&ldquo;Account&rdquo;). By creating an Account, you confirm that
       you are 16 years of age or older.</p>
     <p>2.3. A username is a unique identifier either selected by you or provided by us, and is used to identify you on
-      the Service. You may only have one account on the SPIL Sites and one account per game. Gammeon reserves the right
+      the Service. You may only have one account on the SPIL Sites and one account per game. Recommended-Jobs.com reserves the right
       to delete any of your accounts, in case you have multiple accounts. You may not sell, rent or give away your
       Account, create an Account using a false identity or information, or on behalf of someone other than yourself.
       Please notify us immediately if your Account has been unauthorized accessed and modify your login details
@@ -30,14 +30,14 @@
       purchases made through your Account, whether or not authorized by you. If you provided us with contact
       information, you shall keep it accurate and up-to-date. You shall only use your Account for non-commercial
       purposes.</p>
-    <p>2.4. Gammeon reserves the right to terminate and permanently deactivate your Account if it has been inactive for
+    <p>2.4. Recommended-Jobs.com reserves the right to terminate and permanently deactivate your Account if it has been inactive for
       180 days. In case of deactivation, we have no obligation to retain or provide any data or content related to, or
       refund any payments made through your (former) Account, and we may allow another user to register and use your
       former username. We also have no obligation to remove any public data, content, or other information that you
       uploaded or posted on the Service.</p>
-    <p>2.5. Without limiting any other remedies, Gammeon may limit, suspend terminate, modify, or delete accounts or
-      access to the Service or portions thereof if you are, or Gammeon suspects that you are failing to comply with the
-      Terms of Use or for any actual or suspected illegal or improper use of the Service, without notice to you. Gammeon
+    <p>2.5. Without limiting any other remedies, Recommended-Jobs.com may limit, suspend terminate, modify, or delete accounts or
+      access to the Service or portions thereof if you are, or Recommended-Jobs.com suspects that you are failing to comply with the
+      Terms of Use or for any actual or suspected illegal or improper use of the Service, without notice to you. Recommended-Jobs.com
       is under no obligation to compensate you for any losses or results related to this, including but not limited to
       any benefits, privileges or virtual items associated with your use of the Service.</p>
     <p><strong>3. USER GENERATED CONTENT</strong></p>
@@ -47,12 +47,12 @@
       does not infringe any third party rights or is not (otherwise) unlawful. Your use of the Service is at your own
       risk. By using the Service, you may be exposed to User Generated Content that is offensive, indecent or otherwise
       not in line with your expectations. You bear all risks associated with the use of any User Generated Content
-      available in connection with the Service. Gammeon is not responsible nor liable for any User Generated Content. We
+      available in connection with the Service. Recommended-Jobs.com is not responsible nor liable for any User Generated Content. We
       do however appreciate it if you report any irregularities that you encounter regarding User Generated Content via
       <a href="mailto:info@recommended-jobs.com">info@recommended-jobs.com</a>. We may subsequently take action against the reported
       User Generated Content, as we deem &ndash; at our own discretion &ndash; appropriate under the given
       circumstances.</p>
-    <p>3.2. If you submit any User Generated Content yourself, you grant Gammeon a non-exclusive, irrevocable,
+    <p>3.2. If you submit any User Generated Content yourself, you grant Recommended-Jobs.com a non-exclusive, irrevocable,
       perpetual, transferable, fully paid-up, royalty-free, worldwide license (including the right to sublicense and
       assign to third parties) to use, publish, reproduce, distribute, adjust, prepare derivative works of, or otherwise
       exploit in any manner whatsoever such submitted User Generated Content, or any portion thereof, by any and all
@@ -67,23 +67,23 @@
     <p>3.4. If you submit any User Generated Content to the Service, you:</p>
     <ul>
       <li>acknowledge and agree that every user of the Service may have access to such User Generated Content, and that
-        Gammeon has no control over that information or what users do with it;
+        Recommended-Jobs.com has no control over that information or what users do with it;
       </li>
-      <li>warrant that you are authorized to do so and to grant Gammeon the license referred to in 3.2, and that such
+      <li>warrant that you are authorized to do so and to grant Recommended-Jobs.com the license referred to in 3.2, and that such
         content does not infringe any third party rights, including but not limited to any intellectual property rights,
-        and does not violate any applicable law. You indemnify Gammeone against any third party (among which any
+        and does not violate any applicable law. You indemnify Recommended-Jobs.come against any third party (among which any
         authorities) claims, related costs and damages in this respect.
       </li>
     </ul>
-    <p>3.5. Upon first request, you will cooperate with Gammeon to investigate any suspected unlawful, fraudulent or
+    <p>3.5. Upon first request, you will cooperate with Recommended-Jobs.com to investigate any suspected unlawful, fraudulent or
       improper User Generated Content (whether from yourself or another player) or other activities on the Service. You
-      indemnify Gammeon and its officers, directors, agents, subsidiaries, joint ventures and employees) against any
+      indemnify Recommended-Jobs.com and its officers, directors, agents, subsidiaries, joint ventures and employees) against any
       claims, related costs and damages arising out of or in any way connected with any disputes with Service users or
       other third parties that may arise on, or in connection with the Service.</p>
     <p><strong>4. ADVERTISEMENTS AND THIRD PARTY CONTENT</strong></p>
     <p>4.1. When providing you with our games on the Service we may display advertising before, in, after or around such
       games. Any dealings you engage in with any advertisers via our Service are between you and the advertiser, and
-      subject to additional terms and conditions from such advertiser (if any). Gammeon is not liable for any loss or
+      subject to additional terms and conditions from such advertiser (if any). Recommended-Jobs.com is not liable for any loss or
       claim you may have against any advertiser.</p>
     <p>4.2. The Service may include links to websites of third parties, including links provided as automated search
       results. The existence of such links does not mean that we endorse these third-party sites or services. You
@@ -95,7 +95,7 @@
       reproduced or distributed. Any download is subject to the rules that accompany that particular content.</p>
     <p>5.2. You may not:</p>
     <ol>
-      <li>engage in any act that Gammeon deems to be in conflict with the spirit or intent of the Service</li>
+      <li>engage in any act that Recommended-Jobs.com deems to be in conflict with the spirit or intent of the Service</li>
       <li>use cheats, exploits, automation software, bots, hacks, mods or any unauthorized third-party software designed
         to modify or interfere with the Service.
       </li>
@@ -108,7 +108,7 @@
       </li>
       <li>reverse engineer, decompile, disassemble, decipher or otherwise attempt to derive the source code for any
         underlying software or other intellectual property used to provide the Service, or to obtain any information
-        from the Service using any method not expressly permitted by Gammeon.
+        from the Service using any method not expressly permitted by Recommended-Jobs.com.
       </li>
       <li>offer any form of advertising or promotion on the Service without our prior written consent;</li>
       <li>provide any false personal information, or any information, content, or material on account of a third party
@@ -135,7 +135,7 @@
       <li>victimizes, harasses, degrades, or intimidates an individual or group of individuals on the basis of religion,
         gender, sexual orientation, race, ethnicity, age, or disability;
       </li>
-      <li>impersonates any person, business, or entity, including Gammeon and its employees and agents;</li>
+      <li>impersonates any person, business, or entity, including Recommended-Jobs.com and its employees and agents;</li>
       <li>contains viruses or any other computer code, files, or programs that interrupt, destroy, or limit the
         functionality of any software or hardware or telecommunications equipment, or that otherwise permit the
         unauthorized use of a computer or computer network;
@@ -143,8 +143,8 @@
       <li>encourages conduct that would constitute a criminal offense or give rise to civil liability; or</li>
       <li>otherwise violates these Terms of Use, guidelines, or any policy posted on the Service.</li>
     </ol>
-    <p>Gammeon reserves the right to determine what conduct it considers to be in violation of the Terms of Use or
-      otherwise outside the intent or spirit of these Terms of Use. Gammeon reserves the right to take action as a
+    <p>Recommended-Jobs.com reserves the right to determine what conduct it considers to be in violation of the Terms of Use or
+      otherwise outside the intent or spirit of these Terms of Use. Recommended-Jobs.com reserves the right to take action as a
       result, which may include terminating your Account and prohibiting you from using the Service in whole or in
       part.</p>
     <p><strong>6. VIRTUAL ITEMS AND IN-GAME PURCHASES</strong></p>
@@ -152,41 +152,41 @@
       non-sublicensable, revocable license for virtual items (such as a virtual game element or virtual coins), game
       progress, or a subscription to (download) a game (hereinafter together referred to as&nbsp;<strong>&ldquo;Paid
         Services&rdquo;</strong>), provided that you have registered an Account on the Service. You may only purchase
-      Virtual Items from us or our authorized partners through the Service, and not in any other way. Gammeon may
+      Virtual Items from us or our authorized partners through the Service, and not in any other way. Recommended-Jobs.com may
       manage, regulate, control, modify, eliminate or change the price of virtual items and/or services at any time,
-      with or without notice. Gammeon shall have no liability to you or any third party if Gammeon exercises any such
+      with or without notice. Recommended-Jobs.com shall have no liability to you or any third party if Recommended-Jobs.com exercises any such
       rights. The transfer of virtual items is prohibited except where expressly authorized in the Service. Other than
       as expressly authorized in the Service, you shall not sell, redeem or otherwise transfer virtual items to any
-      person or entity, including but not limited to Gammeon, another user or any third party.<br>Any purchases via the
-      Service require you to enter into an agreement with either Gammeon or the relevant Payment Service Provider (&ldquo;PSP&rdquo;)
+      person or entity, including but not limited to Recommended-Jobs.com, another user or any third party.<br>Any purchases via the
+      Service require you to enter into an agreement with either Recommended-Jobs.com or the relevant Payment Service Provider (&ldquo;PSP&rdquo;)
       to carry out the payment (you will see on the payment screen which PSP you are concluding the transaction with).
       As a parent/legal guardian you are responsible for any payments made via credit card or other payment instrument
       (e.g. phone, SMS, Paypal) on the Service by a minor.</p>
-    <p>6.1.1. If the agreement is entered into with a PSP, Gammeon will never be held responsible for the communication
+    <p>6.1.1. If the agreement is entered into with a PSP, Recommended-Jobs.com will never be held responsible for the communication
       between you and the PSP, and all information that you exchange with the PSP will be subject exclusively to the
       privacy policy and/or other terms and conditions of that PSP. Some PSP&rsquo;s allow preapproved recurrent
       payments and you agree to any terms and conditions that such PSP may set out for such recurring payments. For the
-      avoidance of doubt, Gammeon is not, and will not become a party to your agreement with an PSP. By using a PSP for
-      payments on the Service you indemnify Gammeon against reclaimed payments or other claims the PSP may have as a
+      avoidance of doubt, Recommended-Jobs.com is not, and will not become a party to your agreement with an PSP. By using a PSP for
+      payments on the Service you indemnify Recommended-Jobs.com against reclaimed payments or other claims the PSP may have as a
       consequence of the non-performance of payment. In the event you pay via credit card, you may opt to enable the
       1-click payment option if offered by your credit card provider. By enabling this option and using it you agree to
       all terms and conditions set by the payment provider and your credit card provider for the use of this option.
-      Gammeon accepts no liability for the use of this payment option.</p>
+      Recommended-Jobs.com accepts no liability for the use of this payment option.</p>
     <p>6.1.2. All information that we receive from you in the context of payments and supplying services on the Service
-      are subject to the relevant Gammeon&rsquo; privacy policy. You agree to pay all applicable taxes and costs
+      are subject to the relevant Recommended-Jobs.com&rsquo; privacy policy. You agree to pay all applicable taxes and costs
       associated with your Account or anyone using an Account registered to you.</p>
     <p>6.2. If you purchase Paid Services via the Service, you will have no right to cancel your purchase and claim back
       any payments as your use commences upon supply, regardless of the moment your first spent your virtual items in a
       game.</p>
-    <p>6.3. Gammeon and/or its licensors may manage, regulate, control, modify or eliminate Paid Services at any time,
+    <p>6.3. Recommended-Jobs.com and/or its licensors may manage, regulate, control, modify or eliminate Paid Services at any time,
       with or without notice. SPIL and/or its licensors shall not be liable to you or any third party in such event.</p>
-    <p>6.4. Once a payment has been made for a Paid Service via the Service, there is no right to a refund. Gammeon
+    <p>6.4. Once a payment has been made for a Paid Service via the Service, there is no right to a refund. Recommended-Jobs.com
       reserves the right to cancel and delete all, or a part of (the balance of) the Paid Services you purchased on the
       Service if:</p>
     <ul>
       <li>you have not used your Account for 180 consecutive days, as referred to in 2.4 above;</li>
       <li>if we do no longer offer the content or Service that the (balance of) the Paid Services relates to, subject to
-        prior notice by Gammeon to that extent;
+        prior notice by Recommended-Jobs.com to that extent;
       </li>
       <li>you fail to comply with these Terms of Use.</li>
     </ul>
@@ -194,25 +194,25 @@
     <p>If a Paid Service becomes unavailable following a transaction but prior to download, your sole remedy is limited
       to a refund of the price paid for the unavailable virtual product. If technical problems prevent or unreasonably
       delay delivery of your virtual product, your exclusive and sole remedy is either replacement or a refund of the
-      price paid, as determined by Gammeon.</p>
+      price paid, as determined by Recommended-Jobs.com.</p>
     <p>We will accept your return of products that are not virtual products (e.g., virtual goods, subscriptions and game
       progress are virtual products) purchased through the Service as long as the products and packaging are returned in
       their original condition within thirty (30) days of shipment to you. When we ship you physical products, we will
       include a return authorization form that you need to enclose along with anything you send back to us. Virtual
       products are non-refundable, and non-returnable except, in our sole and absolute discretion.</p>
     <p><strong>7. PROPRIETARY RIGHTS</strong></p>
-    <p>7.1. The Service includes a variety of content, marks, data, works, and material of Gammeon and third parties
+    <p>7.1. The Service includes a variety of content, marks, data, works, and material of Recommended-Jobs.com and third parties
       (hereinafter together referred to as the <strong>&ldquo;Content&rdquo;</strong>), including but not limited to
       logo&rsquo;s, trademarks, look &amp; feel, trade names, software, games, layouts, information, text, data, music,
       video, images, scripts, designs, graphics, button icons, instructions, and illustrations.</p>
-    <p>Unless otherwise specified in writing, all Content is owned, controlled, or licensed by Gammeon or its licensors.
+    <p>Unless otherwise specified in writing, all Content is owned, controlled, or licensed by Recommended-Jobs.com or its licensors.
       &nbsp;All Content is copyrighted under copyright laws and/or other intellectual property laws protecting it from
-      unauthorized use. The Trademarks, the logos and designs may not be used without Gammeon express written
+      unauthorized use. The Trademarks, the logos and designs may not be used without Recommended-Jobs.com express written
       permission. You agree not to copy, redistribute, publish or otherwise exploit any Content in violation of the
-      intellectual property rights of Gammeon or any other third party.</p>
+      intellectual property rights of Recommended-Jobs.com or any other third party.</p>
     <p>Notwithstanding anything to the contrary herein, you acknowledge and agree that you shall have no ownership or
       other proprietary rights in the Account. All right in and to the Account are and shall remain owned and inure to
-      the benefit of Gammeon.</p>
+      the benefit of Recommended-Jobs.com.</p>
     <p>7.2 We may make Content available for you to download or use. Such Content will be subject to the terms of the
       license agreement that accompanies it. If there is no license agreement presented to you with the Content, then
       the following license, in addition to the other terms of these Terms of Use, shall govern your use of such
@@ -227,11 +227,11 @@
       and update it to improve its performance and capabilities. If you shut down the Content during an automatic update
       or otherwise interfere with the installation of the update, the content may be damaged and/or cease to
       operate.</p>
-    <p>7.3 The Service is continuously evolving and Gammeon may require that you accept updates to the Content and the
+    <p>7.3 The Service is continuously evolving and Recommended-Jobs.com may require that you accept updates to the Content and the
       Service. Such update may take place with and without notification.</p>
     <p><strong>8. DISCLAIMER OF WARRANTIES AND LIMITATION OF LIABILITY</strong></p>
     <p>8.1 We provide the Service &lsquo;AS IS&rsquo;, with all faults and as available. We and our licensors make no
-      express warranties or guarantees about the Service. Gammeon is not obligated to supply any support whatsoever. To
+      express warranties or guarantees about the Service. Recommended-Jobs.com is not obligated to supply any support whatsoever. To
       the extent permitted by law, we and our suppliers disclaim implied warranties that the Service is merchantable, of
       satisfactory quality, accurate, timely, fit for a particular purpose or need, and non-infringing. We do not
       guarantee that the Service will meet your requirements or will be error-free, reliable, without interruption, or
@@ -239,22 +239,22 @@
       (including any support services) will be effective, reliable, or accurate or will meet your requirements. We do
       not guarantee that you will be able to access or use the Service (either directly or through third-party networks)
       at times or locations of your choosing. No oral or written information or advice given by a representative of
-      Gammeon shall create a warranty. We may discontinue or change any service or feature of the Service at any time
+      Recommended-Jobs.com shall create a warranty. We may discontinue or change any service or feature of the Service at any time
       and without notice. You may have additional consumer rights under your local laws that this contract cannot change
       and that SPIL will adhere to.</p>
     <p>8.2. Your sole and exclusive remedy for any dispute with us is to discontinue your use of the Service. In no
       event shall our liability (or the liability of our parent company or our suppliers) for any and all claims
       relating to the use of the Service exceed the total amount of payments that you made to us during the six (6)
       months immediately preceding the event giving rise to the dispute. You acknowledge and agree that if you have not
-      paid anything to Gammeon during such time period, your sole remedy (and Gammeon exclusive liability) for any
-      dispute with Gammeon is to stop using the Service and to deactivate your Account. If such remedies are deemed
-      insufficient under any applicable law, Gammeon liability is instead limited to the lesser of 500 Euros or the
-      minimum amount required by law. GAMMEON, ITS AFFILIATES, SUPPLIERS AND LICENSORS SHALL NOT BE LIABLE TO YOU FOR
+      paid anything to Recommended-Jobs.com during such time period, your sole remedy (and Recommended-Jobs.com exclusive liability) for any
+      dispute with Recommended-Jobs.com is to stop using the Service and to deactivate your Account. If such remedies are deemed
+      insufficient under any applicable law, Recommended-Jobs.com liability is instead limited to the lesser of 500 Euros or the
+      minimum amount required by law. Recommended-Jobs.com, ITS AFFILIATES, SUPPLIERS AND LICENSORS SHALL NOT BE LIABLE TO YOU FOR
       ANY DIRECT, INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, PUNITIVE OR OTHER SIMILAR DAMAGES, INCLUDING BUT NOT
       LIMITED TO LOSS OF REVENUES, LOST PROFITS, LOST DATA OR BUSINESS INTERRUPTION OR OTHER INTANGIBLE LOSSES (HOWEVER
       SUCH LOSSES ARE QUALIFIED), ARISING OUT OF OR RELATING IN ANY WAY TO YOUR ACCESS TO AND USE OF THE SERVICE AND
       YOUR RIGHTS UNDER THESE TERMS OF USE OR ANY APPLICABLE ADDITIONAL TERMS, WHETHER BASED ON CONTRACT, TORT OR ANY
-      OTHER LEGAL THEORY, AND WHETHER OR NOT GAMMEON HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. Because some
+      OTHER LEGAL THEORY, AND WHETHER OR NOT Recommended-Jobs.com HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. Because some
       countries, states, or jurisdictions do not allow the exclusion or the limitation of liability for consequential or
       incidental damages, in such countries, states, or jurisdictions, our liability (and the liability of our parent
       and suppliers) shall be limited to the extent permitted by law.</p>
@@ -289,7 +289,7 @@
     </ol>
     <p><strong>9. INDEMNIFICATIONS</strong></p>
     <p>Except for, and without prejudice to your full liability and indemnification obligations set forth in this
-      Agreement, Gammeon shall not be liable for any lost profits, or any form of special, incidental, indirect,
+      Agreement, Recommended-Jobs.com shall not be liable for any lost profits, or any form of special, incidental, indirect,
       consequential or punitive damages arising out of or related to this agreement.</p>
     <p>Upon a request by us, you agree to defend, indemnify, and hold harmless us and our parent and other affiliated
       companies as well as any respective employees, contractors, officers, directors, and agents from all liabilities,
@@ -311,19 +311,19 @@
       into force, you are signifying your acceptance of the new terms.</p>
     <p>10.4. These terms and conditions are governed by Dutch law. Any claims or dispute that may arise in connection
       with these terms and conditions or the use of the Service will be submitted to the competent court in Amsterdam,
-      the Netherlands, unless otherwise agreed upon by Gammeon and/or another dispute resolution forum is available
-      pursuant to mandatory consumer law. If a dispute arises between you and Gammeon, we strongly encourage you to
+      the Netherlands, unless otherwise agreed upon by Recommended-Jobs.com and/or another dispute resolution forum is available
+      pursuant to mandatory consumer law. If a dispute arises between you and Recommended-Jobs.com, we strongly encourage you to
       first contact us directly to seek a resolution. You can contact us via <a href="mailto:info@recommended-jobs.com">info@recommended-jobs.com</a>.
     </p>
-    <p>10.5. Gammeon shall not be deemed in default hereunder for any cessation, interruption or delay in the
+    <p>10.5. Recommended-Jobs.com shall not be deemed in default hereunder for any cessation, interruption or delay in the
       performance of its obligations due to causes beyond its reasonable control, including but not limited to:
       earthquake, flood, or other natural disaster, act of God, labor controversy, civil disturbance, war (whether or
       not officially declared) or the inability to obtain sufficient supplies, transportation, or other essential
       commodity or service required in the conduct of its business, or any change in or the adoption of any law,
       regulation, judgment or decree (each a &ldquo;Force Majeure Event&rdquo;).</p>
-    <p>10.6. You acknowledge that the rights granted and obligations made under these Terms of Use to Gammeon are of a
-      unique and irreplaceable nature, the loss of which shall irreparably harm Gammeon and which cannot be replaced by
-      monetary damages alone so that Gammeon shall be entitled to injunctive or other equitable relief (without the
+    <p>10.6. You acknowledge that the rights granted and obligations made under these Terms of Use to Recommended-Jobs.com are of a
+      unique and irreplaceable nature, the loss of which shall irreparably harm Recommended-Jobs.com and which cannot be replaced by
+      monetary damages alone so that Recommended-Jobs.com shall be entitled to injunctive or other equitable relief (without the
       obligations of posting any bond or surety or proof of damages) in the event of any breach or anticipatory breach
       by you.<br>You irrevocably waive all rights to seek injunctive or other equitable relief, or to enjoin or restrain
       the operation of the Service or any of SPIL&rsquo;s games, exploitation of any advertising or other materials
