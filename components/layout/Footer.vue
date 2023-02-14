@@ -18,19 +18,19 @@
                     <div class="title">Useful links</div>
                     <div class="links" id="menu-links-container">
                       <nuxt-link to="/">Homepage</nuxt-link>
-                      <nuxt-link to="/">Terms of Use</nuxt-link>
-                      <nuxt-link to="/">Advertiser Disclosure</nuxt-link>
-                      <nuxt-link to="/">Privacy Policy</nuxt-link>
+                      <a @click="openPopup('terms')">Terms of Use</a>
+                      <a @click="openPopup('advertiserDisclosure')">Advertiser Disclosure</a>
+                      <a @click="openPopup('privacy')">Privacy Policy</a>
                     </div>
                   </div>
                   <div class="column">
                     <div class="title" id="contact-link-container">
-                      <nuxt-link to="/">Contact Us</nuxt-link>
+                      <a @click="openPopup('contact')">Contact Us</a>
                     </div>
                   </div>
                   <div class="column">
                     <div class="title">
-                      <nuxt-link to="/">Partner with Us</nuxt-link>
+                      <nuxt-link to="/partner-with-us">Partner with Us</nuxt-link>
                     </div>
                   </div>
                 </div>
@@ -89,6 +89,11 @@ export default {
     },
     isHomepage() {
       return this.$route.path === '/'
+    }
+  },
+  methods: {
+    openPopup (type) {
+      this.$store.dispatch('showLegalPopup', type)
     }
   }
 }

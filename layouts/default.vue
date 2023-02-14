@@ -15,6 +15,7 @@
       </transition>
     </client-only>
     <Cookies/>
+    <LegalPopup v-if="isShowLegalPopup"/>
   </div>
 </template>
 
@@ -34,6 +35,9 @@ export default {
     },
     isFetching() {
       return this.$store.state.jobs.fetching || this.$store.state.pages.fetching
+    },
+    isShowLegalPopup () {
+      return this.$store.state.isShowLegalPopup
     },
   },
 }

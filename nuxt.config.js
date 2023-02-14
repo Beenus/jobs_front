@@ -54,7 +54,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: "~/plugins/vClickOutside", ssr: false},
-    {src: "~/plugins/portalVue.js", ssr: false}
+    {src: "~/plugins/portalVue.js", ssr: false},
+    {src: '~/plugins/helpers', ssr: false},
   ],
   //Runtime Config
   publicRuntimeConfig: {

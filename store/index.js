@@ -10,6 +10,8 @@ export const state = () => ({
   search: '',
   userIp: '',
   source: null,
+  isShowLegalPopup: false,
+  legalPopupType: null,
 })
 
 export const getters = {
@@ -39,6 +41,14 @@ export const mutations = {
   },
   SET_SOURCE(state, payload) {
     state.source = payload
+  },
+  SET_SHOW_LEGAL_POPUP(state, payload) {
+    state.isShowLegalPopup = true
+    state.legalPopupType = payload
+  },
+  SET_CLOSE_LEGAL_POPUP(state) {
+    state.isShowLegalPopup = false
+    state.legalPopupType = null
   },
 }
 
@@ -109,6 +119,13 @@ export const actions = {
 
     const {data} = await this.$axios.get('suggestions', {params, cancelToken: state.source.token})
     return data?.suggestions
+  },
+  showLegalPopup ({commit}, payload) {
+    commit('SET_SHOW_LEGAL_POPUP', payload)
+  },
+
+  closeLegalPopup ({commit}) {
+    commit('SET_CLOSE_LEGAL_POPUP')
   },
 }
 
