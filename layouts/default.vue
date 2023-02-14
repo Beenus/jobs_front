@@ -1,5 +1,5 @@
 <template>
-  <div class="page">
+  <div class="page" :class="{homepage: isHomepage}">
     <Header v-if="!isHomepage"/>
     <div class="main">
       <nuxt/>
@@ -41,6 +41,17 @@ export default {
 
 <style lang="scss">
 .page {
+  position: relative;
+  padding-top: 68px;
+
+  @media (max-width: $screen-xs-max) {
+    padding-top: 55px;
+  }
+
+  &.homepage {
+    padding-top: 0;
+  }
+
   .main {
     position: relative;
     min-height: 100vh;

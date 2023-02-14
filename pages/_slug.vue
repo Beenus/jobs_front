@@ -93,6 +93,7 @@ export default {
   padding: 45px 15px 40px;
 
   @media (max-width: $screen-sm-max) {
+    padding-top: 35px;
     background: #f5f5f5;
   }
 

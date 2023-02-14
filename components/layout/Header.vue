@@ -1,35 +1,40 @@
 <template>
-  <header>
-    <div class="main-header">
-      <div class="container">
-        <div class="header-wrapper">
-          <div class="logo-menu">
-            <div class="menu-button"></div>
-            <div class="logo">
-              <nuxt-link :to="'/'">
-                <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
-              </nuxt-link>
+  <FixedHeader :hideScrollDown="true">
+    <header>
+      <div class="main-header">
+        <div class="container">
+          <div class="header-wrapper">
+            <div class="logo-menu">
+              <div class="menu-button"></div>
+              <div class="logo">
+                <nuxt-link :to="'/'">
+                  <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
+                </nuxt-link>
+              </div>
             </div>
-          </div>
 
-          <div class="search-inputs">
-            <div class="inputs">
-              <KeywordSearch/>
-              <CitySearch/>
-              <div class="search desktop" v-if="!fetching" @click="search">Search Jobs</div>
-              <div class="search fetching" v-else>Searching...</div>
-              <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>
+            <div class="search-inputs">
+              <div class="inputs">
+                <KeywordSearch/>
+                <CitySearch/>
+                <div class="search desktop" v-if="!fetching" @click="search">Search Jobs</div>
+                <div class="search fetching" v-else>Searching...</div>
+                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </FixedHeader>
 </template>
 
 <script>
+import FixedHeader from "@/components/layout/header/FixedHeader.vue";
+
 export default {
   name: "Header",
+  components: {FixedHeader},
   data() {
     return {
       searchOpen: false,
@@ -60,6 +65,7 @@ export default {
   padding: 0 15px;
 
   @media (max-width: $screen-xs-max) {
+    height: 55px;
   }
 
   .logo-menu {
