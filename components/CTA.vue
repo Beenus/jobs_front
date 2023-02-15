@@ -45,35 +45,7 @@ export default {
   border-radius: 25px;
   transition: .3s;
 
-  &.big {
-    width: 200px;
-  }
-
-  &.visited {
-    cursor: not-allowed;
-    background: #f5d090;
-  }
-
-  &:hover {
-    background: #f5d090;
-  }
-
-  &.blue {
-    background: #0157FF;
-
-    &:hover {
-      background: #2c72fd;
-    }
-  }
-
-  &.red {
-    background: #FF595E;
-
-    &:hover {
-      background: #ff7e82;
-    }
-  }
-
+  //
   background-image: linear-gradient(45deg, rgb(254, 196, 97), rgb(255, 224, 176), rgb(254, 196, 97));
   background-position: initial;
   background-repeat: initial;
@@ -96,6 +68,37 @@ export default {
     }
     100% {
       background-position: 0% 50%;
+    }
+  }
+  //
+
+  &.big {
+    width: 200px;
+  }
+
+  &.visited {
+    cursor: not-allowed;
+    background: #f5d090;
+  }
+
+  //
+  //&:hover {
+  //  background: #f5d090;
+  //}
+
+  &.blue {
+    background: #0157FF;
+
+    &:hover {
+      background: #2c72fd;
+    }
+  }
+
+  &.red {
+    background: #FF595E;
+
+    &:hover {
+      background: #ff7e82;
     }
   }
 }
