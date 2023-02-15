@@ -2,15 +2,20 @@
   <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
     <div class="content-part">
-      <div class="title">{{ job.jobtitle }}</div>
+      <a class="title" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+         @click="visitedJob">{{ job.jobtitle }}</a>
       <div class="company-location">
-        <div class="company">{{ job.company }}</div>
-        <div class="location">{{ job.formattedLocation }}</div>
+        <a class="company" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+           @click="visitedJob">{{ job.company }}</a>
+        <a class="location" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+           @click="visitedJob">{{ job.formattedLocation }}</a>
       </div>
-      <div class="description" v-html="job.description"/>
+      <a class="description" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+         @click="visitedJob" v-html="job.description"/>
     </div>
     <div class="cta-part">
-      <CTA class="big" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob" text="Salary & More Info"/>
+      <CTA class="big" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob"
+           text="Salary & More Info"/>
       <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
          @click="visitedJob">
         Apply Now
@@ -89,11 +94,13 @@ export default {
     max-width: 650px;
 
     .title {
+      display: flex;
       font-weight: 700;
       font-size: 22px;
       line-height: 20px;
       color: #000000;
       margin-bottom: 7px;
+      text-decoration: none;
     }
 
     .company-location {
@@ -103,12 +110,13 @@ export default {
       margin-bottom: 15px;
       border-bottom: 1px solid #EEEEEE;
 
-      > div {
+      > a {
         display: flex;
         font-weight: 400;
         font-size: 15px;
         line-height: 20px;
-        color: rgba(96, 96, 96, 0.6);
+        color: #7C7C7C;
+        text-decoration: none;
 
         &::before {
           content: '';
@@ -137,10 +145,11 @@ export default {
     }
 
     .description {
-      font-weight: 300;
+      font-weight: normal;
       font-size: 15px;
       line-height: 20px;
-      color: rgba(0, 6, 57, 0.6);
+      color: #7C7C7C;
+      text-decoration: none;
     }
   }
 

@@ -8,11 +8,7 @@
 
       <textarea v-model="help" name="help" id="help" rows="5" placeholder="Your message here..."
                 :class="{error: !isValidHelp}"></textarea>
-      <div class="send" :class="{active: activeButton, isDone, isSending}" @click="sendHelp()">
-        <div class="btn-loader" v-if="isSending">
-          <div class="lds-dual-ring"></div>
-        </div>
-      </div>
+      <div class="send" :class="{active: activeButton, isDone, isSending}" @click="sendHelp()"></div>
       <div class="error" v-if="error">{{ error }}</div>
     </div>
     <div class="contact-us-thank-you" v-else>
@@ -108,7 +104,7 @@ export default {
     }
 
     .send {
-      background: #3663EB;
+      background: #FEC461FF;
       border: 1px solid #EAEAEA;
       height: 44px;
       width: 100%;
@@ -118,18 +114,19 @@ export default {
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      border-radius: 25px;
 
       &::before {
         content: 'Submit Now';
         font-weight: 600;
         font-size: 14px;
         line-height: 14px;
-        color: #FFFFFF;
+        color: #000;
       }
 
       &.isSending {
         &::before {
-          content: none;
+          content: 'Sending...';
         }
       }
 
@@ -141,47 +138,6 @@ export default {
 
       &:hover {
         opacity: 0.95;
-      }
-
-      .btn-loader {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 3;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .lds-dual-ring {
-          display: inline-block;
-          width: 40px;
-          height: 55px;
-        }
-
-        .lds-dual-ring:after {
-          content: " ";
-          display: block;
-          width: 34px;
-          height: 34px;
-          margin: 8px;
-          border-radius: 50%;
-          border: 6px solid #fff;
-          border-color: #fff transparent #fff transparent;
-          animation: lds-dual-ring 1.2s linear infinite;
-        }
-
-        @keyframes lds-dual-ring {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
       }
     }
 

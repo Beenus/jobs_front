@@ -90,14 +90,14 @@ export default {
 
 <style lang="scss" scoped>
 .vue-fixed-header {
-  position: absolute;
+  //position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 3;
   transition: .3s;
 
-  @media (max-width: $screen-xs-max) {
+  //@media (max-width: $screen-xs-max) {
     position: fixed;
 
     &.scrolled {
@@ -106,7 +106,7 @@ export default {
     &.vue-fixed-header--isFixed {
       transform: translateY(0);
     }
-  }
+  //}
 
   .mobile-search-location {
     display: none;

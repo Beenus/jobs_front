@@ -22,12 +22,12 @@
 export default {
   head() {
     return {
-      title: 'Homepage' + this.$store.state.global.title,
+      title: 'Recommended-Jobs: Local Job Search Engine' + this.$store.state.global.title,
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Description',
+          content: 'Our Local Job Search Engine is the ultimate destination for all your job search needs. We provide the most comprehensive, up-to-date listings of local jobs in your area, so you can easily find the perfect job for you.',
         }
       ]
     }

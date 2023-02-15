@@ -1,6 +1,7 @@
 <template>
   <div class="search-wrapper job">
-    <input class="input" type="text" placeholder="Search for a job or a company" v-model="searchValue" ref="search"/>
+    <input class="input" type="text" :placeholder="placeholder" v-model="searchValue" ref="search"
+           :class="{header:isHeader}"/>
     <div class="search-results" v-if="searchValue && suggestions.length">
       <div class="item" v-for="suggestion in suggestions" :key="suggestion" @click="setSearch(suggestion)">
         {{ suggestion }}
@@ -12,6 +13,16 @@
 <script>
 export default {
   name: "KeywordSearch",
+  props: {
+    placeholder: {
+      require: false,
+      default: 'Search for a job or a company'
+    },
+    isHeader: {
+      require: false,
+      default: false,
+    }
+  },
   data() {
     return {
       suggestions: []
@@ -100,6 +111,10 @@ export default {
     color: #000000;
     padding: 20px 20px 20px 50px;
     border: none;
+
+    &.header {
+      font-size: 14px;
+    }
 
     &.error {
       border: 2px solid red;

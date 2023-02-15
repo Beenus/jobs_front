@@ -52,15 +52,18 @@ export default {
     },
     scroll() {
       if (process.browser) {
-        window.onscroll = async () => {
-          // let position = window.scrollY + window.innerHeight
-          let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 500
-          if ((showMorePosition < 100 && showMorePosition > -500) && !this.isLoading) {
-            this.isLoading = true
-            await this.$store.dispatch('jobs/setPage')
-            await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: false})
-            this.isLoading = false
-          }
+        window.onscroll = () => {
+          this.$debounce(async () => {
+              // let position = window.scrollY + window.innerHeight
+              let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 500
+              if ((showMorePosition < -300 && showMorePosition > -500) && !this.isLoading) {
+                this.isLoading = true
+                await this.$store.dispatch('jobs/setPage')
+                await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: false})
+                this.isLoading = false
+              }
+            }, 600
+          )
         }
       }
     },

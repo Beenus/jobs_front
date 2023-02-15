@@ -8,7 +8,7 @@
       <div class="location">{{ locationShort }}</div>
     </div>
     <div class="description" v-html="job.description"/>
-    <CTA :link="job.url" text="Apply Now" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
+    <CTA :link="job.url" text="Salary & More Info" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
   </div>
 </template>
 
@@ -63,6 +63,7 @@ export default {
   position: relative;
   padding: 30px 20px 25px;
   background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
   &.visited {
     &::after {
@@ -129,8 +130,7 @@ export default {
       align-items: center;
       font-size: 16px;
       line-height: 16px;
-      color: rgba(96, 96, 96, 0.6);
-
+      color: #7C7C7C;
 
       &::before {
         content: '';
@@ -160,10 +160,10 @@ export default {
 
   .description {
     margin-bottom: 15px;
-    font-weight: 300;
+    font-weight: normal;
     font-size: 15px;
     line-height: 20px;
-    color: rgba(96, 96, 96, 0.6);
+    color: #7C7C7C;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

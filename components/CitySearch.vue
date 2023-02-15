@@ -1,6 +1,7 @@
 <template>
   <div class="search-wrapper city">
-    <input class="input" type="text" placeholder="New York, US" v-model="location" :class="{error: isLocationError}"/>
+    <input class="input" type="text" placeholder="New York, US" v-model="location"
+           :class="{error: isLocationError, header:isHeader}"/>
     <div class="search-results" v-if="location && cities.length">
       <div class="city" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
         {{ city.city }}, {{ city.countryCode }}
@@ -12,6 +13,16 @@
 <script>
 export default {
   name: "CitySearch",
+  props: {
+    placeholder: {
+      require: false,
+      default: 'New York, US'
+    },
+    isHeader: {
+      require: false,
+      default: false,
+    }
+  },
   data() {
     return {
       cities: []
@@ -99,6 +110,10 @@ export default {
     color: #000000;
     padding: 20px 20px 20px 50px;
     border: none;
+
+    &.header {
+      font-size: 14px;
+    }
 
     &.error {
       border: 2px solid red;
