@@ -3,7 +3,7 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
-          <h2>{{ title }}</h2>
+          <h1>{{ title }}</h1>
           <div class="content-text" v-html="parsedContent"></div>
 
           <FAQ :faq="faq"/>
@@ -38,7 +38,7 @@ export default {
     width: 100%;
     margin-top: 40px;
 
-    h2 {
+    h1 {
       font-weight: 800;
       font-size: 32px;
       line-height: 36px;
@@ -48,9 +48,35 @@ export default {
 
       @media (max-width: $screen-xs-max) {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 20px;
         line-height: 25px;
         margin-bottom: 10px;
+      }
+    }
+
+    h2 {
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 24px;
+      color: #000000;
+
+      @media (max-width: $screen-xs-max) {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+      }
+    }
+
+    h3 {
+      font-weight: 800;
+      font-size: 18px;
+      line-height: 18px;
+      color: #000000;
+
+      @media (max-width: $screen-xs-max) {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
       }
     }
 
