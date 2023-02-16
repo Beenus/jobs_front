@@ -11,7 +11,8 @@ export default {
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
       {hid: 'description', name: 'description', content: ''},
-      {name: 'format-detection', content: 'telephone=no'}
+      {name: 'format-detection', content: 'telephone=no'},
+      {name: 'msvalidate.01', content: '3B3BE79884F1EA1846FF5CE4B3A057EB'},
     ],
     link: [
       {rel: 'icon', type: 'image/png', href: '/favicon.png?v2'}
