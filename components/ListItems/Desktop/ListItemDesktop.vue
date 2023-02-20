@@ -1,6 +1,6 @@
 <template>
   <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
-    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
+    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
     <div class="content-part">
       <a class="title" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
          @click="visitedJob">{{ job.jobtitle }}</a>
@@ -202,6 +202,11 @@ export default {
     &.orange {
       color: #fff;
       background: #FF9D29;
+    }
+
+    &.blue {
+      color: #fff;
+      background: #5A92FF;
     }
   }
 }

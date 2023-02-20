@@ -1,9 +1,9 @@
 <template>
-  <div class="search-wrapper city">
+  <div class="search-wrapper city" v-click-outside="outsideClick">
     <input class="input" type="text" placeholder="New York, US" v-model="location"
            :class="{error: isLocationError, header:isHeader}"/>
     <div class="search-results" v-if="location && cities.length">
-      <div class="city" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
+      <div class="item" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
         {{ city.city }}, {{ city.countryCode }}
       </div>
     </div>
@@ -55,7 +55,10 @@ export default {
       await this.$store.dispatch('setLocation', `${city.city}, ${city.countryCode}`)
       await this.$store.dispatch('setUserLocation', city)
       this.cities = []
-    }
+    },
+    outsideClick() {
+      this.cities = []
+    },
   }
 }
 </script>

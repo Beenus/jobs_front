@@ -1,6 +1,6 @@
 <template>
   <div class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
-    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon_color || 'green'">{{ job.ribbon }}</div>
+    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
 
     <div class="title">{{ job.jobtitle }}</div>
     <div class="company-location">
@@ -107,6 +107,11 @@ export default {
     &.orange {
       color: #fff;
       background: #FF9D29;
+    }
+
+    &.blue {
+      color: #fff;
+      background: #5A92FF;
     }
   }
 

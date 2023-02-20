@@ -26,8 +26,12 @@ export const mutations = {
     state.list = []
     state.meta = {}
   },
-  SET_PAGE_UP(state) {
-    state.page = state.page + 1
+  SET_PAGE_UP(state, force = false) {
+    if (force) {
+      state.page = 1
+    } else {
+      state.page = state.page + 1
+    }
   },
   SET_ERROR(state, payload) {
     state.error = payload
@@ -44,6 +48,10 @@ export const actions = {
 
       if (payload.loader) {
         commit('SET_FETCHING', true)
+      }
+
+      if (payload.force) {
+        commit('SET_PAGE_UP', true)
       }
 
       const params = {
@@ -77,8 +85,12 @@ export const actions = {
   clearJobs({commit}, payload) {
     commit('SET_JOBS_CLEAR')
   },
-  setPage({commit}) {
-    commit('SET_PAGE_UP')
+  setPage({commit}, force = false) {
+    if (force) {
+      commit('SET_PAGE_UP', force)
+    } else {
+      commit('SET_PAGE_UP')
+    }
   },
   clearErrors({commit}) {
     commit('SET_ERROR', null)

@@ -1,5 +1,5 @@
 <template>
-  <div class="search-wrapper job">
+  <div class="search-wrapper job" v-click-outside="outsideClick">
     <input class="input" type="text" :placeholder="placeholder" v-model="searchValue" ref="search"
            :class="{header:isHeader}"/>
     <div class="search-results" v-if="searchValue && suggestions.length">
@@ -48,7 +48,10 @@ export default {
     async setSearch(suggestion) {
       await this.$store.dispatch('setSearch', suggestion)
       this.suggestions = []
-    }
+    },
+    outsideClick() {
+      this.suggestions = []
+    },
   },
   mounted() {
     this.$nextTick(() => {
