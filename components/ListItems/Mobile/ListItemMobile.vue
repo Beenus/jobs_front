@@ -92,7 +92,7 @@ export default {
     border-radius: 0 28px 0 8px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 15px;
+    line-height: 1;
 
     &::before {
       content: '';
@@ -101,6 +101,7 @@ export default {
       pointer-events: none;
       width: 12px;
       margin-right: 5px;
+      margin-top: -1px;
     }
 
     &.green {

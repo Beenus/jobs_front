@@ -187,7 +187,7 @@ export default {
     border-radius: 8px 0 0 0;
     font-weight: 500;
     font-size: 13px;
-    line-height: 15px;
+    line-height: 1;
 
     &::before {
       content: '';
@@ -196,6 +196,7 @@ export default {
       pointer-events: none;
       width: 12px;
       margin-right: 5px;
+      margin-top: -1px;
     }
 
     &.green {
