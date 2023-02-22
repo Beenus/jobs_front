@@ -13,9 +13,7 @@
         </div>
         <ListWrapper :isMobileWidth="isMobileWidth"/>
       </div>
-      <div class="sidebar right">
-        <div class="ad">Ad</div>
-      </div>
+      <div class="sidebar right"></div>
     </div>
     <PopularPages/>
   </div>

@@ -8,9 +8,7 @@
 
           <FAQ :faq="faq"/>
         </div>
-        <div class="content-sidebar">
-          <div class="ad">Ad</div>
-        </div>
+        <div class="content-sidebar"></div>
       </div>
     </div>
   </div>

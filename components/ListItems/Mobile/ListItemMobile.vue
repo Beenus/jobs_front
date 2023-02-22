@@ -94,24 +94,49 @@ export default {
     font-size: 14px;
     line-height: 15px;
 
+    &::before {
+      content: '';
+      display: block;
+      height: 12px;
+      pointer-events: none;
+      width: 12px;
+      margin-right: 5px;
+    }
+
     &.green {
       color: #050505;
       background: #00FFA3;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/salary.svg") center / cover no-repeat;
+      }
     }
 
     &.purple {
       color: #fff;
       background: #EB00FF;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/experience.svg") center / cover no-repeat;
+      }
     }
 
     &.orange {
       color: #fff;
       background: #FF9D29;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/immediate.svg") center / cover no-repeat;
+      }
     }
 
-    &.blue {
+    &.red {
       color: #fff;
-      background: #5A92FF;
+      background: #F75555;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/demand.svg") center / cover no-repeat;
+      }
     }
   }
 

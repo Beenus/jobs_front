@@ -3,7 +3,7 @@ import Pages from "@/pages/index.vue";
 export const state = () => ({
   list: [],
   meta: {},
-  perPage: 15,
+  perPage: 10,
   page: 1,
   error: null,
   fetching: false,

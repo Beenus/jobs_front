@@ -180,7 +180,7 @@ export default {
     top: 0;
     left: 0;
     height: 25px;
-    padding: 3px 25px;
+    padding: 3px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -189,24 +189,51 @@ export default {
     font-size: 13px;
     line-height: 15px;
 
+    &::before {
+      content: '';
+      display: block;
+      height: 12px;
+      pointer-events: none;
+      width: 12px;
+      margin-right: 5px;
+    }
+
     &.green {
       color: #050505;
       background: #00FFA3;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/salary.svg") center / cover no-repeat;
+      }
     }
 
     &.purple {
       color: #fff;
       background: #EB00FF;
+
+      &::before {
+        background: url("~/assets/img/svg/ribbons/experience.svg") center / cover no-repeat;
+      }
     }
 
     &.orange {
-      color: #fff;
+      color: #000;
       background: #FF9D29;
+
+      &::before {
+        width: 7px;
+        background: url("~/assets/img/svg/ribbons/immediate.svg") center / cover no-repeat;
+      }
     }
 
-    &.blue {
+    &.red {
       color: #fff;
-      background: #5A92FF;
+      background: #F75555;
+
+      &::before {
+        width: 9px;
+        background: url("~/assets/img/svg/ribbons/demand.svg") center / cover no-repeat;
+      }
     }
   }
 }
