@@ -196,7 +196,7 @@ export default {
       pointer-events: none;
       width: 12px;
       margin-right: 5px;
-      margin-top: -1px;
+      margin-top: -2px;
     }
 
     &.green {
