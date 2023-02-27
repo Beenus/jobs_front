@@ -27,6 +27,7 @@ export default {
     return {
       isShowMore: false,
       isLoading: false,
+      isExitShow: false,
     }
   },
   computed: {
@@ -49,12 +50,12 @@ export default {
       await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: true})
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
+
     },
     scroll() {
       if (process.browser) {
         window.onscroll = () => {
           this.$debounce(async () => {
-              // let position = window.scrollY + window.innerHeight
               let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 500
               if ((showMorePosition < -300 && showMorePosition > -500) && !this.isLoading) {
                 this.isLoading = true
@@ -67,10 +68,41 @@ export default {
         }
       }
     },
+    mouseLeave(event) {
+      if (!this.isExitShow) {
+        if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
+          this.$store.dispatch('showLegalPopup', 'exit')
+          this.isExitShow = true
+        }
+      }
+    },
+    popstate(event) {
+      if (event.state && event.state.wisepops === 'exit-intent') {
+        this.$store.dispatch('showLegalPopup', 'exit')
+      }
+    }
   },
   mounted() {
     this.scroll()
-  }
+    document.addEventListener('mouseleave', this.mouseLeave)
+
+
+    if (window.innerWidth <= 768 && window.matchMedia('(max-width: 2048px)').matches) {
+      window.addEventListener('popstate', this.popstate)
+
+      if (
+        !window.history.state ||
+        window.history.state.wisepops !== 'normal-intent'
+      ) {
+        window.history.replaceState({wisepops: 'exit-intent'}, '')
+        window.history.pushState({wisepops: 'normal-intent'}, '')
+      }
+    }
+  },
+  beforeDestroy() {
+    document.removeEventListener('mouseleave', this.mouseLeave)
+    window.removeEventListener('popstate', this.popstate)
+  },
 }
 </script>
 

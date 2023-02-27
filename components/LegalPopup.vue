@@ -1,5 +1,5 @@
 <template>
-  <div class="legal" @click.self="closePopup">
+  <div class="legal" @click.self="closePopup" :class="legalPopupType">
     <div class="legal-popup" :class="legalPopupType">
       <div class="close-trigger" @click.self="closePopup"/>
       <component :is="legalPage"/>
@@ -11,10 +11,10 @@
 export default {
   name: 'LegalModal',
   computed: {
-    legalPopupType () {
+    legalPopupType() {
       return this.$store.state.legalPopupType
     },
-    legalPage () {
+    legalPage() {
       switch (this.legalPopupType) {
         case 'terms':
           return () => import(`@/components/Legal/Terms.vue`)
@@ -26,13 +26,15 @@ export default {
           return () => import(`@/components/Legal/Partner.vue`)
         case 'contact':
           return () => import(`@/components/Legal/ContactUs.vue`)
+        case 'exit':
+          return () => import(`@/components/Legal/Exit.vue`)
         default:
           return null
       }
     }
   },
   methods: {
-    closePopup () {
+    closePopup() {
       this.$store.dispatch('closeLegalPopup')
     },
   },
@@ -53,9 +55,15 @@ export default {
   top: 0;
   padding: 50px;
 
+  &.exit {
+    @media (max-width: $screen-xs-max) {
+      padding: 15px;
+    }
+  }
+
   &-popup {
     background: #FFFFFF;
-    padding: 40px 55px 65px 55px;
+    padding: 40px 50px 65px 50px;
     width: 100%;
     height: 100%;
     max-height: 850px;
@@ -67,6 +75,27 @@ export default {
     &.contact {
       width: auto;
       height: auto;
+    }
+
+    &.exit {
+      background: #246BFD;
+      max-width: 500px;
+      min-height: 450px;
+      height: auto;
+
+      @media (max-width: $screen-xs-max) {
+        padding: 20px;
+      }
+
+      .close-trigger {
+        @media (max-width: $screen-xs-max) {
+          right: 5px;
+          top: 5px;
+        }
+        &::after {
+          background: url("~/assets/img/svg/close-white.svg") no-repeat center;
+        }
+      }
     }
   }
 

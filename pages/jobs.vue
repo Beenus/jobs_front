@@ -98,12 +98,21 @@ export default {
       }
     },
   },
+  created() {
+    this.$store.dispatch('registerPageView', {
+      type: 'JOBS',
+      page_id: 0,
+      session: this.$cookies.get('session_uuid'),
+      ip: this.$store.state.userIp,
+      country: this.$store.state.userOriginalLocation?.country,
+    })
+  },
   mounted() {
     this.$nextTick(() => {
       if (process.browser) {
         this.onResize()
+        window.addEventListener('resize', this.onResize)
       }
-      window.addEventListener('resize', this.onResize)
     })
   },
   beforeDestroy() {

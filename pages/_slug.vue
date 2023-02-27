@@ -68,12 +68,21 @@ export default {
       this.windowSize = {x: window.innerWidth, y: window.innerHeight}
     },
   },
+  created() {
+    this.$store.dispatch('registerPageView', {
+      type: 'PAGE',
+      page_id: this.pageData.id,
+      session: this.$cookies.get('session_uuid'),
+      ip: this.$store.state.userIp,
+      country: this.$store.state.userOriginalLocation?.country,
+    })
+  },
   mounted() {
     this.$nextTick(() => {
       if (process.browser) {
         this.onResize()
+        window.addEventListener('resize', this.onResize)
       }
-      window.addEventListener('resize', this.onResize)
     })
   },
   beforeDestroy() {

@@ -54,8 +54,8 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({dispatch, getters}, {req, route}) {
-    // let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
-    const ip = '173.239.211.33' //US
+    let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
+    // const ip = '173.239.211.33' //US
     // const ip = '84.247.59.200' //DE
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
@@ -120,11 +120,15 @@ export const actions = {
     const {data} = await this.$axios.get('suggestions', {params, cancelToken: state.source.token})
     return data?.suggestions
   },
-  showLegalPopup ({commit}, payload) {
+  async registerPageView({commit}, params) {
+    const {data} = await this.$axios.post('analytics', params)
+    this.$cookies.set('session_uuid', data.session_uuid)
+  },
+  showLegalPopup({commit}, payload) {
     commit('SET_SHOW_LEGAL_POPUP', payload)
   },
 
-  closeLegalPopup ({commit}) {
+  closeLegalPopup({commit}) {
     commit('SET_CLOSE_LEGAL_POPUP')
   },
 }

@@ -78,6 +78,7 @@ export default {
     '@nuxtjs/gtm',
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
+    'cookie-universal-nuxt',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

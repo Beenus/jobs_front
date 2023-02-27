@@ -1,27 +1,16 @@
 <template>
-  <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
-    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
+  <a class="list-item-exit-desktop ribbon" :href="job.url" target="_blank" :title="job.jobtitle"
+     :onmousedown="job.onmousedown">
+    <span class="index">{{ index }}</span>
+    <div class="ribbon orange">Immediate start</div>
     <div class="content-part">
-      <a class="title" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob">{{ job.jobtitle }}</a>
+      <div class="title">{{ job.jobtitle }}</div>
       <div class="company-location">
-        <a class="company" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-           @click="visitedJob">{{ job.company }}</a>
-        <a class="location" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-           @click="visitedJob">{{ job.formattedLocation }}</a>
+        <div class="company">{{ companyShort }}</div>
+        <div class="location">{{ locationShort }}</div>
       </div>
-      <a class="description" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob" v-html="job.description"/>
     </div>
-    <div class="cta-part">
-      <CTA class="big" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob"
-           text="Salary & More Info"/>
-      <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob">
-        Apply Now
-      </a>
-    </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -49,29 +38,34 @@ export default {
       this.isVisited = inStorage.includes(this.job.jobkey)
     },
   },
-  computed: {},
-  mounted() {
-    if (process.browser) {
-      this.checkVisited()
-    }
-  }
+  computed: {
+    companyShort() {
+      return this.job.company.length > 20 ? this.job.company.substring(0, 20).concat('...') : this.job.company
+    },
+    locationShort() {
+      return this.job.formattedLocation.length > 17 ? this.job.formattedLocation.substring(0, 17).concat('...') : this.job.formattedLocation
+    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-.list-item-desktop {
+.list-item-exit-desktop {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 0 30px 30px;
+  padding: 15px 10px 25px 50px;
   margin-bottom: 10px;
   background: #FFFFFF;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   position: relative;
+  text-decoration: none;
+  min-height: 100px;
+  width: 100%;
 
-  &.ribbon {
-    padding-top: 40px;
+  @media (max-width: $screen-xs-max) {
+    padding: 20px 20px 25px 20px;
   }
 
   &.visited {
@@ -95,25 +89,21 @@ export default {
 
     .title {
       display: flex;
-      font-weight: 700;
-      font-size: 22px;
-      line-height: 20px;
       color: #000000;
       margin-bottom: 7px;
-      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 22px;
     }
 
     .company-location {
       display: flex;
       align-items: center;
-      padding-bottom: 13px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #EEEEEE;
 
-      > a {
+      > div {
         display: flex;
         font-weight: 400;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 20px;
         color: #7C7C7C;
         text-decoration: none;
@@ -153,38 +143,16 @@ export default {
     }
   }
 
-  .cta-part {
-    max-width: 270px;
-    width: 100%;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-
-    .link {
-      margin-top: 15px;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 100%;
-      color: #000000;
-      text-decoration: underline;
-
-      &.visited {
-        cursor: not-allowed;
-      }
-    }
-  }
-
   .ribbon {
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: 0;
+    right: 0;
     height: 25px;
     padding: 3px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px 0 0 0;
+    border-radius: 8px 0;
     font-weight: 500;
     font-size: 13px;
     line-height: 1;
@@ -236,6 +204,35 @@ export default {
         background: url("~/assets/img/svg/ribbons/demand.svg") center / cover no-repeat;
       }
     }
+  }
+
+  .index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    left: -17px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #F5F5F5;
+    border: 1px solid #818181;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    color: #000000;
+
+    @media (max-width: $screen-xs-max) {
+      left: -12px;
+      width: 25px;
+      height: 25px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 100%;
+    }
+
   }
 }
 </style>
