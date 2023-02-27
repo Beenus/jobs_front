@@ -42,13 +42,17 @@ export default {
       await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, loader: true})
     }
   },
-  created() {
-    this.$store.dispatch('registerPageView', {
-      type: 'HOMEPAGE',
-      page_id: 0,
-      session: this.$cookies.get('session_uuid'),
-      ip: this.$store.state.userIp,
-      country: this.$store.state.userOriginalLocation?.country,
+  mounted() {
+    this.$nextTick(() => {
+      if (process.browser) {
+        this.$store.dispatch('registerPageView', {
+          type: 'HOMEPAGE',
+          page_id: 0,
+          session: this.$cookies.get('session_uuid'),
+          ip: this.$store.state.userIp,
+          country: this.$store.state.userOriginalLocation?.country,
+        })
+      }
     })
   },
 }
