@@ -47,7 +47,7 @@ export default {
       if (process.browser) {
         this.$store.dispatch('registerPageView', {
           type: 'HOMEPAGE',
-          page_id: 0,
+          page_id: null,
           session: this.$cookies.get('session_uuid'),
           ip: this.$store.state.userIp,
           country: this.$store.state.userOriginalLocation?.country,
