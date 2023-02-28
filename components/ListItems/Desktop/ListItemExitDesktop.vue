@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     companyShort() {
-      return this.job.company.length > 20 ? this.job.company.substring(0, 20).concat('...') : this.job.company
+      return this.job.company.length > 15 ? this.job.company.substring(0, 15).concat('...') : this.job.company
     },
     locationShort() {
       return this.job.formattedLocation.length > 17 ? this.job.formattedLocation.substring(0, 17).concat('...') : this.job.formattedLocation
@@ -65,7 +65,8 @@ export default {
   width: 100%;
 
   @media (max-width: $screen-xs-max) {
-    padding: 20px 20px 25px 20px;
+    padding: 12px 20px;
+    min-height: 90px;
   }
 
   &.visited {
@@ -87,13 +88,22 @@ export default {
     width: 100%;
     max-width: 650px;
 
+    @media (max-width: $screen-xs) {
+      height: 71px;
+    }
+
     .title {
-      display: flex;
       color: #000000;
       margin-bottom: 7px;
       font-weight: 600;
       font-size: 16px;
       line-height: 22px;
+
+      @media (max-width: $screen-xs) {
+        height: 45px;
+        display: flex;
+        align-items: center;
+      }
     }
 
     .company-location {
@@ -125,6 +135,10 @@ export default {
 
         &.location {
           margin-left: 10px;
+
+          @media (max-width: $screen-xs) {
+            display: none;
+          }
 
           &::before {
             background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
