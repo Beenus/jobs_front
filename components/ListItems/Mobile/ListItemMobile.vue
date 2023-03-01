@@ -1,5 +1,5 @@
 <template>
-  <div class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
+  <a :href="job.url" class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
 
     <div class="title">{{ job.jobtitle }}</div>
@@ -8,8 +8,8 @@
       <div class="location">{{ locationShort }}</div>
     </div>
     <div class="description" v-html="job.description"/>
-    <CTA :link="job.url" text="Salary & More Info" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
-  </div>
+    <CTA text="Salary & More Info" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
+  </a>
 </template>
 
 <script>
@@ -57,6 +57,9 @@ export default {
 
 <style scoped lang="scss">
 .list-item-mobile {
+  display: flex;
+  flex-flow: column;
+  text-decoration: none;
   border: 1px solid #EEEEEE;
   margin-bottom: 10px;
   border-radius: 28px;
