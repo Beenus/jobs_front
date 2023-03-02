@@ -11,6 +11,7 @@ export default {
         url: this.job.url,
         cpc: this.job.bid,
         jobkey: this.job.jobkey,
+        position: this.index,
       })
     }
   }
