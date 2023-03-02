@@ -6,8 +6,8 @@
       <div class="sub-title">Over 167,457 jobs are available in our site, go ahead and find yours.</div>
 
       <div class="inputs">
-        <KeywordSearch class="hp" :isHeader="true" placeholder="Job, Company or Keyword"/>
-        <CitySearch class="hp" :isHeader="true" placeholder="New York, US"/>
+        <KeywordSearch class="hp" :isHeader="false" placeholder="Job, Company or Keyword"/>
+        <CitySearch class="hp" :isHeader="false" placeholder="New York, US"/>
       </div>
 
       <div class="search" v-if="!fetching" @click="search">Search Jobs</div>
