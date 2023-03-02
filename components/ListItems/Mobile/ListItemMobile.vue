@@ -1,5 +1,6 @@
 <template>
-  <a :href="job.url" class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
+  <a :href="job.url" target="_blank" class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}"
+     :onmousedown="job.onmousedown" @click="registerOutclick">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
 
     <div class="title">{{ job.jobtitle }}</div>
@@ -8,19 +9,19 @@
       <div class="location">{{ locationShort }}</div>
     </div>
     <div class="description" v-html="job.description"/>
-    <CTA text="Salary & More Info" :onMouseDown="job.onmousedown" @click.native="visitedJob"/>
+    <CTA text="Salary & More Info"/>
   </a>
 </template>
 
 <script>
 import CTA from '../../CTA'
+import analytics from "@/mixins/analytics";
 
 export default {
   name: 'ListItemMobile',
+  components: {CTA},
+  mixins: [analytics],
   props: ['job', 'index'],
-  components: {
-    CTA,
-  },
   data() {
     return {
       isVisited: false,
@@ -37,6 +38,13 @@ export default {
     checkVisited() {
       let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
       this.isVisited = inStorage.includes(this.job.jobkey)
+    },
+    async registerOutclick() {
+      if (process.browser) {
+        await this.registerOutclickMixin('LIST_ITEM_MOBILE')
+
+        this.visitedJob()
+      }
     },
   },
   computed: {

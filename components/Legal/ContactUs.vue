@@ -64,8 +64,6 @@ export default {
               text: this.help,
             })
 
-            console.log(response);
-
             this.isSending = false
             this.isDone = response.data
           } catch (e) {

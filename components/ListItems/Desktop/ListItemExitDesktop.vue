@@ -1,6 +1,6 @@
 <template>
   <a class="list-item-exit-desktop ribbon" :href="job.url" target="_blank" :title="job.jobtitle"
-     :onmousedown="job.onmousedown">
+     :onmousedown="job.onmousedown" @click="registerOutclick">
     <span class="index">{{ index }}</span>
     <div class="ribbon orange">Immediate start</div>
     <div class="content-part">
@@ -15,10 +15,12 @@
 
 <script>
 import CTA from '../../CTA'
+import analytics from "@/mixins/analytics";
 
 export default {
   name: 'ListItemDesktop',
   components: {CTA},
+  mixins: [analytics],
   props: ['job', 'index'],
   data() {
     return {
@@ -36,6 +38,11 @@ export default {
     checkVisited() {
       let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
       this.isVisited = inStorage.includes(this.job.jobkey)
+    },
+    async registerOutclick() {
+      if (process.browser) {
+        await this.registerOutclickMixin('LIST_ITEM_EXIT_POPUP')
+      }
     },
   },
   computed: {

@@ -56,7 +56,7 @@ export default {
       if (process.browser) {
         window.onscroll = () => {
           this.$debounce(async () => {
-              let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 500
+              let showMorePosition = this.$refs.showMore.getBoundingClientRect().top - window.innerHeight - 850
               if ((showMorePosition < -300 && showMorePosition > -500) && !this.isLoading) {
                 this.isLoading = true
                 await this.$store.dispatch('jobs/setPage')

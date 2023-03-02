@@ -1,5 +1,7 @@
 <template>
-  <a class="cta" :class="{themeColor, visited}" target="_blank" :href="link" :onmousedown="onMouseDown">{{ text }}</a>
+  <a v-if="link" class="cta" :class="{themeColor, visited}" target="_blank" :href="link"
+     :onmousedown="onMouseDown">{{ text }}</a>
+  <div v-else class="cta" :class="{themeColor, visited}">{{ text }}</div>
 </template>
 
 <script>

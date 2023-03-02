@@ -1,35 +1,30 @@
 <template>
-  <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
+  <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+     @click="registerOutclick" class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
     <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
     <div class="content-part">
-      <a class="title" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob">{{ job.jobtitle }}</a>
+      <div class="title">{{ job.jobtitle }}</div>
       <div class="company-location">
-        <a class="company" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-           @click="visitedJob">{{ job.company }}</a>
-        <a class="location" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-           @click="visitedJob">{{ job.formattedLocation }}</a>
+        <div class="company">{{ job.company }}</div>
+        <div class="location">{{ job.formattedLocation }}</div>
       </div>
-      <a class="description" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob" v-html="job.description"/>
+      <div class="description" v-html="job.description"/>
     </div>
     <div class="cta-part">
-      <CTA class="big" :link="job.url" :onMouseDown="job.onmousedown" @click.native="visitedJob"
-           text="Salary & More Info"/>
-      <a class="link" :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="visitedJob">
-        Apply Now
-      </a>
+      <CTA class="big" text="Salary & More Info"/>
+      <div class="link">Apply Now</div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
 import CTA from '../../CTA'
+import analytics from "@/mixins/analytics";
 
 export default {
   name: 'ListItemDesktop',
   components: {CTA},
+  mixins: [analytics],
   props: ['job', 'index'],
   data() {
     return {
@@ -47,6 +42,13 @@ export default {
     checkVisited() {
       let inStorage = JSON.parse(localStorage.getItem('visitedJobs')) || []
       this.isVisited = inStorage.includes(this.job.jobkey)
+    },
+    async registerOutclick() {
+      if (process.browser) {
+        await this.registerOutclickMixin('LIST_ITEM_DESKTOP')
+
+        this.visitedJob()
+      }
     },
   },
   computed: {},
@@ -69,6 +71,8 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
   position: relative;
+  text-decoration: none;
+  cursor: pointer;
 
   &.ribbon {
     padding-top: 40px;
@@ -110,7 +114,7 @@ export default {
       margin-bottom: 15px;
       border-bottom: 1px solid #EEEEEE;
 
-      > a {
+      > div {
         display: flex;
         font-weight: 400;
         font-size: 15px;
