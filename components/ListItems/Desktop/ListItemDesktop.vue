@@ -90,6 +90,7 @@ export default {
       pointer-events: none;
       z-index: 2;
       border-radius: 8px;
+      cursor: pointer;
     }
   }
 
