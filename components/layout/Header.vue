@@ -17,7 +17,7 @@
               <div class="inputs">
                 <KeywordSearch :isHeader="true" placeholder="Job, Company or Keyword"/>
                 <CitySearch :isHeader="true" placeholder="New York, US"/>
-                <div class="search desktop" v-if="!fetching" @click="search">Search Jobs</div>
+                <div class="search desktop" v-if="!fetching" @click="search">Search</div>
                 <div class="search fetching" v-else>Searching...</div>
                 <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>
               </div>
@@ -158,6 +158,21 @@ export default {
         }
 
         &.desktop {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 16px;
+
+          &::before {
+            content: '';
+            display: block;
+            pointer-events: none;
+            z-index: 1;
+            background: url("~/assets/img/svg/magnify_glass_dark.svg") center / cover no-repeat;
+            width: 11px;
+            height: 13px;
+            margin-right: 5px;
+          }
+
           @media (max-width: $screen-xs-max) {
             display: none;
           }
@@ -168,6 +183,9 @@ export default {
 
           @media (max-width: $screen-xs-max) {
             display: flex;
+            border-radius: 8px;
+            font-size: 14px;
+            height: 36px;
           }
         }
       }

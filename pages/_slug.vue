@@ -96,11 +96,11 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 15px 40px;
+  padding: 45px 0 0;
+  background: #f4f4f4;
 
   @media (max-width: $screen-sm-max) {
-    padding-top: 35px;
-    background: #f5f5f5;
+    padding: 35px 0 0;
   }
 
   .sidebar {
@@ -136,6 +136,7 @@ export default {
     justify-content: center;
     max-width: 1350px;
     width: 100%;
+    padding: 0 15px;
   }
 
   .title-sort {

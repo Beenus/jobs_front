@@ -7,7 +7,8 @@
       <ListItemMobile v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
     </div>
 
-    <div class="show-more" @click="setPage" ref="showMore">Show More</div>
+    <div class="show-more" v-if="!isLoading" @click="setPage" ref="showMore">Show More Jobs</div>
+    <div class="show-more" v-else ref="showMore">Loading...</div>
   </div>
   <div class="list-wrapper" v-else>No Results</div>
 </template>
@@ -46,8 +47,11 @@ export default {
   },
   methods: {
     async setPage() {
+      this.isLoading = true
       await this.$store.dispatch('jobs/setPage')
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: true})
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: false, loader: false})
+      this.isLoading = false
+
       // document.body.scrollTop = 0;
       // document.documentElement.scrollTop = 0;
 
@@ -83,7 +87,7 @@ export default {
     }
   },
   mounted() {
-    this.scroll()
+    // this.scroll()
     document.addEventListener('mouseleave', this.mouseLeave)
 
 
@@ -109,25 +113,29 @@ export default {
 <style scoped lang="scss">
 .list-wrapper {
   margin-top: 10px;
+  margin-bottom: 15px;
 
   @media (max-width: $screen-sm-max) {
     margin-top: 20px;
   }
 
   .show-more {
-    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 20px;
-    color: #797979;
-    margin: 0 0 15px 0;
     cursor: pointer;
+    background: #246BFD;
+    border-radius: 5px;
+    width: 190px;
+    height: 40px;
+    margin: 30px auto 0;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
 
     &:hover {
-      color: #000000;
+      background: #6597ff;
     }
 
   }

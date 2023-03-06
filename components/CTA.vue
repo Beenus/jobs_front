@@ -74,8 +74,18 @@ export default {
   }
   //
 
+  &::after {
+    content: '';
+    display: block;
+    pointer-events: none;
+    background: url("~/assets/img/svg/arrow-top-right-icon.svg") center / cover no-repeat;
+    width: 10px;
+    height: 10px;
+    margin-left: 7px;
+  }
+
   &.big {
-    width: 200px;
+    width: 150px;
   }
 
   &.visited {

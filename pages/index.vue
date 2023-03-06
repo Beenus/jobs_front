@@ -12,6 +12,8 @@
 
       <div class="search" v-if="!fetching" @click="search">Search Jobs</div>
       <div class="search fetching" v-else>Searching...</div>
+
+      <HomepagePopularPages/>
     </div>
     <div class="inner">
     </div>
@@ -39,7 +41,7 @@ export default {
   },
   methods: {
     async search() {
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, loader: true})
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, loader: true, clear: true, force: true})
     }
   },
   mounted() {
@@ -60,7 +62,7 @@ export default {
 
 <style scoped lang="scss">
 .homepage {
-  min-height: 1000px;
+  min-height: 1030px;
   display: flex;
   flex-flow: column;
   align-items: center;

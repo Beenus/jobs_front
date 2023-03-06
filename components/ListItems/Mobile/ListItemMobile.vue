@@ -1,16 +1,20 @@
 <template>
-  <a :href="job.url" target="_blank" class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}"
-     :onmousedown="job.onmousedown" @click="registerOutclick">
-    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
+  <div class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
+    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="ribbon"
+       v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</a>
 
-    <div class="title">{{ job.jobtitle }}</div>
+    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick"
+       class="title">{{ job.jobtitle }}</a>
     <div class="company-location">
-      <div class="company">{{ companyShort }}</div>
-      <div class="location">{{ locationShort }}</div>
+      <a class="company">{{ companyShort }}</a>
+      <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick"
+         class="location">{{ locationShort }}</a>
     </div>
-    <div class="description" v-html="job.description"/>
-    <CTA text="Salary & More Info"/>
-  </a>
+    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="description"
+       v-html="job.description + '<span>Read More</span>'"/>
+    <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onmousedown="job.onmousedown"
+         @click.native="registerOutclick"/>
+  </div>
 </template>
 
 <script>
@@ -67,14 +71,12 @@ export default {
 .list-item-mobile {
   display: flex;
   flex-flow: column;
-  text-decoration: none;
-  border: 1px solid #EEEEEE;
   margin-bottom: 10px;
-  border-radius: 28px;
   position: relative;
   padding: 30px 20px 25px;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: #FFFFFF;
+  border: 1px solid #C6C6C6;
+  border-radius: 5px;
 
   &.visited {
     &::after {
@@ -104,6 +106,7 @@ export default {
     font-weight: 500;
     font-size: 14px;
     line-height: 1;
+    text-decoration: none;
 
     &::before {
       content: '';
@@ -153,11 +156,12 @@ export default {
   }
 
   .title {
+    margin-bottom: 10px;
+    text-decoration: none;
     font-weight: 700;
     font-size: 20px;
     line-height: 20px;
-    color: #000000;
-    margin-bottom: 10px;
+    color: #33B1FF;
   }
 
   .company-location {
@@ -166,13 +170,15 @@ export default {
     padding-bottom: 20px;
     margin-bottom: 15px;
     border-bottom: 1px solid #EEEEEE;
+    text-transform: uppercase;
 
-    > div {
+    > a {
       display: flex;
       align-items: center;
-      font-size: 16px;
-      line-height: 16px;
+      font-size: 13px;
+      line-height: 13px;
       color: #7C7C7C;
+      text-decoration: none;
 
       &::before {
         content: '';
@@ -183,6 +189,8 @@ export default {
       }
 
       &.company {
+        color: #246BFD;
+
         &::before {
           background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
           width: 18px;
@@ -202,15 +210,21 @@ export default {
 
   .description {
     margin-bottom: 15px;
-    font-weight: normal;
+    font-weight: 300;
     font-size: 15px;
+    color: #262626;
     line-height: 20px;
-    color: #7C7C7C;
+    text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    //-webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+
+    :deep(span) {
+      color: #33B1FF;
+      text-decoration: underline;
+    }
   }
 
   .cta {

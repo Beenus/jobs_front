@@ -1,7 +1,8 @@
 <template>
-  <div class="search-wrapper city" v-click-outside="outsideClick">
+  <div class="search-wrapper city" v-click-outside="outsideClick" :class="{header: isHeader}">
     <input class="input" type="text" placeholder="New York, US" v-model="location"
-           :class="{error: isLocationError, header:isHeader}"/>
+           :class="{error: isLocationError, header: isHeader, text: location}"/>
+    <div class="label" v-if="isHeader && location">Location</div>
     <div class="search-results" v-if="location && cities.length">
       <div class="item" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
         {{ city.city }}, {{ city.countryCode }}
@@ -79,6 +80,16 @@ export default {
     }
   }
 
+  .label {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    color: #A9A9A9;
+  }
+
   .search-results {
     position: absolute;
     top: 105%;
@@ -105,7 +116,7 @@ export default {
     max-width: 375px;
     height: 40px;
     background: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 8px;
     outline: none;
     font-weight: 400;
     font-size: 16px;
@@ -113,9 +124,15 @@ export default {
     color: #000000;
     padding: 20px 20px 20px 50px;
     border: none;
+    transition: .3s;
 
     &.header {
       font-size: 14px;
+      padding-left: 40px;
+
+      &.text {
+        padding-bottom: 5px;
+      }
     }
 
     &.error {
@@ -136,6 +153,14 @@ export default {
     z-index: 1;
     background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
     width: 16px;
+  }
+
+  &.header {
+    &::before {
+      height: 15px;
+      left: 15px;
+      width: 10px;
+    }
   }
 }
 </style>

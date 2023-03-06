@@ -1,20 +1,26 @@
 <template>
-  <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-     @click="registerOutclick" class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
-    <div class="ribbon" v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</div>
+  <div class="list-item-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
+    <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+       @click="registerOutclick" class="ribbon" v-if="job.ribbon"
+       :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</a>
     <div class="content-part">
-      <div class="title">{{ job.jobtitle }}</div>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+         @click="registerOutclick" class="title">{{ job.jobtitle }}</a>
       <div class="company-location">
-        <div class="company">{{ job.company }}</div>
-        <div class="location">{{ job.formattedLocation }}</div>
+        <a @click="setSearch" class="company">{{ job.company }}</a>
+        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+           @click="registerOutclick" class="location">{{ job.formattedLocation }}</a>
       </div>
-      <div class="description" v-html="job.description"/>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+         @click="registerOutclick" class="description" v-html="job.description + '<span>Read More</span>'"/>
     </div>
     <div class="cta-part">
-      <CTA class="big" text="Salary & More Info"/>
-      <div class="link">Apply Now</div>
+      <CTA :link="job.url" :title="job.jobtitle" :onMouseDown="job.onmousedown"
+           @click.native="registerOutclick" class="big" text="More Info"/>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+         @click="registerOutclick" class="link">View Salary</a>
     </div>
-  </a>
+  </div>
 </template>
 
 <script>
@@ -50,6 +56,10 @@ export default {
         this.visitedJob()
       }
     },
+    async setSearch() {
+      await this.$store.dispatch('setSearch', this.job.company)
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, force: true, loader: true})
+    }
   },
   computed: {},
   mounted() {
@@ -68,11 +78,10 @@ export default {
   padding: 30px 0 30px 30px;
   margin-bottom: 10px;
   background: #FFFFFF;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
   position: relative;
   text-decoration: none;
-  cursor: pointer;
+  border: 1px solid #C6C6C6;
+  border-radius: 8px;
 
   &.ribbon {
     padding-top: 40px;
@@ -90,7 +99,6 @@ export default {
       pointer-events: none;
       z-index: 2;
       border-radius: 8px;
-      cursor: pointer;
     }
   }
 
@@ -103,7 +111,7 @@ export default {
       font-weight: 700;
       font-size: 22px;
       line-height: 20px;
-      color: #000000;
+      color: #33B1FF;
       margin-bottom: 7px;
       text-decoration: none;
     }
@@ -115,13 +123,15 @@ export default {
       margin-bottom: 15px;
       border-bottom: 1px solid #EEEEEE;
 
-      > div {
+      > a {
         display: flex;
-        font-weight: 400;
-        font-size: 15px;
-        line-height: 20px;
+        align-items: center;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 13px;
         color: #7C7C7C;
         text-decoration: none;
+        text-transform: uppercase;
 
         &::before {
           content: '';
@@ -132,6 +142,9 @@ export default {
         }
 
         &.company {
+          color: #246BFD;
+          cursor: pointer;
+
           &::before {
             background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
             width: 18px;
@@ -150,11 +163,16 @@ export default {
     }
 
     .description {
-      font-weight: normal;
-      font-size: 15px;
-      line-height: 20px;
-      color: #7C7C7C;
       text-decoration: none;
+      font-weight: 200;
+      font-size: 16px;
+      line-height: 20px;
+      color: #262626;
+
+      :deep(span) {
+        color: #33B1FF;
+        text-decoration: underline;
+      }
     }
   }
 
@@ -193,6 +211,7 @@ export default {
     font-weight: 500;
     font-size: 13px;
     line-height: 1;
+    text-decoration: none;
 
     &::before {
       content: '';

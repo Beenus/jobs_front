@@ -1,7 +1,8 @@
 <template>
-  <div class="search-wrapper job" v-click-outside="outsideClick">
+  <div class="search-wrapper job" v-click-outside="outsideClick" :class="{header: isHeader}">
     <input class="input" type="text" :placeholder="placeholder" v-model="searchValue" ref="search"
-           :class="{header:isHeader}"/>
+           :class="{header: isHeader, text: searchValue}"/>
+    <div class="label" v-if="isHeader && searchValue">Job Title</div>
     <div class="search-results" v-if="searchValue && suggestions.length">
       <div class="item" v-for="suggestion in suggestions" :key="suggestion" @click="setSearch(suggestion)">
         {{ suggestion }}
@@ -101,12 +102,22 @@ export default {
     }
   }
 
+  .label {
+    position: absolute;
+    top: 5px;
+    left: 40px;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 15px;
+    color: #A9A9A9;
+  }
+
   input {
     width: 100%;
     max-width: 375px;
     height: 40px;
     background: #FFFFFF;
-    border-radius: 25px;
+    border-radius: 8px;
     outline: none;
     font-weight: 400;
     font-size: 16px;
@@ -114,9 +125,15 @@ export default {
     color: #000000;
     padding: 20px 20px 20px 50px;
     border: none;
+    transition: .3s;
 
     &.header {
       font-size: 14px;
+      padding-left: 40px;
+
+      &.text {
+        padding-bottom: 5px;
+      }
     }
 
     &.error {
@@ -139,5 +156,12 @@ export default {
     width: 20px;
   }
 
+  &.header {
+    &::before {
+      height: 15px;
+      left: 15px;
+      width: 13px;
+    }
+  }
 }
 </style>

@@ -32,9 +32,14 @@ export default {
 <style scoped lang="scss">
 .content {
   &-block {
-    padding: 0 15px;
+    padding: 60px 15px;
     width: 100%;
     margin-top: 40px;
+    background: #fff;
+
+    @media (max-width: $screen-xs-max) {
+      padding-top: 30px;
+    }
 
     h1 {
       font-weight: 800;
