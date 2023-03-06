@@ -129,7 +129,7 @@ export default {
       line-height: 28px;
     }
 
-    br {
+    :deep(br) {
       display: none;
     }
   }
