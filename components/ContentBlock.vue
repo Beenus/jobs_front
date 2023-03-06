@@ -41,6 +41,10 @@ export default {
       padding-top: 30px;
     }
 
+    br {
+      display: none;
+    }
+
     h1 {
       font-weight: 800;
       font-size: 32px;
