@@ -41,10 +41,6 @@ export default {
       padding-top: 30px;
     }
 
-    br {
-      display: none;
-    }
-
     h1 {
       font-weight: 800;
       font-size: 32px;
@@ -131,6 +127,10 @@ export default {
 
     @media (max-width: $screen-xs-max) {
       line-height: 28px;
+    }
+
+    br {
+      display: none;
     }
   }
 
