@@ -11,7 +11,7 @@
          class="location">{{ locationShort }}</a>
     </div>
     <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="description"
-       v-html="job.description + '<span>Read More</span>'"/>
+       v-html="descriptionShort"/>
     <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onmousedown="job.onmousedown"
          @click.native="registerOutclick"/>
   </div>
@@ -58,6 +58,9 @@ export default {
     locationShort() {
       return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
     },
+    descriptionShort(){
+      return this.job.description.length > 140 ? this.job.description.substring(0, 140).concat('<span>...Read More</span>') : this.job.description
+    }
   },
   mounted() {
     if (process.browser) {
@@ -97,12 +100,12 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    height: 30px;
+    height: 25px;
     padding: 3px 25px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0 28px 0 8px;
+    border-radius: 0 4px 0 8px;
     font-weight: 500;
     font-size: 14px;
     line-height: 1;
@@ -221,7 +224,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    //-webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
     :deep(span) {
