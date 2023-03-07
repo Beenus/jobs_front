@@ -43,35 +43,35 @@ export default {
   color: #000;
   text-decoration: none;
   font-weight: 600;
-  //background: #FEC461;
+  background: #FEC461;
   border-radius: 25px;
   transition: .3s;
 
   //
-  background-image: linear-gradient(45deg, rgb(254, 196, 97), rgb(255, 224, 176), rgb(254, 196, 97));
-  background-position: initial;
-  background-repeat: initial;
-  background-attachment: initial;
-  background-origin: initial;
-  background-clip: initial;
-  background-color: initial;
-  background-size: 400% 400% !important;
-  animation: 5s ease 0s infinite normal none running glare !important;
-
-  @keyframes glare {
-    0%, 100% {
-      transform: translate3d(0px, 0px, 0px);
-    }
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  //background-image: linear-gradient(45deg, rgb(254, 196, 97), rgb(255, 224, 176), rgb(254, 196, 97));
+  //background-position: initial;
+  //background-repeat: initial;
+  //background-attachment: initial;
+  //background-origin: initial;
+  //background-clip: initial;
+  //background-color: initial;
+  //background-size: 400% 400% !important;
+  //animation: 5s ease 0s infinite normal none running glare !important;
+  //
+  //@keyframes glare {
+  //  0%, 100% {
+  //    transform: translate3d(0px, 0px, 0px);
+  //  }
+  //  0% {
+  //    background-position: 0% 50%;
+  //  }
+  //  50% {
+  //    background-position: 100% 50%;
+  //  }
+  //  100% {
+  //    background-position: 0% 50%;
+  //  }
+  //}
   //
 
   &::after {
@@ -93,10 +93,10 @@ export default {
     background: #f5d090;
   }
 
-  //
-  //&:hover {
-  //  background: #f5d090;
-  //}
+
+  &:hover {
+    background: #f5d090;
+  }
 
   &.blue {
     background: #0157FF;

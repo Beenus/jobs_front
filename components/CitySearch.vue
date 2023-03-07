@@ -1,6 +1,6 @@
 <template>
   <div class="search-wrapper city" v-click-outside="outsideClick" :class="{header: isHeader}">
-    <input class="input" type="text" placeholder="New York, US" v-model="location"
+    <input class="input" type="text" placeholder="New York, US" v-model="location" @keyup.enter="enterClick"
            :class="{error: isLocationError, header: isHeader, text: location}"/>
     <div class="label" v-if="isHeader && location">Location</div>
     <div class="search-results" v-if="location && cities.length">
@@ -60,6 +60,10 @@ export default {
     outsideClick() {
       this.cities = []
     },
+    enterClick(){
+      this.$emit('onEnter')
+      this.cities = []
+    }
   }
 }
 </script>

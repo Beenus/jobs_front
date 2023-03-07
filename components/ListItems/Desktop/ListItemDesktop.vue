@@ -112,7 +112,7 @@ export default {
       font-size: 22px;
       line-height: 20px;
       color: #33B1FF;
-      margin-bottom: 7px;
+      margin-bottom: 12px;
       text-decoration: none;
     }
 
@@ -129,25 +129,27 @@ export default {
         font-weight: 700;
         font-size: 13px;
         line-height: 13px;
-        color: #7C7C7C;
+        color: #000;
         text-decoration: none;
         text-transform: uppercase;
 
         &::before {
           content: '';
           display: block;
-          height: 16px;
+          height: 13px;
           pointer-events: none;
           margin-right: 5px;
+          margin-top: -2px;
         }
 
         &.company {
           color: #246BFD;
           cursor: pointer;
+          text-decoration: underline;
 
           &::before {
-            background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
-            width: 18px;
+            background: url("~/assets/img/svg/company_dark.svg") center / cover no-repeat;
+            width: 14px;
           }
         }
 
@@ -155,8 +157,8 @@ export default {
           margin-left: 10px;
 
           &::before {
-            background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
-            width: 11px;
+            background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
+            width: 9px;
           }
         }
       }

@@ -15,8 +15,8 @@
 
             <div class="search-inputs">
               <div class="inputs">
-                <KeywordSearch :isHeader="true" placeholder="Job, Company or Keyword"/>
-                <CitySearch :isHeader="true" placeholder="New York, US"/>
+                <KeywordSearch :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
+                <CitySearch :isHeader="true" placeholder="New York, US" @onEnter="search"/>
                 <div class="search desktop" v-if="!fetching" @click="search">Search</div>
                 <div class="search fetching" v-else>Searching...</div>
                 <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>

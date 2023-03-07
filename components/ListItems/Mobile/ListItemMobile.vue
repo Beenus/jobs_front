@@ -156,7 +156,7 @@ export default {
   }
 
   .title {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-decoration: none;
     font-weight: 700;
     font-size: 20px;
@@ -175,9 +175,10 @@ export default {
     > a {
       display: flex;
       align-items: center;
+      font-weight: 700;
       font-size: 13px;
       line-height: 13px;
-      color: #7C7C7C;
+      color: #000;
       text-decoration: none;
 
       &::before {
@@ -186,13 +187,15 @@ export default {
         height: 16px;
         pointer-events: none;
         margin-right: 5px;
+        margin-top: -2px;
       }
 
       &.company {
         color: #246BFD;
+        text-decoration: underline;
 
         &::before {
-          background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
+          background: url("~/assets/img/svg/company_dark.svg") center / cover no-repeat;
           width: 18px;
         }
       }
@@ -201,7 +204,7 @@ export default {
         margin-left: 10px;
 
         &::before {
-          background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
+          background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
           width: 11px;
         }
       }
@@ -218,7 +221,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    //-webkit-line-clamp: 4;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
     :deep(span) {

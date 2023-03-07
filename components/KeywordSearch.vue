@@ -1,7 +1,7 @@
 <template>
   <div class="search-wrapper job" v-click-outside="outsideClick" :class="{header: isHeader}">
     <input class="input" type="text" :placeholder="placeholder" v-model="searchValue" ref="search"
-           :class="{header: isHeader, text: searchValue}"/>
+           :class="{header: isHeader, text: searchValue}" @keyup.enter="enterClick"/>
     <div class="label" v-if="isHeader && searchValue">Job Title</div>
     <div class="search-results" v-if="searchValue && suggestions.length">
       <div class="item" v-for="suggestion in suggestions" :key="suggestion" @click="setSearch(suggestion)">
@@ -53,6 +53,10 @@ export default {
     outsideClick() {
       this.suggestions = []
     },
+    enterClick(){
+      this.$emit('onEnter')
+      this.suggestions = []
+    }
   },
   mounted() {
     this.$nextTick(() => {
