@@ -165,6 +165,7 @@ export default {
     font-size: 20px;
     line-height: 20px;
     color: #33B1FF;
+    word-wrap: break-word;
   }
 
   .company-location {
