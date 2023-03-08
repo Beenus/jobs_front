@@ -162,7 +162,7 @@ export default {
     margin-bottom: 15px;
     text-decoration: none;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 20px;
     color: #33B1FF;
     word-wrap: break-word;
@@ -218,7 +218,7 @@ export default {
   .description {
     margin-bottom: 15px;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 16px;
     color: #262626;
     line-height: 20px;
     text-decoration: none;
@@ -230,6 +230,7 @@ export default {
 
     :deep(span) {
       color: #33B1FF;
+      font-weight: bold;
       text-decoration: underline;
     }
   }
