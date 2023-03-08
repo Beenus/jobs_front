@@ -15,7 +15,7 @@
       </div>
       <div class="sidebar right"></div>
     </div>
-    <PopularPages/>
+    <PopularPages :bottom="true"/>
   </div>
 </template>
 

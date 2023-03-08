@@ -1,5 +1,5 @@
 <template>
-  <div v-if="popularPages.length" class="popular-jobs">
+  <div v-if="popularPages.length" class="popular-jobs" :class="{bottom}">
     <div class="container">
       <div class="title">Popular Jobs</div>
       <div class="job-pages-wrapper">
@@ -17,6 +17,7 @@
 <script>
 export default {
   name: "PopularPages",
+  props: ['bottom'],
   computed: {
     popularPages() {
       return this.$store.state.pages.popularPages

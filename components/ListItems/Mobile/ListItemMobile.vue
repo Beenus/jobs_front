@@ -92,7 +92,7 @@ export default {
       background: rgba(255, 255, 255, 0.6);
       pointer-events: none;
       z-index: 2;
-      border-radius: 28px;
+      border-radius: 5px;
     }
   }
 

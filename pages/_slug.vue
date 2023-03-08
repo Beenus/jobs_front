@@ -15,7 +15,7 @@
       </div>
       <div class="sidebar right"></div>
     </div>
-    <PopularPages/>
+    <PopularPages :bottom="true"/>
     <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title"
                   :content="pageData.description" :faq="pageData.faq"/>
   </div>
