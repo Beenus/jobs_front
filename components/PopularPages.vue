@@ -31,6 +31,12 @@ export default {
   width: 100%;
   margin-bottom: 30px;
 
+  &.bottom {
+    @media(max-width: $screen-xs-max){
+      margin-top: 20px;
+    }
+  }
+
   .title {
     font-weight: 500;
     font-size: 23px;
