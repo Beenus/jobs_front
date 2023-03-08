@@ -15,7 +15,9 @@
       </div>
       <div class="sidebar right"></div>
     </div>
-    <PopularPages :bottom="true"/>
+    <div class="popular-wrap">
+      <PopularPages :bottom="true"/>
+    </div>
     <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title"
                   :content="pageData.description" :faq="pageData.faq"/>
   </div>
@@ -136,7 +138,17 @@ export default {
     justify-content: center;
     max-width: 1350px;
     width: 100%;
-    padding: 0 15px;
+    @media (max-width: $screen-md-max) {
+      padding: 0 15px;
+    }
+  }
+
+  .popular-wrap {
+    max-width: 100%;
+
+    @media (max-width: $screen-md-max) {
+      padding: 0 15px;
+    }
   }
 
   .title-sort {
