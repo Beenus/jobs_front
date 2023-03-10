@@ -12,7 +12,7 @@
     </div>
     <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="description"
        v-html="descriptionShort"/>
-    <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onmousedown="job.onmousedown"
+    <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onMouseDown="job.onmousedown"
          @click.native="registerOutclick"/>
   </div>
 </template>

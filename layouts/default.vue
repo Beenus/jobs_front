@@ -40,6 +40,11 @@ export default {
       return this.$store.state.isShowLegalPopup
     },
   },
+  mounted() {
+    if (!this.$cookies.get('email_subs')){
+      // this.$store.dispatch('showLegalPopup', 'email')
+    }
+  },
 }
 </script>
 

@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     isMobileWidth() {
-      return this.windowSize ? this.windowSize?.x < 768 : true
+      return this.$device ? this.$device.isMobileOrTablet : this.windowSize ? this.windowSize?.x < 768 : false
     },
     pageData() {
       return this.$store.state.pages.pageData
@@ -109,7 +109,7 @@ export default {
     width: 100%;
     max-width: 195px;
 
-    @media (max-width: $screen-sm-max) {
+    @media (max-width: $screen-md-max) {
       display: none;
     }
 
