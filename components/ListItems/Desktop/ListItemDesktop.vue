@@ -109,8 +109,8 @@ export default {
     .title {
       display: flex;
       font-weight: 700;
-      font-size: 22px;
-      line-height: 20px;
+      font-size: 24px;
+      line-height: 28px;
       color: #33B1FF;
       margin-bottom: 12px;
       text-decoration: none;
@@ -168,7 +168,7 @@ export default {
       text-decoration: none;
       font-weight: 200;
       font-size: 16px;
-      line-height: 20px;
+      line-height: 1.56;
       color: #262626;
 
       :deep(span) {

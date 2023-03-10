@@ -22,21 +22,35 @@ export default {
     isHeader: {
       require: false,
       default: false,
-    }
+    },
+    native: {
+      require: false,
+      default: false,
+    },
   },
   data() {
     return {
-      cities: []
+      cities: [],
+      nativeValue: '',
     }
   },
   computed: {
     location: {
       get() {
-        return this.$store.state.location;
+        if (this.native) {
+          return this.nativeValue
+        } else {
+          return this.$store.state.location
+        }
       },
       async set(val) {
-        await this.$store.dispatch('jobs/clearErrors')
-        await this.$store.dispatch('setLocation', val)
+        if (this.native) {
+          this.nativeValue = val
+          this.$emit('change', val)
+        } else {
+          await this.$store.dispatch('jobs/clearErrors')
+          await this.$store.dispatch('setLocation', val)
+        }
 
         if (val.length >= 2) {
           const {cities} = await this.$store.dispatch('getCities', {q: val});
@@ -53,18 +67,30 @@ export default {
   },
   methods: {
     async setLocation(city) {
-      await this.$store.dispatch('setLocation', `${city.city}, ${city.countryCode}`)
-      await this.$store.dispatch('setUserLocation', city)
+      if (this.native) {
+        this.nativeValue = city
+        this.$emit('change', city)
+      } else {
+        await this.$store.dispatch('setLocation', `${city.city}, ${city.countryCode}`)
+        await this.$store.dispatch('setUserLocation', city)
+      }
+
       this.cities = []
     },
     outsideClick() {
       this.cities = []
     },
-    enterClick(){
+    enterClick() {
       this.$emit('onEnter')
       this.cities = []
     }
-  }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.nativeValue = this.$store.state.location
+      this.$emit('change', this.nativeValue)
+    })
+  },
 }
 </script>
 
@@ -102,7 +128,7 @@ export default {
     background: #fff;
     border-radius: 5px;
     padding: 5px 0;
-    z-index: 1;
+    z-index: 2;
 
     .item {
       padding: 5px 10px;

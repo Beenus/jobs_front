@@ -2,7 +2,7 @@
   <div class="legal" @click.self="closePopup" :class="legalPopupType">
     <div class="legal-popup" :class="legalPopupType">
       <div class="close-trigger" @click.self="closePopup"/>
-      <component :is="legalPage"/>
+      <component :is="legalPage" :popupType="legalPopupType"/>
     </div>
   </div>
 </template>
@@ -28,6 +28,9 @@ export default {
           return () => import(`@/components/Legal/ContactUs.vue`)
         case 'exit':
           return () => import(`@/components/Legal/Exit.vue`)
+        case 'email':
+        case 'email custom':
+          return () => import(`@/components/Legal/Email.vue`)
         default:
           return null
       }
@@ -56,6 +59,12 @@ export default {
   padding: 50px;
 
   &.exit {
+    @media (max-width: $screen-xs-max) {
+      padding: 15px;
+    }
+  }
+
+  &.email {
     @media (max-width: $screen-xs-max) {
       padding: 15px;
     }
@@ -92,8 +101,28 @@ export default {
           right: 5px;
           top: 5px;
         }
+
         &::after {
           background: url("~/assets/img/svg/close-white.svg") no-repeat center;
+        }
+      }
+    }
+
+
+    &.email {
+      max-width: 460px;
+      min-height: 520px;
+      height: auto;
+      background: #F4F4F4;
+      border-radius: 5px;
+
+      @media (max-width: $screen-xs-max) {
+        padding: 20px 20px 30px;
+        min-height: auto;
+
+        .close-trigger {
+          right: 5px;
+          top: 5px;
         }
       }
     }

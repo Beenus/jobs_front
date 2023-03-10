@@ -163,7 +163,7 @@ export default {
     text-decoration: none;
     font-weight: 700;
     font-size: 22px;
-    line-height: 20px;
+    line-height: 24px;
     color: #33B1FF;
     word-wrap: break-word;
   }
@@ -220,7 +220,7 @@ export default {
     font-weight: 300;
     font-size: 16px;
     color: #262626;
-    line-height: 20px;
+    line-height: 1.56;
     text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -53,7 +53,7 @@ export default {
   },
   computed: {
     isMobileWidth() {
-      return this.windowSize ? this.windowSize?.x < 768 : false
+      return this.windowSize ? this.windowSize?.x < 768 : true
     },
     pageData() {
       return this.$store.state.pages.pageData

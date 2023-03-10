@@ -2,7 +2,7 @@
   <div class="homepage">
     <div class="top">
       <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
-      <div class="title">Let us help you find the yellow chair</div>
+      <h1 class="title">Let us help you find the yellow chair</h1>
       <div class="sub-title">Over 167,457 jobs are available in our site, go ahead and find yours.</div>
 
       <div class="inputs">
@@ -99,6 +99,7 @@ export default {
       line-height: 36px;
       color: #FFFFFF;
       text-align: center;
+      margin: 0;
 
       @media (max-width: $screen-xs-max) {
         display: none;

@@ -22,21 +22,35 @@ export default {
     isHeader: {
       require: false,
       default: false,
-    }
+    },
+    native: {
+      require: false,
+      default: false,
+    },
   },
   data() {
     return {
-      suggestions: []
+      suggestions: [],
+      nativeValue: '',
     }
   },
   computed: {
     searchValue: {
       get() {
-        return this.$store.state.search
+        if (this.native) {
+          return this.nativeValue
+        } else {
+          return this.$store.state.search
+        }
       },
       async set(val) {
-        await this.$store.dispatch('jobs/clearErrors')
-        await this.$store.dispatch('setSearch', val)
+        if (this.native) {
+          this.nativeValue = val
+          this.$emit('change', val)
+        } else {
+          await this.$store.dispatch('jobs/clearErrors')
+          await this.$store.dispatch('setSearch', val)
+        }
 
         if (val.length >= 2) {
           const {suggestions} = await this.$store.dispatch('getSuggestions', {q: val});
@@ -47,22 +61,30 @@ export default {
   },
   methods: {
     async setSearch(suggestion) {
-      await this.$store.dispatch('setSearch', suggestion)
+      if (this.native) {
+        this.nativeValue = suggestion
+        this.$emit('change', suggestion)
+      } else {
+        await this.$store.dispatch('setSearch', suggestion)
+      }
+
       this.suggestions = []
     },
     outsideClick() {
       this.suggestions = []
     },
-    enterClick(){
+    enterClick() {
       this.$emit('onEnter')
       this.suggestions = []
     }
   },
   mounted() {
     this.$nextTick(() => {
+      this.nativeValue = this.$store.state.search
       this.$refs.search.focus()
+      this.$emit('change', this.nativeValue)
     })
-  }
+  },
 }
 </script>
 
@@ -93,7 +115,7 @@ export default {
     background: #fff;
     border-radius: 5px;
     padding: 5px 0;
-    z-index: 1;
+    z-index: 2;
 
     .item {
       padding: 5px 10px;
