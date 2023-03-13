@@ -127,6 +127,9 @@ export const actions = {
   async registerOutclick({commit}, params) {
     const {data} = await this.$axios.post('analytics/outclick', params)
   },
+  async registerEmailClick({commit}, params) {
+    const {data} = await this.$axios.post('analytics/email/click', params)
+  },
   showLegalPopup({commit}, payload) {
     commit('SET_SHOW_LEGAL_POPUP', payload)
   },
