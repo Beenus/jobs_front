@@ -14,12 +14,12 @@ export default {
       const url = process.client ? atob(route.query.code) : Buffer.from(route.query.code, 'base64').toString('utf8')
       const uuid = route.query.uuid
 
-      if (uuid)
-      await store.dispatch('registerEmailClick', {
-        uuid,
-        url,
-      })
-
+      if (uuid) {
+        await store.dispatch('registerEmailClick', {
+          uuid,
+          url,
+        })
+      }
       redirect(url)
 
       return {
