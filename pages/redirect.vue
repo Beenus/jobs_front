@@ -20,6 +20,7 @@ export default {
           url,
         })
       }
+
       redirect(url)
 
       return {
