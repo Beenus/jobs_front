@@ -11,7 +11,7 @@
               {{ page.name }}
             </nuxt-link>
           </div>
-          <div v-if="type==='searches' && popularPages.length > 12" class="show-more" :class="{open:showMore}"
+          <div v-if="type==='searches' && pages.length > 12" class="show-more" :class="{open:showMore}"
                @click="showMore = !showMore">Show
             {{ showMore ? 'Less' : 'More' }}
           </div>
@@ -31,14 +31,24 @@ export default {
     }
   },
   computed: {
+    pages() {
+      switch (this.type) {
+        case 'topics':
+          return this.$store.state.pages?.popularTopics
+        case 'searches':
+          return this.$store.state.pages?.popularSearches
+        default:
+          return this.$store.state.pages?.popularPages
+      }
+    },
     popularPages() {
       switch (this.type) {
         case 'topics':
-          return this.$store.state.pages?.popularTopics?.slice(0, 9)
+          return this.pages?.slice(0, 9)
         case 'searches':
-          return this.showMore ? this.$store.state.pages?.popularSearches : this.$store.state.pages?.popularSearches.slice(0, 12)
+          return this.showMore ? this.pages : this.pages?.slice(0, 12)
         default:
-          return this.$store.state.pages?.popularPages?.slice(0, 9)
+          return this.pages?.slice(0, 9)
       }
     },
     titleType() {
