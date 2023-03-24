@@ -12,6 +12,7 @@ export const state = () => ({
   source: null,
   isShowLegalPopup: false,
   legalPopupType: null,
+  isHideSubscribe: false,
 })
 
 export const getters = {
@@ -50,12 +51,18 @@ export const mutations = {
     state.isShowLegalPopup = false
     state.legalPopupType = null
   },
+  SET_HIDE_SUBSCRIBE(state, payload) {
+    state.isHideSubscribe = payload
+  },
+  SET_USER_TIMEZONE(state, payload) {
+    state.userTimezone = payload
+  },
 }
 
 export const actions = {
   async nuxtServerInit({dispatch, getters}, {req, route}) {
-    let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
-    // const ip = '173.239.211.33' //US
+    // let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
+    const ip = '173.239.211.33' //US
     // const ip = '84.247.59.200' //DE
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
@@ -66,12 +73,14 @@ export const actions = {
       dispatch('setUserLocation', {
         city: 'New York',
         country: 'United States',
-        countryCode: 'US'
+        countryCode: 'US',
+        timezone: 'America/New_York',
       })
       dispatch('setUserOriginalLocation', {
         city: 'New York',
         country: 'United States',
-        countryCode: 'US'
+        countryCode: 'US',
+        timezone: 'America/New_York',
       })
     }
 
@@ -129,6 +138,15 @@ export const actions = {
   },
   async registerEmailClick({commit}, params) {
     const {data} = await this.$axios.post('analytics/email/click', params)
+  },
+  async emailSubscribe({commit}, params) {
+    const {data} = await this.$axios.post('analytics/email/subscribe', params)
+  },
+  async unsubscribeEmail({commit}, params) {
+    const {data} = await this.$axios.post('analytics/email/unsubscribe', params)
+  },
+  hideSubscribe({commit}, payload) {
+    commit('SET_HIDE_SUBSCRIBE', payload)
   },
   showLegalPopup({commit}, payload) {
     commit('SET_SHOW_LEGAL_POPUP', payload)

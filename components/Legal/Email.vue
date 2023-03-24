@@ -1,6 +1,6 @@
 <template>
   <div class="email">
-    <div class="title" v-if="!isCustomJob">Join Recommended Jobs</div>
+    <div class="title" v-if="!isCustomJob || !customSearch">Join Recommended Jobs</div>
     <div class="title" v-else>{{ customSearch }}<br/>{{ customLocation }}</div>
     <div class="sub-title" v-if="!isCustomJob">Get the latest jobs<br/>delivered right to your inbox</div>
     <div class="sub-title" v-else>Set up your job alert</div>
@@ -11,7 +11,8 @@
       <input ref="email" class="input email" type="email" placeholder="Email Address" v-model="email"
              :class="{text: email, error: !isValidEmail}"/>
     </div>
-    <div class="submit" @click="submit">Submit</div>
+    <div class="submit" @click="submit" v-if="!sent">{{ !fetching ? 'Submit' : 'Sending...' }}</div>
+    <div class="submit" v-else>Thank You!</div>
     <div class="legal">By signing up you agree to Recommended Jobs’s Terms and Privacy Policy</div>
     <div class="legal bold">Recommended Jobs is a job search engine. We are not an agent or representative of any
       employer.
@@ -26,8 +27,6 @@
 </template>
 
 <script>
-import {includes} from "core-js/internals/array-includes";
-
 export default {
   name: "Email",
   props: ['popupType'],
@@ -37,6 +36,8 @@ export default {
       keyword: '',
       location: '',
       isValidEmail: true,
+      fetching: false,
+      sent: false,
     }
   },
   methods: {
@@ -46,16 +47,29 @@ export default {
     changeLocation(location) {
       this.location = location
     },
-    submit() {
+    async submit() {
       this.isValidEmail = this.$validateEmail(this.email)
 
-      if (this.isValidEmail && this.keyword && this.location) {
-        console.log({
+      if (!this.fetching && this.isValidEmail && this.location) {
+        this.fetching = true
+
+        const emailData = {
+          session: this.$cookies.get('session_uuid'),
           email: this.email,
-          keyword: this.keyword,
+          job: this.keyword,
           location: this.location,
-        })
+          ip: this.$store.state.userIp,
+          country: this.$store.state.userOriginalLocation?.country,
+          timezone: this.$store.state.userOriginalLocation?.timezone,
+          countryCode: this.$store.state.userOriginalLocation?.countryCode,
+        }
+
+        await this.$store.dispatch('emailSubscribe', emailData)
+        this.sent = true
+        this.$cookies.set('email_subs', true)
       }
+
+      this.fetching = false
     }
   },
   computed: {
@@ -66,7 +80,6 @@ export default {
       return this.$store.state.search;
     },
     isCustomJob() {
-      console.log(this.popupType.includes('custom'));
       return this.popupType.includes('custom')
     }
   },

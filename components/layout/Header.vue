@@ -13,14 +13,18 @@
               </div>
             </div>
 
-            <div class="search-inputs">
+            <div class="search-inputs" v-if="!isHomepage">
               <div class="inputs">
                 <KeywordSearch :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
                 <CitySearch :isHeader="true" placeholder="New York, US" @onEnter="search"/>
                 <div class="search desktop" v-if="!fetching" @click="search">Search</div>
                 <div class="search fetching" v-else>Searching...</div>
-                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>
+<!--                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>-->
               </div>
+            </div>
+
+            <div class="notification" @click="showPopup">
+              <div class="icon"/>
             </div>
           </div>
         </div>
@@ -35,6 +39,7 @@ import FixedHeader from "@/components/layout/header/FixedHeader.vue";
 export default {
   name: "Header",
   components: {FixedHeader},
+  props:['isHomepage'],
   data() {
     return {
       searchOpen: false,
@@ -51,8 +56,11 @@ export default {
     },
     searchMobile() {
       this.$router.push('/')
-    }
-  }
+    },
+    showPopup() {
+      this.$store.dispatch('showLegalPopup', 'email custom')
+    },
+  },
 }
 </script>
 
@@ -63,6 +71,7 @@ export default {
   background: linear-gradient(90deg, #246BFD 0%, #246BFD 100%);
   height: 68px;
   padding: 0 15px;
+  border-bottom: 1px solid #4380FF;
 
   @media (max-width: $screen-xs-max) {
     height: 55px;
@@ -76,6 +85,8 @@ export default {
     @media (max-width: $screen-xs-max) {
       width: 100%;
       margin-right: 0;
+      justify-content: center;
+      padding-left: 45px;
     }
 
     .menu-button {
@@ -118,7 +129,7 @@ export default {
     width: 100%;
 
     @media (max-width: $screen-xs-max) {
-      max-width: 120px;
+      display: none;
     }
 
     .inputs {
@@ -130,10 +141,6 @@ export default {
       .search-wrapper {
         width: 100%;
         position: relative;
-
-        @media (max-width: $screen-xs-max) {
-          display: none;
-        }
       }
 
       .search {
@@ -189,6 +196,25 @@ export default {
           }
         }
       }
+    }
+  }
+
+  .notification {
+    min-width: 30px;
+    min-height: 28px;
+    cursor: pointer;
+    margin-left: 15px;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &::before {
+      display: block;
+      content: '';
+      background: url("~/assets/img/svg/notif.svg") center / contain no-repeat;
+      min-width: 30px;
+      min-height: 28px;
     }
   }
 }

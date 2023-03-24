@@ -68,8 +68,8 @@ export default {
   methods: {
     async setLocation(city) {
       if (this.native) {
-        this.nativeValue = city
-        this.$emit('change', city)
+        this.nativeValue = `${city.city}, ${city.countryCode}`
+        this.$emit('change', `${city.city}, ${city.countryCode}`)
       } else {
         await this.$store.dispatch('setLocation', `${city.city}, ${city.countryCode}`)
         await this.$store.dispatch('setUserLocation', city)
@@ -152,7 +152,7 @@ export default {
     font-size: 16px;
     line-height: 16px;
     color: #000000;
-    padding: 20px 20px 20px 50px;
+    padding: 20px 20px 20px 45px;
     border: none;
     transition: .3s;
 
@@ -178,7 +178,7 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 20px;
+    left: 15px;
     pointer-events: none;
     z-index: 1;
     background: url("~/assets/img/svg/location.svg") center / cover no-repeat;

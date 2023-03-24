@@ -91,7 +91,7 @@ export default {
 <style scoped lang="scss">
 .search-wrapper {
   position: relative;
-  margin-right: 10px;
+  margin-right: 5px;
   width: 50%;
 
   @media (max-width: $screen-xs-max) {
@@ -149,7 +149,7 @@ export default {
     font-size: 16px;
     line-height: 16px;
     color: #000000;
-    padding: 20px 20px 20px 50px;
+    padding: 20px 20px 20px 45px;
     border: none;
     transition: .3s;
 
@@ -175,7 +175,7 @@ export default {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 20px;
+    left: 15px;
     pointer-events: none;
     z-index: 1;
     background: url("~/assets/img/svg/magnify_glass.svg") center / cover no-repeat;

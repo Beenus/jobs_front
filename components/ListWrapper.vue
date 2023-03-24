@@ -1,12 +1,21 @@
 <template>
   <div class="list-wrapper" v-if="list.length">
     <div class="desktop" v-if="!isMobileWidth">
-      <ListItemDesktop v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
+      <div class="item-wrapper" v-for="(job, index) in list" :key="index">
+        <ListItemDesktop :job="job" :index="index+1"/>
+        <div v-if="(index+1) % 10 === 0">
+          <Subscribe/>
+        </div>
+      </div>
     </div>
     <div class="mobile" v-else>
-      <ListItemMobile v-for="(job, index) in list" :key="index" :job="job" :index="index+1"/>
+      <div class="item-wrapper" v-for="(job, index) in list" :key="index">
+        <ListItemMobile :job="job" :index="index+1"/>
+        <div v-if="(index+1) % 10 === 0">
+          <Subscribe/>
+        </div>
+      </div>
     </div>
-
     <div class="show-more" v-if="!isLoading" @click="setPage" ref="showMore">Show More Jobs</div>
     <div class="show-more" v-else ref="showMore">Loading...</div>
   </div>

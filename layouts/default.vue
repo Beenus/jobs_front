@@ -1,6 +1,6 @@
 <template>
   <div class="page" :class="{homepage: isHomepage}">
-    <Header v-if="!isHomepage"/>
+    <Header :isHomepage="isHomepage"/>
     <div class="main">
       <nuxt/>
       <div id="content-modal" v-show="isShowContentModal"/>
@@ -41,8 +41,10 @@ export default {
     },
   },
   mounted() {
-    if (!this.$cookies.get('email_subs')){
-      // this.$store.dispatch('showLegalPopup', 'email')
+    this.$store.dispatch('hideSubscribe', this.$cookies.get('email_subs_hide'))
+
+    if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')){
+      this.$store.dispatch('showLegalPopup', 'email')
     }
   },
 }
