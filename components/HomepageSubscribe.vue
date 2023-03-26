@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$refs.email.focus()
+      // this.$refs.email.focus()
     })
   }
 }
