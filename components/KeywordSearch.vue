@@ -27,6 +27,10 @@ export default {
       require: false,
       default: false,
     },
+    shouldFocus: {
+      require: false,
+      default: true,
+    },
   },
   data() {
     return {
@@ -81,7 +85,9 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.nativeValue = this.$store.state.search
-      this.$refs.search.focus()
+      if (this.shouldFocus) {
+        this.$refs.search.focus()
+      }
       this.$emit('change', this.nativeValue)
     })
   },

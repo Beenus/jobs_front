@@ -6,7 +6,7 @@
           <div class="title">Get the latest jobs <br/>delivered right to your <br/>inbox <span>.</span></div>
         </div>
         <div class="right">
-          <KeywordSearch @change="changeKeyword" :native="true" :isHeader="true" placeholder="Job, Company or Keyword"/>
+          <KeywordSearch @change="changeKeyword" :shouldFocus="false" :native="true" :isHeader="true" placeholder="Job, Company or Keyword"/>
           <CitySearch @change="changeLocation" :native="true" :isHeader="true" placeholder="New York, US"/>
           <div class="input-wrapper">
             <div class="label" v-if="email">Email Address</div>
