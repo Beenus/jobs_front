@@ -99,7 +99,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 45px 0 0;
-  background: #f4f4f4;
+  background: #F8F9FA;
 
   @media (max-width: $screen-sm-max) {
     padding: 35px 0 0;

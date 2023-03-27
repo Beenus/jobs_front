@@ -43,9 +43,11 @@ export default {
   mounted() {
     this.$store.dispatch('hideSubscribe', this.$cookies.get('email_subs_hide'))
 
-    // if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')){
-    //   this.$store.dispatch('showLegalPopup', 'email')
-    // }
+    if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')){
+      setTimeout(()=>{
+        this.$store.dispatch('showLegalPopup', 'email')
+      }, 5000)
+    }
   },
 }
 </script>

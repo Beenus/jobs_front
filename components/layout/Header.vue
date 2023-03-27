@@ -58,7 +58,7 @@ export default {
       this.$router.push('/')
     },
     showPopup() {
-      this.$store.dispatch('showLegalPopup', 'email custom')
+      this.$store.dispatch('showLegalPopup', 'email')
     },
   },
 }

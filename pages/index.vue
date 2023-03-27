@@ -31,7 +31,7 @@
 export default {
   head() {
     return {
-      title: 'Recommended-Jobs: Local Job Search Engine' + this.$store.state.global.title,
+      title: 'Job Search Engine | Recommended Jobs',
       meta: [
         {
           hid: 'description',
