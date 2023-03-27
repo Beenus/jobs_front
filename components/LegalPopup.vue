@@ -130,6 +130,7 @@ export default {
 
   :deep(.legal-text) {
     overflow: scroll;
+    padding-right: 20px;
 
     h1 {
       font-size: 32px;
