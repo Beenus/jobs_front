@@ -211,9 +211,10 @@
       Aviv-Jaffa, Israel.</p>
 
     <p><strong>If you have any questions or comments concerning this Privacy Policy, you are welcome to send Us an
-      e-mail. We are Hamoona Technology Development Ltd (company ID 516449626), and you can email us at contact@recommended-jobs.com, or send
-      us postal mail to Yair Rozenblum, Tel Aviv, Israel (ZipCode 6958308) or contact us by phone at +972544542100, and
-      we will make an effort to reply within a reasonable timeframe.</strong></p>
+      e-mail. We are Hamoona Technology Development Ltd (company ID 516449626), and you can email us at
+      contact@recommended-jobs.com, or send us postal mail to Yair Rozenblum, Tel Aviv, Israel (ZipCode 6958308) or
+      contact us by phone at +972544542100, and we will make an effort to reply within a reasonable timeframe.</strong>
+    </p>
   </div>
 </template>
 
