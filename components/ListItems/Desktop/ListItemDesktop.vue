@@ -111,7 +111,7 @@ export default {
       font-weight: 700;
       font-size: 24px;
       line-height: 28px;
-      color: #33B1FF;
+      color: #000;
       margin-bottom: 12px;
       text-decoration: none;
     }
@@ -172,7 +172,7 @@ export default {
       color: #262626;
 
       :deep(span) {
-        color: #33B1FF;
+        color: #246bfd;
         text-decoration: underline;
       }
     }

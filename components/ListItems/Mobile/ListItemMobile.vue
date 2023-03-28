@@ -164,7 +164,7 @@ export default {
     font-weight: 700;
     font-size: 22px;
     line-height: 24px;
-    color: #33B1FF;
+    color: #000;
     word-wrap: break-word;
   }
 
@@ -229,7 +229,7 @@ export default {
     -webkit-box-orient: vertical;
 
     :deep(span) {
-      color: #33B1FF;
+      color: #246bfd;
       font-weight: bold;
       text-decoration: underline;
     }
