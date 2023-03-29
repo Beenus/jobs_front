@@ -58,7 +58,7 @@ export default {
     },
     async setSearch() {
       await this.$store.dispatch('setSearch', this.job.company)
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, force: true, loader: true})
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, force: true, loader: true, clear: true,})
     }
   },
   computed: {},
