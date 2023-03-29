@@ -59,6 +59,10 @@ export default {
     async setSearch() {
       await this.$store.dispatch('setSearch', this.job.company)
       await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, force: true, loader: true, clear: true,})
+
+      if (process.client) {
+        window.scrollTo({ top: 0});
+      }
     }
   },
   computed: {},

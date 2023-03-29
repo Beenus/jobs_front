@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  scrollToTop: true,
   head() {
     return {
       title: 'Jobs' + this.$store.state.global.title,

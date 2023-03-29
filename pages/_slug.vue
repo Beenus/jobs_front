@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  scrollToTop: true,
   head() {
     return {
       title: (this.pageData.seo_title || this.pageData.title) + this.$store.state.global.title,
