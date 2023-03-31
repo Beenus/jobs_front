@@ -4,8 +4,8 @@
            :class="{error: isLocationError, header: isHeader, text: location}"/>
     <div class="label" v-if="isHeader && location">Location</div>
     <div class="search-results" v-if="location && cities.length">
-      <div class="item" v-for="city in cities" :key="city.city + city.countryCode" @click="setLocation(city)">
-        {{ city.city }}, {{ city.countryCode }}
+      <div class="item" v-for="city in cities" :key="city.city + (city.region ? city.region : city.countryCode)" @click="setLocation(city)">
+        {{ city.city }}, {{ city.region ? city.region : city.countryCode }}
       </div>
     </div>
   </div>
@@ -68,10 +68,10 @@ export default {
   methods: {
     async setLocation(city) {
       if (this.native) {
-        this.nativeValue = `${city.city}, ${city.countryCode}`
-        this.$emit('change', `${city.city}, ${city.countryCode}`)
+        this.nativeValue = `${city.city}, ${city.region ? city.region : city.countryCode}`
+        this.$emit('change', `${city.city}, ${city.region ? city.region : city.countryCode}`)
       } else {
-        await this.$store.dispatch('setLocation', `${city.city}, ${city.countryCode}`)
+        await this.$store.dispatch('setLocation', `${city.city}, ${city.region ? city.region : city.countryCode}`)
         await this.$store.dispatch('setUserLocation', city)
       }
 

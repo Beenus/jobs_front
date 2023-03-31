@@ -17,7 +17,7 @@ export const state = () => ({
 
 export const getters = {
   location(state) {
-    return state.location ? state.location : `${state.userLocation.city}, ${state.userLocation.countryCode}`
+    return `${state.userLocation.city}, ${state.userLocation.region ? state.userLocation.region : state.userLocation.countryCode}`
   }
 }
 
@@ -74,12 +74,14 @@ export const actions = {
         city: 'New York',
         country: 'United States',
         countryCode: 'US',
+        region: 'NY',
         timezone: 'America/New_York',
       })
       dispatch('setUserOriginalLocation', {
         city: 'New York',
         country: 'United States',
         countryCode: 'US',
+        region: 'NY',
         timezone: 'America/New_York',
       })
     }
@@ -108,8 +110,9 @@ export const actions = {
     commit('SET_USER_IP', payload)
   },
   async getCities({commit, state}, params) {
+    // console.log(state.source);
     if (state.source) {
-      state.source.cancel('Canceled')
+      // state.source.cancel('Canceled')
     }
     const cancelToken = this.$axios.CancelToken;
     const source = cancelToken.source()
@@ -120,7 +123,7 @@ export const actions = {
   },
   async getSuggestions({commit, state}, params) {
     if (state.source) {
-      state.source.cancel()
+      // state.source.cancel()
     }
     const cancelToken = this.$axios.CancelToken;
     const source = cancelToken.source('Canceled')

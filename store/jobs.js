@@ -57,8 +57,9 @@ export const actions = {
       const params = {
         ip: rootState.userIp,
         search: rootState.search,
-        location: rootGetters['location'],
+        location: rootState.userLocation.city,
         countryCode: rootState.userLocation.countryCode,
+        region: rootState.userLocation.region,
         perPage: rootState.jobs.perPage,
         page: rootState.jobs.page,
       }
@@ -69,7 +70,7 @@ export const actions = {
       commit('SET_FETCHING', false)
 
       if (payload.clear === undefined || payload.force) {
-        await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
+        await this.$router.push({path: '/jobs', query: {search: params.search, location: rootGetters['location']}})
       }
     } catch (e) {
       if (e?.response) {

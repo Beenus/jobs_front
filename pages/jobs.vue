@@ -47,7 +47,8 @@ export default {
 
       if (location && location[0] && location[1]) {
         params.city = location[0].trim()
-        params.countryCode = location[1].trim()
+        params.region = location[1].trim()
+        params.countryCode = store.state.userOriginalLocation.countryCode
       } else {
         if (location && location[0]) {
           const {cities} = await store.dispatch('getCities', {q: location[0].trim()});
