@@ -17,7 +17,7 @@ export const state = () => ({
 
 export const getters = {
   location(state) {
-    return `${state.userLocation.city}, ${state.userLocation.countryCode}`
+    return state.location ? state.location : `${state.userLocation.city}, ${state.userLocation.countryCode}`
   }
 }
 
