@@ -1,6 +1,6 @@
 <template>
   <div class="search-wrapper city" v-click-outside="outsideClick" :class="{header: isHeader}">
-    <input class="input" type="text" placeholder="New York, US" v-model="location" @keyup.enter="enterClick"
+    <input class="input" type="text" placeholder="New York" v-model="location" @keyup.enter="enterClick"
            :class="{error: isLocationError, header: isHeader, text: location}"/>
     <div class="label" v-if="isHeader && location">Location</div>
     <div class="search-results" v-if="location && cities.length">
@@ -17,7 +17,7 @@ export default {
   props: {
     placeholder: {
       require: false,
-      default: 'New York, US'
+      default: 'New York'
     },
     isHeader: {
       require: false,
@@ -68,10 +68,10 @@ export default {
   methods: {
     async setLocation(city) {
       if (this.native) {
-        this.nativeValue = `${city.city}, ${city.region ? city.region : city.countryCode}`
-        this.$emit('change', `${city.city}, ${city.region ? city.region : city.countryCode}`)
+        this.nativeValue = `${city.city}`
+        this.$emit('change', `${city.city}`)
       } else {
-        await this.$store.dispatch('setLocation', `${city.city}, ${city.region ? city.region : city.countryCode}`)
+        await this.$store.dispatch('setLocation', `${city.city}`)
         await this.$store.dispatch('setUserLocation', city)
       }
 

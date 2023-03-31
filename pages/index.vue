@@ -12,7 +12,7 @@
         </div>
         <div class="inputs">
           <KeywordSearch class="hp" :isHeader="false" placeholder="Job, Company or Keyword"/>
-          <CitySearch class="hp" :isHeader="false" placeholder="New York, US"/>
+          <CitySearch class="hp" :isHeader="false" placeholder="New York"/>
           <div class="search" v-if="!fetching" @click="search">Search Jobs</div>
           <div class="search fetching" v-else>Searching...</div>
         </div>

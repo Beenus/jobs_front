@@ -58,6 +58,7 @@ export default {
           email: this.email,
           job: this.keyword,
           location: this.location,
+          region: this.$store.state.userLocation?.region,
           ip: this.$store.state.userIp,
           country: this.$store.state.userOriginalLocation?.country,
           timezone: this.$store.state.userOriginalLocation?.timezone,
