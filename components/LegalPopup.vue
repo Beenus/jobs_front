@@ -65,6 +65,8 @@ export default {
   }
 
   &.email {
+    background: rgba(0,0,0,.5);
+
     @media (max-width: $screen-xs-max) {
       padding: 15px;
     }
