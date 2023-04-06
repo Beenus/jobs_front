@@ -36,16 +36,29 @@ export default {
     isFetching() {
       return this.$store.state.jobs.fetching || this.$store.state.pages.fetching
     },
-    isShowLegalPopup () {
+    isShowLegalPopup() {
       return this.$store.state.isShowLegalPopup
     },
   },
   mounted() {
     this.$store.dispatch('hideSubscribe', this.$cookies.get('email_subs_hide'))
+    if (this.$route.query?.legal) {
+      switch (this.$route.query?.legal) {
+        case 'terms':
+        case 'privacy':
+        case 'advertiserDisclosure':
+          this.$store.dispatch('showLegalPopup', this.$route.query?.legal)
+          break
+        default:
+          break
+      }
+    }
 
-    if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')){
-      setTimeout(()=>{
-        this.$store.dispatch('showLegalPopup', 'email')
+    if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')) {
+      setTimeout(() => {
+        if (!this.isShowLegalPopup) {
+          this.$store.dispatch('showLegalPopup', 'email')
+        }
       }, 5000)
     }
   },
