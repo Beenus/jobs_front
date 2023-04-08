@@ -57,9 +57,9 @@ export default {
           location: this.location,
           region: this.$store.state.userLocation?.region,
           ip: this.$store.state.userIp,
-          country: this.$store.state.userOriginalLocation?.country,
+          country: this.$store.state.userLocation?.country,
           timezone: this.$store.state.userOriginalLocation?.timezone,
-          countryCode: this.$store.state.userOriginalLocation?.countryCode,
+          countryCode: this.$store.state.userLocation?.countryCode,
         }
 
         await this.$store.dispatch('emailSubscribe', emailData)
