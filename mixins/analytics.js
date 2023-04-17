@@ -3,6 +3,11 @@ export default {
     async registerOutclickMixin(type) {
       const pageType = this.$route.name.toUpperCase()
 
+      if (window) {
+        window.uetq = window.uetq || [];
+        window.uetq.push('event', 'Out Click', {"event_label": "{{Click URL}}", "event_category": "Behavior"});
+      }
+
       await this.$store.dispatch('registerOutclick', {
         type,
         page_type: pageType === 'SLUG' ? 'PAGE' : pageType,
