@@ -80,16 +80,16 @@ export default {
       align-items: center;
       justify-items: center;
       padding: 5px 20px;
-      height: 48px;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 15px;
-      color: #4D5358;
+      height: 40px;
       position: relative;
       text-decoration: none;
       background: #FFFFFF;
-      border: 1px solid #C1C7CD;
+      //border: 1px solid #C1C7CD;
       border-radius: 50px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+      color: #4D5358;
 
       @media (max-width: $screen-xs-max) {
         height: 38px;
@@ -99,16 +99,16 @@ export default {
         background: #e4e6e7;
       }
 
-      &::before {
-        content: '';
-        display: block;
-        height: 15px;
-        pointer-events: none;
-        z-index: 1;
-        background: url("~/assets/img/svg/magnify_glass.svg") center / cover no-repeat;
-        width: 13px;
-        margin-right: 10px;
-      }
+      //&::before {
+      //  content: '';
+      //  display: block;
+      //  height: 15px;
+      //  pointer-events: none;
+      //  z-index: 1;
+      //  background: url("~/assets/img/svg/magnify_glass.svg") center / cover no-repeat;
+      //  width: 13px;
+      //  margin-right: 10px;
+      //}
     }
   }
 }
