@@ -157,7 +157,7 @@ export default {
     transition: .3s;
 
     &.header {
-      font-size: 14px;
+      font-size: 16px;
       padding-left: 40px;
 
       &.text {

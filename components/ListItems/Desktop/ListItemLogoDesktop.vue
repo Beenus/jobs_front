@@ -146,6 +146,7 @@ export default {
 
         @media (max-width: $screen-xs-max) {
           font-size: 20px;
+          line-height: 22px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
