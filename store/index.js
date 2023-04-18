@@ -13,6 +13,8 @@ export const state = () => ({
   isShowLegalPopup: false,
   legalPopupType: null,
   isHideSubscribe: false,
+  globalTemplate: 'ListItemLogo',
+  isHeaderVisible: true,
 })
 
 export const getters = {
@@ -56,6 +58,9 @@ export const mutations = {
   },
   SET_USER_TIMEZONE(state, payload) {
     state.userTimezone = payload
+  },
+  SET_IS_HEADER_VISIBLE(state, payload) {
+    state.isHeaderVisible = payload
   },
 }
 
@@ -157,6 +162,9 @@ export const actions = {
 
   closeLegalPopup({commit}) {
     commit('SET_CLOSE_LEGAL_POPUP')
+  },
+  changeIsHeaderVisible({commit}, payload) {
+    commit('SET_IS_HEADER_VISIBLE', payload)
   },
 }
 

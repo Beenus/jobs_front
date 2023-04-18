@@ -1,7 +1,7 @@
 <template>
   <div class="jobs-page">
-    <PopularPages v-if="!search"/>
-    <div class="list">
+    <PopularPages :top="true" v-if="isMobileWidth && !search"/>
+    <div class="list" :class="{short: shortTemplate}">
       <div class="sidebar left"></div>
       <div class="container">
         <div class="title-sort">
@@ -11,9 +11,14 @@
 
           <div class="sort-counting"></div>
         </div>
-        <ListWrapper :isMobileWidth="isMobileWidth"/>
+        <ListWrapper :isMobileWidth="isMobileWidth" :template="template"/>
       </div>
-      <div class="sidebar right"></div>
+      <div class="sidebar right" :class="{short: shortTemplate}">
+        <div class="sidebar-wrap" :class="{headerVisible: isHeaderVisible}" v-if="shortTemplate">
+          <PopularPages/>
+          <Subscribe/>
+        </div>
+      </div>
     </div>
     <PopularPages :bottom="true"/>
   </div>
@@ -87,6 +92,15 @@ export default {
     jobsFetching() {
       return this.$store.state.jobs.fetching
     },
+    template() {
+      return this.$store.state.globalTemplate;
+    },
+    shortTemplate() {
+      return this.template === 'ListItemLogo';
+    },
+    isHeaderVisible() {
+      return this.$store.state.isHeaderVisible
+    },
   },
   methods: {
     onResize() {
@@ -128,8 +142,8 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 15px 40px;
-  background: #F8F9FA;
+  padding: 45px 0 40px;
+  background: #f0f0f0;
 
   @media (max-width: $screen-sm-max) {
     padding-top: 35px;
@@ -139,12 +153,22 @@ export default {
     width: 100%;
     max-width: 195px;
 
-    @media (max-width: $screen-md-max) {
+    @media (max-width: $screen-sm-max) {
       display: none;
     }
 
     &.right {
       padding-left: 36px;
+
+      .sidebar-wrap {
+        position: sticky;
+        top: 15px;
+        transition: .3s;
+
+        &.headerVisible {
+          top: 75px;
+        }
+      }
 
       .ad {
         background: #EBEBEB;
@@ -153,6 +177,12 @@ export default {
         align-items: center;
         width: 100%;
         height: 600px;
+      }
+
+      &.short {
+        max-width: 300px;
+        padding-left: 0;
+        margin-left: 20px;
       }
     }
 
@@ -168,6 +198,21 @@ export default {
     justify-content: center;
     max-width: 1350px;
     width: 100%;
+    @media (max-width: $screen-md-max) {
+      padding: 0 15px;
+    }
+
+    &.short {
+      justify-content: flex-start;
+
+      .container {
+        @media (min-width: $screen-md) {
+          max-width: 640px;
+          margin: 0;
+        }
+
+      }
+    }
   }
 
   .title-sort {

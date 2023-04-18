@@ -1,5 +1,5 @@
 <template>
-  <FixedHeader :hideScrollDown="true">
+  <FixedHeader :hideScrollDown="true" @change="headerFixed">
     <header>
       <div class="main-header">
         <div class="container">
@@ -19,7 +19,7 @@
                 <CitySearch :isHeader="true" placeholder="New York, US" @onEnter="search"/>
                 <div class="search desktop" v-if="!fetching" @click="search">Search</div>
                 <div class="search fetching" v-else>Searching...</div>
-<!--                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>-->
+                <!--                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>-->
               </div>
             </div>
 
@@ -39,7 +39,7 @@ import FixedHeader from "@/components/layout/header/FixedHeader.vue";
 export default {
   name: "Header",
   components: {FixedHeader},
-  props:['isHomepage'],
+  props: ['isHomepage'],
   data() {
     return {
       searchOpen: false,
@@ -60,6 +60,9 @@ export default {
     showPopup() {
       this.$store.dispatch('showLegalPopup', 'email')
     },
+    headerFixed(isHeaderVisible) {
+      this.$store.dispatch('changeIsHeaderVisible', isHeaderVisible)
+    }
   },
 }
 </script>

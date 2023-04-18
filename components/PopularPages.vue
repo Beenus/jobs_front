@@ -1,7 +1,7 @@
 <template>
-  <div v-if="popularPages.length" class="popular-jobs" :class="{bottom}">
+  <div v-if="popularPages.length" class="popular-jobs" :class="{bottom, top}">
     <div class="container">
-      <div class="title">Popular Jobs</div>
+      <div class="title">Popular Searches</div>
       <div class="job-pages-wrapper">
         <div class="job-pages">
           <nuxt-link class="job-page" v-for="(page, index) in popularPages" :to="page.slug" :title="page.name"
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: "PopularPages",
-  props: ['bottom'],
+  props: ['bottom', 'top'],
   computed: {
     popularPages() {
       return this.$store.state.pages.popularPages
@@ -31,9 +31,22 @@ export default {
   width: 100%;
   margin-bottom: 30px;
 
+  @media(max-width: $screen-sm-max) {
+    padding: 0 0 0 15px;
+  }
+
+
   &.bottom {
-    @media(max-width: $screen-xs-max){
+    @media(max-width: $screen-xs-max) {
       margin-top: 20px;
+    }
+  }
+
+  &.top {
+    display: none;
+
+    @media(max-width: $screen-sm-max) {
+      display: block;
     }
   }
 
@@ -99,4 +112,5 @@ export default {
     }
   }
 }
+
 </style>

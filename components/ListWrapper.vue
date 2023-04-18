@@ -2,22 +2,24 @@
   <div class="list-wrapper" v-if="list.length">
     <div class="desktop" v-if="!isMobileWidth">
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
-        <ListItemDesktop :job="job" :index="index+1"/>
-        <div v-if="(index+1) % 10 === 0">
+        <component :is="templateDesktop" :job="job" :index="index+1"/>
+        <div v-if="((index+1) % 10 === 0) && !shortTemplate">
           <Subscribe/>
         </div>
       </div>
     </div>
     <div class="mobile" v-else>
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
-        <ListItemMobile :job="job" :index="index+1"/>
+        <component :is="templateMobile" :job="job" :index="index+1"/>
         <div v-if="(index+1) % 10 === 0">
           <Subscribe/>
         </div>
       </div>
     </div>
-    <div class="show-more" v-if="!isLoading" @click="setPage" ref="showMore">Show More Jobs</div>
-    <div class="show-more" v-else ref="showMore">Loading...</div>
+    <div class="show-more" :class="{new:shortTemplate}" v-if="!isLoading" @click="setPage" ref="showMore">
+      Load more
+    </div>
+    <div class="show-more" :class="{new:shortTemplate}" v-else ref="showMore">Loading...</div>
   </div>
   <div class="list-wrapper" v-else>No Results</div>
 </template>
@@ -32,7 +34,7 @@ export default {
     ListItemDesktop,
     ListItemMobile,
   },
-  props: ['isMobileWidth'],
+  props: ['isMobileWidth', 'template'],
   data() {
     return {
       isShowMore: false,
@@ -52,6 +54,25 @@ export default {
     },
     perPage() {
       return this.$store.state.jobs.perPage
+    },
+    shortTemplate() {
+      return this.template === 'ListItemLogo';
+    },
+    templateDesktop() {
+      switch (this.template) {
+        case 'ListItemLogo':
+          return 'ListItemLogoDesktop'
+        default:
+          return 'ListItemDesktop'
+      }
+    },
+    templateMobile() {
+      switch (this.template) {
+        case 'ListItemLogo':
+          return 'ListItemLogoDesktop'
+        default:
+          return 'ListItemMobile'
+      }
     },
   },
   methods: {
@@ -150,6 +171,21 @@ export default {
       background: #6597ff;
     }
 
+
+    &.new {
+      background: #000000;
+      border-radius: 50px;
+      width: 106px;
+      height: 32px;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 16px;
+      color: #FFFFFF;
+
+      &:hover {
+        background: #232323;
+      }
+    }
   }
 }
 </style>
