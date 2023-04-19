@@ -37,6 +37,10 @@ export default {
 
 
   &.bottom {
+    @media (min-width: $screen-md) {
+      display: none;
+    }
+
     @media(max-width: $screen-xs-max) {
       margin-top: 20px;
     }

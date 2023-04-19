@@ -18,8 +18,12 @@
          @click="registerOutclick" class="arrow-cta"/>
     </div>
     <div class="content-part">
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick" class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick" class="description mobile" v-html="job.description_mobile + '<span>Read More</span>'"/>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
+         v-if="job.salary" class="salary">{{ job.salary }}</a>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
+         class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
+         class="description mobile" v-html="job.description_mobile + '<span>Read More</span>'"/>
       <div class="tags" v-if="job.tags">
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>
@@ -110,7 +114,7 @@ export default {
     display: flex;
     align-items: center;
     padding-bottom: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #EEEEEE;
     padding-right: 20px;
     position: relative;
@@ -139,20 +143,18 @@ export default {
       .title {
         font-weight: 700;
         font-size: 22px;
-        line-height: 20px;
+        line-height: 23px;
         color: #246BFD;
-        margin-bottom: 10px;
         text-decoration: none;
+        margin-bottom: 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
 
         @media (max-width: $screen-xs-max) {
           font-size: 20px;
-          line-height: 23px;
-          margin-bottom: 5px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
         }
       }
 
@@ -191,6 +193,17 @@ export default {
 
   .content-part {
     padding-left: 85px;
+
+    .salary {
+      display: flex;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 18px;
+      color: #000000;
+      margin-bottom: 15px;
+      text-decoration: none;
+
+    }
 
     .description {
       font-weight: 300;
