@@ -1,10 +1,6 @@
 <template>
   <div class="list-item-logo-desktop" :class="{visited: isVisited}">
     <div class="top-part">
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
-         class="logo">
-        <img :src="job.logo ? job.logo : '/img/job_icon.svg'" :alt="job.jobtitle">
-      </a>
       <div class="title-location">
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick" class="title">{{ job.jobtitle }}</a>
@@ -14,19 +10,34 @@
              @click="registerOutclick" class="location">| {{ job.formattedLocation }}</a>
         </div>
       </div>
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-         @click="registerOutclick" class="arrow-cta"/>
+      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
+         class="logo">
+        <img :src="job.logo ? job.logo : '/img/job_icon.svg'" :alt="job.jobtitle">
+      </a>
     </div>
     <div class="content-part">
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
-         v-if="job.salary" class="salary">{{ job.salary }}</a>
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
-         class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
-      <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
-         class="description mobile" v-html="job.description_mobile + '<span>Read More</span>'"/>
-      <div class="tags" v-if="job.tags">
+      <div class="left-part">
+        <!--        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"-->
+        <!--           @click="registerOutclick"-->
+        <!--           v-if="job.salary" class="salary">{{ job.salary }}</a>-->
+        <div class="tags" v-if="job.tags">
+          <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+             @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>
+        </div>
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-           @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>
+           @click="registerOutclick"
+           class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
+        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+           @click="registerOutclick"
+           class="description mobile" v-html="job.description_mobile + '<span>Read More</span>'"/>
+      </div>
+      <div class="right-part">
+        <CTA :link="job.url" :title="job.jobtitle" :onMouseDown="job.onmousedown"
+             @click.native="registerOutclick" class="big desktop" text="More Info"/>
+        <CTA text="View Salary & More Info" :link="job.url" class="mobile" target="_blank" :onMouseDown="job.onmousedown"
+             @click.native="registerOutclick"/>
+        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+           @click="registerOutclick" class="link">View Salary</a>
       </div>
     </div>
   </div>
@@ -113,10 +124,10 @@ export default {
   .top-part {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 15px;
     margin-bottom: 20px;
     border-bottom: 1px solid #EEEEEE;
-    padding-right: 20px;
     position: relative;
 
     .logo {
@@ -129,7 +140,7 @@ export default {
       align-items: center;
       border: 1px solid #EEEEEE;
       border-radius: 16px;
-      margin-right: 20px;
+      margin-left: 15px;
 
       img {
         max-width: 40px;
@@ -144,7 +155,7 @@ export default {
         font-weight: 700;
         font-size: 22px;
         line-height: 23px;
-        color: #246BFD;
+        color: #282828;
         text-decoration: none;
         margin-bottom: 5px;
         overflow: hidden;
@@ -165,15 +176,15 @@ export default {
           font-weight: 600;
           font-size: 15px;
           line-height: 13px;
-          color: #FF5AA5;
-          text-decoration: none;
+          color: #9E9E9E;
+          text-decoration-line: underline;
         }
 
         .location {
           font-weight: 600;
           font-size: 15px;
           line-height: 13px;
-          color: #FF5AA5;
+          color: #9E9E9E;
           text-decoration: none;
         }
       }
@@ -192,7 +203,55 @@ export default {
   }
 
   .content-part {
-    padding-left: 85px;
+    display: flex;
+
+    @media (max-width: $screen-xs-max) {
+      flex-flow: column;
+    }
+
+    .left-part {
+      margin-right: 30px;
+
+      @media (max-width: $screen-xs-max) {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+    }
+
+    .right-part {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: center;
+
+      .desktop {
+        @media (max-width: $screen-xs-max) {
+          display: none;
+        }
+      }
+      .mobile {
+        &.cta {
+          max-width: 100%;
+          width: 100%;
+        }
+        @media (min-width: $screen-sm) {
+          display: none;
+        }
+      }
+
+      .link {
+        margin-top: 10px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 100%;
+        color: #262626;
+        text-decoration: underline;
+
+        @media (max-width: $screen-xs-max) {
+          display: none;
+        }
+      }
+    }
 
     .salary {
       display: flex;
@@ -209,7 +268,7 @@ export default {
       font-weight: 300;
       font-size: 15px;
       line-height: 20px;
-      color: #262626;
+      color: #5F5F5F;
       text-decoration: none;
 
       :deep(span) {
@@ -234,13 +293,13 @@ export default {
     }
 
     .tags {
-      margin-top: 15px;
+      margin-bottom: 15px;
       display: flex;
       gap: 8px;
       flex-flow: row wrap;
 
       .tag {
-        background: #00FFA3;
+        background: #EEF4FF;
         border-radius: 7px;
         font-size: 11px;
         line-height: 15px;
@@ -248,7 +307,7 @@ export default {
         justify-content: center;
         align-items: center;
         text-transform: capitalize;
-        color: #000000;
+        color: #246BFD;
         padding: 5px;
         height: 24px;
         text-decoration: none;
