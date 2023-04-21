@@ -20,10 +20,10 @@
         <!--        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"-->
         <!--           @click="registerOutclick"-->
         <!--           v-if="job.salary" class="salary">{{ job.salary }}</a>-->
-        <div class="tags" v-if="job.tags">
-          <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-             @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>
-        </div>
+<!--        <div class="tags" v-if="job.tags">-->
+<!--          <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"-->
+<!--             @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>-->
+<!--        </div>-->
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick"
            class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
