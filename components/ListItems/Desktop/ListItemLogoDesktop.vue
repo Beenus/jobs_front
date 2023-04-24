@@ -1,13 +1,16 @@
 <template>
-  <div class="list-item-logo-desktop" :class="{visited: isVisited}">
+  <div class="list-item-logo-desktop" :class="{ribbon: job.ribbon, visited: isVisited}">
+    <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
+       @click="registerOutclick" class="ribbon" v-if="job.ribbon"
+       :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</a>
     <div class="top-part">
       <div class="title-location">
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick" class="title">{{ job.jobtitle }}</a>
         <div class="company-location">
-          <a @click="setSearch" class="company">{{ job.company }}</a>
+          <a @click="setSearch" class="company">{{ companyShort }}</a>
           <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-             @click="registerOutclick" class="location">| {{ job.formattedLocation }}</a>
+             @click="registerOutclick" class="location">| {{ locationShort }}</a>
         </div>
       </div>
       <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
@@ -17,13 +20,6 @@
     </div>
     <div class="content-part">
       <div class="left-part">
-        <!--        <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"-->
-        <!--           @click="registerOutclick"-->
-        <!--           v-if="job.salary" class="salary">{{ job.salary }}</a>-->
-<!--        <div class="tags" v-if="job.tags">-->
-<!--          <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"-->
-<!--             @click="registerOutclick" class="tag" v-for="tag in job.tags" :key="tag">{{ tag }}</a>-->
-<!--        </div>-->
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick"
            class="description desktop" v-html="job.description + '<span>Read More</span>'"/>
@@ -34,7 +30,8 @@
       <div class="right-part">
         <CTA :link="job.url" :title="job.jobtitle" :onMouseDown="job.onmousedown"
              @click.native="registerOutclick" class="big desktop" text="More Info"/>
-        <CTA text="View Salary & More Info" :link="job.url" class="mobile" target="_blank" :onMouseDown="job.onmousedown"
+        <CTA text="View Salary & More Info" :link="job.url" class="mobile" target="_blank"
+             :onMouseDown="job.onmousedown"
              @click.native="registerOutclick"/>
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick" class="link">View Salary</a>
@@ -85,7 +82,14 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    companyShort() {
+      return this.job.company.length > 10 ? this.job.company.substring(0, 10).concat('...') : this.job.company
+    },
+    locationShort() {
+      return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
+    },
+  },
   mounted() {
     if (process.browser) {
       this.checkVisited()
@@ -99,11 +103,51 @@ export default {
   background: #FFFFFF;
   border-radius: 16px;
   margin-bottom: 12px;
-  padding: 20px 30px;
+  padding: 20px 30px 20px 30px;
   position: relative;
 
   @media (max-width: $screen-xs-max) {
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
+  }
+
+  &.ribbon {
+    padding-top: 30px;
+  }
+
+  .ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 23px;
+    padding: 3px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px 0 8px 0;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1;
+    text-decoration: none;
+
+    &.green {
+      color: #050505;
+      background: #00FFA3;
+    }
+
+    &.purple {
+      color: #fff;
+      background: #EB00FF;
+    }
+
+    &.red {
+      color: #fff;
+      background: #FF5AA5;
+    }
+
+    &.blue {
+      color: #fff;
+      background: #33B1FF;
+    }
   }
 
   &.visited {
@@ -125,9 +169,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 15px;
     position: relative;
 
     .logo {
@@ -170,22 +212,49 @@ export default {
       }
 
       .company-location {
-        margin-top: 5px;
+        display: flex;
+        margin-top: 10px;
 
-        .company {
-          font-weight: 600;
-          font-size: 15px;
-          line-height: 13px;
-          color: #9E9E9E;
-          text-decoration-line: underline;
-        }
-
-        .location {
-          font-weight: 600;
-          font-size: 15px;
+        > a {
+          display: flex;
+          align-items: center;
+          font-weight: 700;
+          font-size: 13px;
           line-height: 13px;
           color: #9E9E9E;
           text-decoration: none;
+          text-transform: uppercase;
+
+          &::before {
+            content: '';
+            display: block;
+            height: 13px;
+            pointer-events: none;
+            margin-right: 5px;
+            margin-top: -2px;
+          }
+
+          &.company {
+            color: #246BFD;
+            cursor: pointer;
+            text-decoration: underline;
+
+            &::before {
+              background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
+              width: 14px;
+              min-width: 14px;
+            }
+          }
+
+          &.location {
+            margin-left: 10px;
+
+            &::before {
+              background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
+              width: 9px;
+              min-width: 9px;
+            }
+          }
         }
       }
     }
@@ -229,11 +298,13 @@ export default {
           display: none;
         }
       }
+
       .mobile {
         &.cta {
           max-width: 100%;
           width: 100%;
         }
+
         @media (min-width: $screen-sm) {
           display: none;
         }
