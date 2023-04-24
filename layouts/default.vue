@@ -54,7 +54,7 @@ export default {
       }
     }
 
-    if (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide')) {
+    if (this.$route.name !== 'index' && (!this.$cookies.get('email_subs') || !this.$cookies.get('email_subs_hide'))) {
       setTimeout(() => {
         if (!this.isShowLegalPopup) {
           this.$store.dispatch('showLegalPopup', 'email')
