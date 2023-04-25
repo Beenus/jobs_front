@@ -8,9 +8,9 @@
         <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
            @click="registerOutclick" class="title">{{ job.jobtitle }}</a>
         <div class="company-location">
-          <a @click="setSearch" class="company">{{ companyShort }}</a>
+          <a @click="setSearch" class="company">{{ job.company }}</a>
           <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown"
-             @click="registerOutclick" class="location">| {{ locationShort }}</a>
+             @click="registerOutclick" class="location">{{ job.formattedLocation }}</a>
         </div>
       </div>
       <a :href="job.url" target="_blank" :title="job.jobtitle" :onmousedown="job.onmousedown" @click="registerOutclick"
@@ -215,6 +215,10 @@ export default {
         display: flex;
         margin-top: 10px;
 
+        @media (max-width: $screen-xs-max) {
+          flex-flow: column;
+        }
+
         > a {
           display: flex;
           align-items: center;
@@ -248,6 +252,11 @@ export default {
 
           &.location {
             margin-left: 10px;
+
+            @media (max-width: $screen-xs-max) {
+              margin-left: 0;
+              margin-top: 5px;
+            }
 
             &::before {
               background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
