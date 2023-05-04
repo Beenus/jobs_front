@@ -1,11 +1,13 @@
 <template>
   <div v-if="popularPages.length" class="popular-jobs" :class="{bottom, top}">
     <div class="container">
-      <div class="title">Popular Searches</div>
-      <div class="job-pages-wrapper">
-        <div class="job-pages">
+      <div class="title">Popular Searches
+        <div class="show-more" v-if="top" @click="open = !open" :class="{open}">Show {{ open ? 'Less' : 'More' }}</div>
+      </div>
+      <div class="job-pages-wrapper" :class="{bottom, top, open}">
+        <div class="job-pages" :class="{bottom, top}">
           <nuxt-link class="job-page" v-for="(page, index) in popularPages" :to="page.slug" :title="page.name"
-                     :key="index">
+                     :key="index" :class="{bottom, top}">
             {{ page.name }}
           </nuxt-link>
         </div>
@@ -18,6 +20,11 @@
 export default {
   name: "PopularPages",
   props: ['bottom', 'top'],
+  data() {
+    return {
+      open: false,
+    }
+  },
   computed: {
     popularPages() {
       return this.$store.state.pages.popularPages
@@ -51,14 +58,48 @@ export default {
 
     @media(max-width: $screen-sm-max) {
       display: block;
+      padding-right: 15px;
+      margin-bottom: 20px;
     }
   }
 
   .title {
     font-weight: 500;
-    font-size: 23px;
-    color: #000000;
+    font-size: 18px;
+    line-height: 15px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    .show-more {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      display: flex;
+      align-items: center;
+      color: #000000;
+
+      @media (min-width: $screen-xs) {
+        display: none;
+      }
+
+      &::after {
+        content: '';
+        background: url("~/assets/img/svg/arrow_down.svg") no-repeat center;
+        background-size: contain;
+        width: 14px;
+        height: 6px;
+        display: block;
+        transition: .3s;
+        margin-left: 5px;
+      }
+
+      &.open {
+        &::after {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 
   .job-pages {
@@ -69,6 +110,10 @@ export default {
 
     @media (max-width: $screen-xs-max) {
       min-width: 960px;
+
+      &.top {
+        min-width: auto;
+      }
     }
 
     &-wrapper {
@@ -76,6 +121,16 @@ export default {
 
       @media (max-width: $screen-xs-max) {
         overflow: scroll;
+
+        &.top {
+          overflow: hidden;
+          height: 70px;
+          transition: height .3s;
+
+          &.open {
+            height: auto;
+          }
+        }
       }
     }
 
@@ -97,6 +152,14 @@ export default {
 
       @media (max-width: $screen-xs-max) {
         height: 38px;
+
+        &.top {
+          height: 31px;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 15px;
+          padding: 5px 8px;
+        }
       }
 
       &:hover {

@@ -23,7 +23,8 @@
               </div>
             </div>
 
-            <div class="notification" @click="showPopup">
+            <div class="notification" @click="searchMobile">
+              <div class="text">Search Jobs</div>
               <div class="icon"/>
             </div>
           </div>
@@ -88,8 +89,6 @@ export default {
     @media (max-width: $screen-xs-max) {
       width: 100%;
       margin-right: 0;
-      justify-content: center;
-      padding-left: 45px;
     }
 
     .menu-button {
@@ -110,6 +109,10 @@ export default {
       display: flex;
       max-height: 50px;
       max-width: 225px;
+
+      @media (max-width: $screen-xs-max) {
+        max-width: 205px;
+      }
 
       img {
         margin-top: 4px;
@@ -207,9 +210,34 @@ export default {
     min-height: 28px;
     cursor: pointer;
     margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @media (max-width: $screen-xs-max) {
+      max-width: 130px;
+      height: 34px;
+      width: 100%;
+      border: 2px solid #FFFFFF;
+      border-radius: 30px;
+      padding: 0 10px 0 0 ;
+    }
 
     &:hover {
       opacity: 0.9;
+    }
+
+    .text {
+      display: none;
+
+      @media (max-width: $screen-xs-max) {
+        display: block;
+        white-space: nowrap;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        color: #FFFFFF;
+      }
     }
 
     &::before {
@@ -218,6 +246,14 @@ export default {
       background: url("~/assets/img/svg/notif.svg") center / contain no-repeat;
       min-width: 30px;
       min-height: 28px;
+
+
+      @media (max-width: $screen-xs-max) {
+        background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
+        min-width: 17px;
+        min-height: 17px;
+        margin-right: 5px;
+      }
     }
   }
 }
