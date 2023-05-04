@@ -3,6 +3,9 @@
     <div class="desktop" v-if="!isMobileWidth">
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateDesktop" :job="job" :index="index+1"/>
+        <div v-if="index===4">
+          <Suggestions :top="true"/>
+        </div>
         <div v-if="((index+1) % 10 === 0) && !shortTemplate">
           <Subscribe/>
         </div>
@@ -11,6 +14,9 @@
     <div class="mobile" v-else>
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateMobile" :job="job" :index="index+1"/>
+        <div v-if="index===4">
+          <Suggestions :top="true"/>
+        </div>
         <div v-if="(index+1) % 10 === 0">
           <Subscribe/>
         </div>
