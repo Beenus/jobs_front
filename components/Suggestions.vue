@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isRouteCorrect && suggestions && suggestions.length" class="suggestions" :class="{bottom, top}">
+  <div v-if="suggestions && suggestions.length" class="suggestions" :class="{bottom, top}">
     <div class="container">
       <div class="title">Related Jobs
 <!--        <div class="show-more" v-if="top" @click="open = !open" :class="{open}">Show {{ open ? 'Less' : 'More' }}</div>-->
@@ -26,9 +26,6 @@ export default {
     }
   },
   computed: {
-    isRouteCorrect() {
-      return this.$nuxt.$route.name === 'slug'
-    },
     suggestions() {
       return this.pageData.suggestions?.split(',')
     },
@@ -158,7 +155,7 @@ export default {
         &.top {
           height: 31px;
           font-weight: 500;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 15px;
           padding: 5px 8px;
         }
