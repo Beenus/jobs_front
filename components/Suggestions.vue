@@ -148,6 +148,7 @@ export default {
       line-height: 15px;
       color: #4D5358;
       cursor: pointer;
+      text-transform: capitalize;
 
       @media (max-width: $screen-xs-max) {
         height: 38px;
