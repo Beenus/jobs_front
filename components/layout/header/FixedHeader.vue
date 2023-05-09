@@ -1,7 +1,7 @@
 <template>
   <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= 50}]">
     <slot/>
-    <div class="mobile-search-location">
+    <div class="mobile-search-location" v-if="!isHomepage">
       <div class="inputs">
         <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
         <CitySearch class="fixedHeader" :isHeader="true" placeholder="New York, US" @onEnter="search"/>
@@ -49,6 +49,11 @@ export default {
   mounted() {
     this.main();
     this.registerEvent();
+  },
+  computed: {
+    isHomepage() {
+      return this.$route.path === '/'
+    }
   },
   beforeDestroy() {
     this.removeEvent();
