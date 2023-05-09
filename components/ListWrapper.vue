@@ -121,8 +121,8 @@ export default {
       if (!this.isExitShow && !isExitShowed) {
         if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
           this.$store.dispatch('showLegalPopup', 'exit')
-          // this.isExitShow = true
-          // this.$cookies.set('exit_popup', true)
+          this.isExitShow = true
+          this.$cookies.set('exit_popup', true)
         }
       }
     },
