@@ -43,8 +43,8 @@ export default {
   color: #000;
   text-decoration: none;
   font-weight: 600;
-  background: #FEC461;
-  border-radius: 25px;
+  background: linear-gradient(90deg, #FEC461 0%, #FFD792 100%);
+  border-radius: 8px;
   transition: .3s;
 
   //
@@ -74,15 +74,15 @@ export default {
   //}
   //
 
-  &::after {
-    content: '';
-    display: block;
-    pointer-events: none;
-    background: url("~/assets/img/svg/arrow-top-right-icon.svg") center / cover no-repeat;
-    width: 10px;
-    height: 10px;
-    margin-left: 7px;
-  }
+  //&::after {
+  //  content: '';
+  //  display: block;
+  //  pointer-events: none;
+  //  background: url("~/assets/img/svg/arrow-top-right-icon.svg") center / cover no-repeat;
+  //  width: 10px;
+  //  height: 10px;
+  //  margin-left: 7px;
+  //}
 
   &.big {
     width: 150px;

@@ -2,7 +2,7 @@
   <div v-if="suggestions && suggestions.length" class="suggestions" :class="{bottom, top}">
     <div class="container">
       <div class="title">Related Jobs
-<!--        <div class="show-more" v-if="top" @click="open = !open" :class="{open}">Show {{ open ? 'Less' : 'More' }}</div>-->
+        <div class="show-more" v-if="top" @click="open = !open" :class="{open}">Show {{ open ? 'Less' : 'More' }}</div>
       </div>
       <div class="job-pages-wrapper" :class="{bottom, top, open}">
         <div class="job-pages" :class="{bottom, top}">
@@ -121,8 +121,8 @@ export default {
 
       @media (max-width: $screen-xs-max) {
         &.top {
-          //overflow: hidden;
-          //height: 70px;
+          overflow: hidden;
+          height: 105px;
           transition: height .3s;
 
           &.open {
@@ -156,7 +156,7 @@ export default {
         &.top {
           height: 31px;
           font-weight: 500;
-          font-size: 12px;
+          font-size: 13px;
           line-height: 15px;
           padding: 5px 8px;
         }

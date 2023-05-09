@@ -3,7 +3,7 @@
     <div class="desktop" v-if="!isMobileWidth">
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateDesktop" :job="job" :index="index+1"/>
-        <div v-if="isRouteCorrect && pageData.suggestions && index===4">
+        <div v-if="isRouteCorrect && pageData.suggestions && index===7">
           <Suggestions :top="true"/>
         </div>
         <div v-if="((index+1) % 10 === 0) && !shortTemplate">
@@ -14,7 +14,7 @@
     <div class="mobile" v-else>
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateMobile" :job="job" :index="index+1"/>
-        <div v-if="isRouteCorrect && pageData.suggestions && index===4">
+        <div v-if="isRouteCorrect && pageData.suggestions && index===7">
           <Suggestions :top="true"/>
         </div>
         <div v-if="(index+1) % 10 === 0 && !pageData.suggestions">
@@ -68,7 +68,8 @@ export default {
       return this.$store.state.jobs.perPage
     },
     shortTemplate() {
-      return this.template === 'ListItemLogo';
+      // return this.template === 'ListItemLogo';
+      return true;
     },
     templateDesktop() {
       switch (this.template) {
@@ -120,8 +121,8 @@ export default {
       if (!this.isExitShow && !isExitShowed) {
         if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {
           this.$store.dispatch('showLegalPopup', 'exit')
-          this.isExitShow = true
-          this.$cookies.set('exit_popup', true)
+          // this.isExitShow = true
+          // this.$cookies.set('exit_popup', true)
         }
       }
     },

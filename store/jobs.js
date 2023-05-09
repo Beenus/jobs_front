@@ -83,6 +83,24 @@ export const actions = {
       commit('SET_FETCHING', false)
     }
   },
+
+  async getJobsExit({rootState}, payload) {
+    const params = {
+      ip: rootState.userIp,
+      search: payload.keyword,
+      location: rootState.userLocation.city,
+      countryCode: rootState.userLocation.countryCode,
+      region: rootState.userLocation.region,
+      perPage: 10,
+      page: 1,
+      jobsLimit: 3,
+    }
+
+    const {data} = await this.$axios.get('jobs', {params})
+
+    return data?.list
+  },
+
   clearJobs({commit}, payload) {
     commit('SET_JOBS_CLEAR')
   },

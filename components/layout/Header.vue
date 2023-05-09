@@ -23,8 +23,8 @@
               </div>
             </div>
 
-            <div class="notification" @click="searchMobile">
-              <div class="text">Search Jobs</div>
+            <div class="notification" @click="showPopup">
+              <!--              <div class="text">Search Jobs</div>-->
               <div class="icon"/>
             </div>
           </div>
@@ -110,9 +110,9 @@ export default {
       max-height: 50px;
       max-width: 225px;
 
-      @media (max-width: $screen-xs-max) {
-        max-width: 205px;
-      }
+      //@media (max-width: $screen-xs-max) {
+      //  max-width: 205px;
+      //}
 
       img {
         margin-top: 4px;
@@ -210,18 +210,18 @@ export default {
     min-height: 28px;
     cursor: pointer;
     margin-left: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    @media (max-width: $screen-xs-max) {
-      max-width: 130px;
-      height: 34px;
-      width: 100%;
-      border: 2px solid #FFFFFF;
-      border-radius: 30px;
-      padding: 0 10px 0 0 ;
-    }
+    //display: flex;
+    //align-items: center;
+    //justify-content: flex-end;
+    //
+    //@media (max-width: $screen-xs-max) {
+    //  max-width: 130px;
+    //  height: 34px;
+    //  width: 100%;
+    //  border: 2px solid #FFFFFF;
+    //  border-radius: 30px;
+    //  padding: 0 10px 0 0 ;
+    //}
 
     &:hover {
       opacity: 0.9;
@@ -247,13 +247,12 @@ export default {
       min-width: 30px;
       min-height: 28px;
 
-
-      @media (max-width: $screen-xs-max) {
-        background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
-        min-width: 17px;
-        min-height: 17px;
-        margin-right: 5px;
-      }
+      //  @media (max-width: $screen-xs-max) {
+      //    background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
+      //    min-width: 17px;
+      //    min-height: 17px;
+      //    margin-right: 5px;
+      //  }
     }
   }
 }

@@ -79,7 +79,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 0 30px 30px;
+  padding: 20px 20px 20px 30px;
   margin-bottom: 10px;
   background: #FFFFFF;
   position: relative;
@@ -88,7 +88,7 @@ export default {
   border-radius: 8px;
 
   &.ribbon {
-    padding-top: 40px;
+    padding-top: 50px;
   }
 
   &.visited {
@@ -114,46 +114,49 @@ export default {
       display: flex;
       font-weight: 700;
       font-size: 24px;
-      line-height: 28px;
+      line-height: 24px;
       color: #000;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       text-decoration: none;
     }
 
     .company-location {
       display: flex;
       align-items: center;
-      padding-bottom: 13px;
-      margin-bottom: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
       border-bottom: 1px solid #EEEEEE;
 
       > a {
-        display: flex;
-        align-items: center;
         font-weight: 700;
         font-size: 13px;
         line-height: 13px;
-        color: #000;
+        color: #9E9E9E;
         text-decoration: none;
         text-transform: uppercase;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
 
         &::before {
           content: '';
-          display: block;
-          height: 13px;
+          display: inline-block;
+          height: 12px;
           pointer-events: none;
           margin-right: 5px;
-          margin-top: -2px;
         }
 
         &.company {
           color: #246BFD;
           cursor: pointer;
           text-decoration: underline;
+          max-width: 170px;
 
           &::before {
-            background: url("~/assets/img/svg/company_dark.svg") center / cover no-repeat;
-            width: 14px;
+            background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
+            width: 13px;
           }
         }
 
@@ -161,7 +164,7 @@ export default {
           margin-left: 10px;
 
           &::before {
-            background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
+            background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
             width: 9px;
           }
         }
@@ -176,15 +179,14 @@ export default {
       color: #262626;
 
       :deep(span) {
-        color: #246bfd;
+        color: #246BFD;
         text-decoration: underline;
       }
     }
   }
 
   .cta-part {
-    max-width: 270px;
-    width: 100%;
+    margin-left: 20px;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -206,21 +208,21 @@ export default {
 
   .ribbon {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 20px;
+    left: 30px;
     height: 25px;
     padding: 3px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px 0 0 0;
+    border-radius: 5px;
     font-weight: 500;
     font-size: 13px;
     line-height: 1;
     text-decoration: none;
 
     &::before {
-      content: '';
+      //content: '';
       display: block;
       height: 12px;
       pointer-events: none;
@@ -231,7 +233,7 @@ export default {
 
     &.green {
       color: #050505;
-      background: #00FFA3;
+      background: linear-gradient(90deg, #00FFA3 0%, #88FFD4 100%);
 
       &::before {
         background: url("~/assets/img/svg/ribbons/salary.svg") center / cover no-repeat;
@@ -240,16 +242,16 @@ export default {
 
     &.purple {
       color: #fff;
-      background: #EB00FF;
+      background: linear-gradient(90deg, #EB00FF 0%, #F583FF 100%);
 
       &::before {
         background: url("~/assets/img/svg/ribbons/experience.svg") center / cover no-repeat;
       }
     }
 
-    &.orange {
+    &.blue {
       color: #fff;
-      background: #FF9D29;
+      background: linear-gradient(90deg, #33B1FF 0%, #80CEFF 100%);
 
       &::before {
         width: 7px;
@@ -259,7 +261,7 @@ export default {
 
     &.red {
       color: #fff;
-      background: #F75555;
+      background: linear-gradient(90deg, #FF5AA5 0%, #FF97C6 100%);
 
       &::before {
         width: 9px;

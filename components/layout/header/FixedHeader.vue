@@ -1,8 +1,14 @@
 <template>
-  <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= 80}]">
+  <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= 50}]">
     <slot/>
-    <div class="mobile-search-location" v-if="search && lastScrollTop >= 200" @click="searchMobile">
-      {{ search }} in {{ location }}
+    <div class="mobile-search-location">
+      <div class="inputs">
+        <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
+        <CitySearch class="fixedHeader" :isHeader="true" placeholder="New York, US" @onEnter="search"/>
+        <div class="search desktop" v-if="!fetching" @click="search"/>
+      </div>
+
+      <PopularPages/>
     </div>
   </div>
 </template>
@@ -36,16 +42,9 @@ export default {
     return {
       check: null,
       isFixed: false,
-      lastScrollTop: 0
+      lastScrollTop: 0,
+      fetching: false,
     };
-  },
-  computed: {
-    search() {
-      return this.$store.state.search
-    },
-    location() {
-      return this.$store.getters['location'];
-    },
   },
   mounted() {
     this.main();
@@ -83,7 +82,10 @@ export default {
     },
     removeEvent() {
       window.removeEventListener('scroll', this.check);
-    }
+    },
+    async search() {
+      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: true, force: true, loader: true})
+    },
   },
 }
 </script>
@@ -98,31 +100,120 @@ export default {
   transition: .3s;
 
   //@media (max-width: $screen-xs-max) {
-    position: fixed;
+  position: fixed;
 
-    &.scrolled {
-      transform: translateY(-100%);
+  &.scrolled {
+    transform: translateY(-100%);
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: $screen-xs-max) {
+      transform: translateY(-55px);
     }
-    &.vue-fixed-header--isFixed {
-      transform: translateY(0);
-    }
+  }
+
+  &.vue-fixed-header--isFixed {
+    transform: translateY(0);
+  }
+
   //}
 
   .mobile-search-location {
     display: none;
 
     @media (max-width: $screen-xs-max) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
       width: 100%;
-      background: #FFFFFF;
-      box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
-      height: 30px;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 16px;
-      color: #000000;
+      background: #f0f0f0;
+      padding: 15px 0 15px 15px;
+
+      .inputs {
+        display: flex;
+        width: 100%;
+        padding-right: 15px;
+
+        .fixedHeader {
+          margin-bottom: 0;
+
+          &:nth-child(1) {
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            border-radius: 8px 0 0 8px;
+          }
+
+          &:nth-child(2) {
+            background: #FFFFFF;
+            border: 2px solid #000000;
+            border-radius: 0;
+          }
+
+          &::before {
+            content: none;
+          }
+
+          :deep(input) {
+            height: 34px;
+            padding: 7px 11px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+            color: #000000;
+          }
+
+          :deep(.label) {
+            display: none;
+          }
+        }
+
+        .search {
+          background: #000000;
+          border: 2px solid #000000;
+          border-radius: 0 8px 8px 0;
+          min-width: 32px;
+          height: 38px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &::before {
+            display: block;
+            content: '';
+            background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
+            min-width: 17px;
+            min-height: 17px;
+          }
+        }
+      }
+
+      :deep(.popular-jobs) {
+        padding-left: 0;
+        margin: 10px 0 0 0;
+
+        .title {
+          display: none;
+        }
+
+        .job-pages-wrapper {
+          .job-pages {
+            flex-flow: row nowrap;
+
+            .job-page {
+              height: 31px;
+              padding: 8px;
+
+              &::before {
+                content: '';
+                display: block;
+                height: 15px;
+                pointer-events: none;
+                z-index: 1;
+                background: url("~/assets/img/svg/magnify_glass_dark.svg") center / cover no-repeat;
+                width: 13px;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

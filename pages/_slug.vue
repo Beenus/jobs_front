@@ -75,7 +75,8 @@ export default {
       return this.$store.state.globalTemplate;
     },
     shortTemplate() {
-      return this.template === 'ListItemLogo';
+      // return this.template === 'ListItemLogo';
+      return true;
     },
     isHeaderVisible() {
       return this.$store.state.isHeaderVisible
@@ -119,6 +120,10 @@ export default {
 
   @media (max-width: $screen-sm-max) {
     padding: 35px 0 0;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    padding: 95px 0 0;
   }
 
   .sidebar {
@@ -198,6 +203,10 @@ export default {
   .title-sort {
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $screen-xs-max) {
+      display: none;
+    }
 
     .title {
       font-weight: 600;

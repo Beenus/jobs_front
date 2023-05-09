@@ -58,7 +58,7 @@ export default {
     locationShort() {
       return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
     },
-    descriptionShort(){
+    descriptionShort() {
       return this.job.description.length > 140 ? this.job.description.substring(0, 140).concat('<span>...Read More</span>') : this.job.description
     }
   },
@@ -81,6 +81,10 @@ export default {
   border: 1px solid #C6C6C6;
   border-radius: 5px;
 
+  &.ribbon {
+    padding-top: 50px;
+  }
+
   &.visited {
     &::after {
       content: '';
@@ -98,32 +102,32 @@ export default {
 
   .ribbon {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 20px;
+    left: 20px;
     height: 25px;
-    padding: 3px 25px;
+    padding: 3px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0 4px 0 8px;
+    border-radius: 5px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1;
     text-decoration: none;
 
     &::before {
-      content: '';
+      //content: '';
       display: block;
       height: 12px;
       pointer-events: none;
       width: 12px;
       margin-right: 5px;
-      margin-top: -1px;
+      margin-top: -2px;
     }
 
     &.green {
       color: #050505;
-      background: #00FFA3;
+      background: linear-gradient(90deg, #00FFA3 0%, #88FFD4 100%);
 
       &::before {
         background: url("~/assets/img/svg/ribbons/salary.svg") center / cover no-repeat;
@@ -132,27 +136,29 @@ export default {
 
     &.purple {
       color: #fff;
-      background: #EB00FF;
+      background: linear-gradient(90deg, #EB00FF 0%, #F583FF 100%);
 
       &::before {
         background: url("~/assets/img/svg/ribbons/experience.svg") center / cover no-repeat;
       }
     }
 
-    &.orange {
+    &.blue {
       color: #fff;
-      background: #FF9D29;
+      background: linear-gradient(90deg, #33B1FF 0%, #80CEFF 100%);
 
       &::before {
+        width: 7px;
         background: url("~/assets/img/svg/ribbons/immediate.svg") center / cover no-repeat;
       }
     }
 
     &.red {
       color: #fff;
-      background: #F75555;
+      background: linear-gradient(90deg, #FF5AA5 0%, #FF97C6 100%);
 
       &::before {
+        width: 9px;
         background: url("~/assets/img/svg/ribbons/demand.svg") center / cover no-repeat;
       }
     }
@@ -177,30 +183,35 @@ export default {
     text-transform: uppercase;
 
     > a {
-      display: flex;
-      align-items: center;
       font-weight: 700;
       font-size: 13px;
       line-height: 13px;
-      color: #000;
+      color: #9E9E9E;
       text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
 
       &::before {
         content: '';
-        display: block;
-        height: 16px;
+        display: inline-block;
+        height: 12px;
         pointer-events: none;
         margin-right: 5px;
-        margin-top: -2px;
       }
 
       &.company {
         color: #246BFD;
+        cursor: pointer;
         text-decoration: underline;
+        max-width: 170px;
 
         &::before {
-          background: url("~/assets/img/svg/company_dark.svg") center / cover no-repeat;
-          width: 18px;
+          background: url("~/assets/img/svg/company.svg") center / cover no-repeat;
+          width: 13px;
         }
       }
 
@@ -208,8 +219,8 @@ export default {
         margin-left: 10px;
 
         &::before {
-          background: url("~/assets/img/svg/location_dark.svg") center / cover no-repeat;
-          width: 11px;
+          background: url("~/assets/img/svg/location.svg") center / cover no-repeat;
+          width: 9px;
         }
       }
     }
@@ -219,7 +230,7 @@ export default {
     margin-bottom: 20px;
     font-weight: 300;
     font-size: 16px;
-    color: #262626;
+    color: #5F5F5F;
     line-height: 1.56;
     text-decoration: none;
     overflow: hidden;
@@ -229,7 +240,7 @@ export default {
     -webkit-box-orient: vertical;
 
     :deep(span) {
-      color: #246bfd;
+      color: #246BFD;
       font-weight: bold;
       text-decoration: underline;
     }

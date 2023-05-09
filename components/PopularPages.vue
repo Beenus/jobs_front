@@ -56,7 +56,7 @@ export default {
   &.top {
     display: none;
 
-    @media(max-width: $screen-sm-max) {
+    @media(min-width:$screen-sm )and (max-width: $screen-sm-max) {
       display: block;
       padding-right: 15px;
       margin-bottom: 20px;

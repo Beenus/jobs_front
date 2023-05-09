@@ -27,7 +27,8 @@ export default {
         case 'contact':
           return () => import(`@/components/Legal/ContactUs.vue`)
         case 'exit':
-          return () => import(`@/components/Legal/Exit.vue`)
+          return () => import(`@/components/Legal/ExitSteps.vue`)
+          // return () => import(`@/components/Legal/Exit.vue`)
         case 'email':
         case 'email custom':
           return () => import(`@/components/Legal/Email.vue`)
@@ -60,7 +61,7 @@ export default {
 
   &.exit {
     @media (max-width: $screen-xs-max) {
-      padding: 15px;
+      padding: 0;
     }
   }
 
@@ -89,13 +90,17 @@ export default {
     }
 
     &.exit {
-      background: #246BFD;
+      background: none;
       max-width: 500px;
       min-height: 450px;
       height: auto;
+      padding: 10px 30px;
 
       @media (max-width: $screen-xs-max) {
         padding: 20px;
+        display: flex;
+        align-items: center;
+        min-height: 550px;
       }
 
       .close-trigger {

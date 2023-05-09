@@ -13,7 +13,7 @@ export const state = () => ({
   isShowLegalPopup: false,
   legalPopupType: null,
   isHideSubscribe: false,
-  globalTemplate: 'ListItemLogo',
+  globalTemplate: 'ListItem',
   isHeaderVisible: true,
 })
 
@@ -66,8 +66,8 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit({dispatch, getters}, {req, route}) {
-    let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
-    // const ip = '173.239.211.33' //US
+    // let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
+    const ip = '173.239.211.33' //US
     // const ip = '84.247.59.200' //DE
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
@@ -152,6 +152,12 @@ export const actions = {
   },
   async unsubscribeEmail({commit}, params) {
     const {data} = await this.$axios.post('analytics/email/unsubscribe', params)
+  },
+  async registerExitPopupView({commit}, params) {
+    const {data} = await this.$axios.post('analytics/exit/view', params)
+  },
+  async registerExitPopupClick({commit}, params) {
+    const {data} = await this.$axios.post('analytics/exit/click', params)
   },
   hideSubscribe({commit}, payload) {
     commit('SET_HIDE_SUBSCRIBE', payload)
