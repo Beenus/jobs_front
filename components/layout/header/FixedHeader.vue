@@ -160,7 +160,7 @@ export default {
             height: 34px;
             padding: 7px 11px;
             font-weight: 400;
-            font-size: 12px;
+            font-size: 16px;
             line-height: 16px;
             color: #000000;
           }

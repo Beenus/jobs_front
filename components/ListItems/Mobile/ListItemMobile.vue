@@ -172,7 +172,6 @@ export default {
     line-height: 24px;
     color: #000;
     word-wrap: break-word;
-    text-transform: uppercase;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

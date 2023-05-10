@@ -21,9 +21,6 @@
         </div>
       </div>
     </div>
-    <div class="popular-wrap">
-      <PopularPages :bottom="true"/>
-    </div>
     <ContentBlock v-if="pageData.title && pageData.description" :title="pageData.title"
                   :content="pageData.description" :faq="pageData.faq"/>
   </div>
