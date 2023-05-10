@@ -166,16 +166,16 @@ export default {
         background: #e4e6e7;
       }
 
-      //&::before {
-      //  content: '';
-      //  display: block;
-      //  height: 15px;
-      //  pointer-events: none;
-      //  z-index: 1;
-      //  background: url("~/assets/img/svg/magnify_glass.svg") center / cover no-repeat;
-      //  width: 13px;
-      //  margin-right: 10px;
-      //}
+      &::before {
+        content: '';
+        display: block;
+        height: 15px;
+        pointer-events: none;
+        z-index: 1;
+        background: url("~/assets/img/svg/magnify_glass_blue.svg") center / cover no-repeat;
+        width: 13px;
+        margin-right: 10px;
+      }
     }
   }
 }

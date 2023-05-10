@@ -11,7 +11,7 @@
          class="location">{{ locationShort }}</a>
     </div>
     <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="description"
-       v-html="descriptionShort"/>
+       v-html="descriptionShort + '...<span>Read More</span>'"/>
     <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onMouseDown="job.onmousedown"
          @click.native="registerOutclick"/>
   </div>
@@ -59,7 +59,7 @@ export default {
       return this.job.formattedLocation.length > 14 ? this.job.formattedLocation.substring(0, 14).concat('...') : this.job.formattedLocation
     },
     descriptionShort() {
-      return this.job.description.length > 140 ? this.job.description.substring(0, 140).concat('<span>...Read More</span>') : this.job.description
+      return this.job.description.length > 100 ? this.job.description.substring(0, 100) : this.job.description
     }
   },
   mounted() {
@@ -76,7 +76,7 @@ export default {
   flex-flow: column;
   margin-bottom: 10px;
   position: relative;
-  padding: 30px 20px 25px;
+  padding: 20px;
   background: #FFFFFF;
   border: 1px solid #C6C6C6;
   border-radius: 5px;
@@ -165,21 +165,25 @@ export default {
   }
 
   .title {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-decoration: none;
     font-weight: 700;
     font-size: 22px;
     line-height: 24px;
     color: #000;
     word-wrap: break-word;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   .company-location {
     display: flex;
     align-items: center;
-    padding-bottom: 20px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 20px;
     text-transform: uppercase;
 
     > a {
@@ -233,22 +237,17 @@ export default {
     color: #5F5F5F;
     line-height: 1.56;
     text-decoration: none;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    //-webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
 
     :deep(span) {
       color: #246BFD;
       font-weight: bold;
-      text-decoration: underline;
     }
   }
 
   .cta {
     max-width: 100%;
     width: 100%;
+    height: 44px;
   }
 }
 </style>

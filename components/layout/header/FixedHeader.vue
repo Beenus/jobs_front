@@ -203,8 +203,11 @@ export default {
             flex-flow: row nowrap;
 
             .job-page {
-              height: 31px;
-              padding: 8px;
+              height: 40px;
+              padding: 8px 15px;
+              font-weight: 500;
+              font-size: 13px;
+              line-height: 12px;
 
               &::before {
                 content: '';
@@ -212,7 +215,7 @@ export default {
                 height: 15px;
                 pointer-events: none;
                 z-index: 1;
-                background: url("~/assets/img/svg/magnify_glass_dark.svg") center / cover no-repeat;
+                background: url("~/assets/img/svg/magnify_glass_blue.svg") center / cover no-repeat;
                 width: 13px;
                 margin-right: 10px;
               }

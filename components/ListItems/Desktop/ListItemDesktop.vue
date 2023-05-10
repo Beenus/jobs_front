@@ -116,16 +116,14 @@ export default {
       font-size: 24px;
       line-height: 24px;
       color: #000;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       text-decoration: none;
     }
 
     .company-location {
       display: flex;
       align-items: center;
-      padding-bottom: 15px;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #EEEEEE;
+      margin-bottom: 15px;
 
       > a {
         font-weight: 700;

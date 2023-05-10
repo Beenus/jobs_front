@@ -38,11 +38,6 @@ export default {
   width: 100%;
   margin-bottom: 30px;
 
-  @media(max-width: $screen-sm-max) {
-    padding: 0 0 0 15px;
-  }
-
-
   &.bottom {
     @media (min-width: $screen-md) {
       display: none;
@@ -50,6 +45,7 @@ export default {
 
     @media(max-width: $screen-xs-max) {
       margin-top: 20px;
+      padding-left: 0;
     }
   }
 
