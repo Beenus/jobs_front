@@ -80,6 +80,7 @@ export default {
         text-decoration: none;
         padding-left: 10px;
         position: relative;
+        cursor: pointer;
 
         &:hover {
           &:before {
@@ -92,7 +93,6 @@ export default {
             height: 6px;
             border-radius: 50%;
             background: #E5C35A;
-            cursor: pointer;
           }
         }
       }
