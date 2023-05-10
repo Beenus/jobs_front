@@ -5,7 +5,7 @@
         <div class="container">
           <div class="header-wrapper">
             <div class="logo-menu">
-              <div class="menu-button"></div>
+              <div class="menu-button" @click="showMenu" :class="{open: isShowMenu}"/>
               <div class="logo">
                 <nuxt-link :to="'/'">
                   <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
@@ -50,6 +50,9 @@ export default {
     fetching() {
       return this.$store.state.jobs.fetching
     },
+    isShowMenu() {
+      return this.$store.state.isShowMenu
+    },
   },
   methods: {
     async search() {
@@ -61,9 +64,12 @@ export default {
     showPopup() {
       this.$store.dispatch('showLegalPopup', 'email')
     },
+    showMenu() {
+      this.$store.dispatch('showMenu')
+    },
     headerFixed(isHeaderVisible) {
       this.$store.dispatch('changeIsHeaderVisible', isHeaderVisible)
-    }
+    },
   },
 }
 </script>
@@ -94,7 +100,7 @@ export default {
     .menu-button {
       margin-right: 15px;
       cursor: pointer;
-      display: none;
+      //display: none;
 
       &::before {
         content: '';
@@ -103,6 +109,12 @@ export default {
         width: 19px;
         height: 15px;
       }
+
+      &.open {
+        &::before {
+          background: url("~/assets/img/svg/close-white.svg") center / contain no-repeat;
+        }
+      }
     }
 
     .logo {
@@ -110,9 +122,9 @@ export default {
       max-height: 50px;
       max-width: 225px;
 
-      //@media (max-width: $screen-xs-max) {
-      //  max-width: 205px;
-      //}
+      @media (max-width: $screen-xs-max) {
+        margin: 0 auto;
+      }
 
       img {
         margin-top: 4px;

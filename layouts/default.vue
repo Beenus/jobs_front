@@ -16,16 +16,18 @@
     </client-only>
     <Cookies/>
     <LegalPopup v-if="isShowLegalPopup"/>
+    <Menu v-if="isShowMenu"/>
   </div>
 </template>
 
 <script>
 import Header from "~/components/layout/Header.vue";
 import Footer from "~/components/layout/Footer.vue";
+import Menu from "@/components/layout/Menu.vue";
 
 export default {
   name: "default",
-  components: {Footer, Header},
+  components: {Menu, Footer, Header},
   computed: {
     isShowContentModal() {
       return this.$store.state.isShowContentModal
@@ -38,6 +40,9 @@ export default {
     },
     isShowLegalPopup() {
       return this.$store.state.isShowLegalPopup
+    },
+    isShowMenu() {
+      return this.$store.state.isShowMenu
     },
   },
   mounted() {

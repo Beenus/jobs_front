@@ -1,7 +1,7 @@
 <template>
-  <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= 50}]">
+  <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= minScroll}]">
     <slot/>
-    <div class="mobile-search-location" v-if="!isHomepage">
+    <div class="mobile-search-location" v-if="listPage">
       <div class="inputs">
         <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
         <CitySearch class="fixedHeader" :isHeader="true" placeholder="New York, US" @onEnter="search"/>
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      minScroll: 50,
       check: null,
       isFixed: false,
       lastScrollTop: 0,
@@ -51,8 +52,8 @@ export default {
     this.registerEvent();
   },
   computed: {
-    isHomepage() {
-      return this.$route.path === '/'
+    listPage() {
+      return this.$route.name === 'jobs' || this.$route.name === 'slug'
     }
   },
   beforeDestroy() {
@@ -71,7 +72,7 @@ export default {
       this.check = function () {
         let _a = _this, threshold = _a.threshold, hideScrollDown = _a.hideScrollDown;
         let currentScrollPos = _this.getScrollTop();
-        let isOverThreshold = currentScrollPos > threshold;
+        let isOverThreshold = true;
         let newIsFixed = currentScrollPos <= _this.lastScrollTop
           ? isOverThreshold
           : (hideScrollDown ? false : isOverThreshold);
@@ -109,7 +110,7 @@ export default {
 
   &.scrolled {
     transform: translateY(-100%);
-    box-shadow: 0 0 9px rgba(0, 0, 0, 0.25);
+    //box-shadow: 0 0 9px rgba(0, 0, 0, 0.25);
 
     @media (max-width: $screen-xs-max) {
       transform: translateY(-55px);

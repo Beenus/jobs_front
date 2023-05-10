@@ -4,6 +4,7 @@ export const state = () => ({
     title: ' | ' + new Date().getFullYear() + ' | Recommended-Jobs.com'
   },
   isShowContentModal: false,
+  isShowMenu: false,
   location: '',
   userLocation: {},
   userOriginalLocation: {},
@@ -61,6 +62,9 @@ export const mutations = {
   },
   SET_IS_HEADER_VISIBLE(state, payload) {
     state.isHeaderVisible = payload
+  },
+  SET_SHOW_MENU(state, payload) {
+    state.isShowMenu = payload ? payload : !state.isShowMenu
   },
 }
 
@@ -164,6 +168,9 @@ export const actions = {
   },
   showLegalPopup({commit}, payload) {
     commit('SET_SHOW_LEGAL_POPUP', payload)
+  },
+  showMenu({commit}, payload) {
+    commit('SET_SHOW_MENU', payload)
   },
 
   closeLegalPopup({commit}) {
