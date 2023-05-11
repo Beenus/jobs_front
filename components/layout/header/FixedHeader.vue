@@ -3,7 +3,7 @@
     <slot/>
     <div class="mobile-search-location" v-if="listPage">
       <div class="inputs">
-        <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
+        <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job Title" @onEnter="search"/>
         <CitySearch class="fixedHeader" :isHeader="true" placeholder="New York, US" @onEnter="search"/>
         <div class="search desktop" v-if="!fetching" @click="search"/>
       </div>
