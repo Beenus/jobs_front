@@ -15,6 +15,7 @@ export default {
         session: this.$cookies.get('session_uuid'),
         url: this.job.url,
         cpc: this.job.bid,
+        keyword: this.$store.state.search ? this.$store.state.search : this.pageData?.keyword ? this.pageData.keyword : null,
         jobkey: this.job.jobkey,
         position: this.index,
       })
