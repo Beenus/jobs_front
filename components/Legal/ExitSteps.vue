@@ -41,18 +41,18 @@ export default {
       fetching: false,
       step: 0,
       steps: [
-        {
-          title: 'What <span>Job Type</span> are you interested in?',
-          searchInput: false,
-          columns: 'one',
-          choices: [
-            'Work from home',
-            'Remote',
-            'Full Time',
-            'Part Time',
-            'No Experience',
-          ],
-        },
+        // {
+        //   title: 'What <span>Job Type</span> are you interested in?',
+        //   searchInput: false,
+        //   columns: 'one',
+        //   choices: [
+        //     'Work from home',
+        //     'Remote',
+        //     'Full Time',
+        //     'Part Time',
+        //     'No Experience',
+        //   ],
+        // },
         {
           title: 'Which <span>Job Title</span> are you looking for?',
           searchInput: true,
