@@ -53,7 +53,7 @@ export const actions = {
       if (payload.force) {
         commit('SET_PAGE_UP', true)
       }
-
+      
       const params = {
         ip: rootState.userIp,
         search: rootState.search,
@@ -62,6 +62,7 @@ export const actions = {
         region: rootState.userLocation.region,
         perPage: rootState.jobs.perPage,
         page: rootState.jobs.page,
+        clickId: rootState.clickId,
       }
 
       const {data} = await this.$axios.get('jobs', {params})

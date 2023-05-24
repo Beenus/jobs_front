@@ -16,6 +16,7 @@ export const state = () => ({
   isHideSubscribe: false,
   globalTemplate: 'ListItem',
   isHeaderVisible: true,
+  clickId: '',
 })
 
 export const getters = {
@@ -66,13 +67,24 @@ export const mutations = {
   SET_SHOW_MENU(state, payload) {
     state.isShowMenu = payload ? payload : !state.isShowMenu
   },
+  SET_CLICK_ID(state, payload) {
+    state.clickId = payload
+  },
 }
 
 export const actions = {
-  async nuxtServerInit({dispatch, getters}, {req, route}) {
+  async nuxtServerInit({dispatch, getters}, {req, route, $cookies}) {
     let ip = req.headers['cf-connecting-ip'] ? req.headers['cf-connecting-ip'] : req.headers['x-real-ip'];
     // const ip = '173.239.211.33' //US
     // const ip = '84.247.59.200' //DE
+
+    if (route.query.gclid) {
+      $cookies.set('gclid', route.query.gclid)
+    }
+
+    if (route.query.msclkid) {
+      $cookies.set('msclkid', route.query.msclkid)
+    }
 
     const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
     if (data && ip) {
@@ -95,6 +107,9 @@ export const actions = {
       })
     }
 
+    let clickId = $cookies.get('gclid') || $cookies.get('msclkid');
+
+    dispatch('setClickId', clickId)
     dispatch('setLocation', getters['location'])
     dispatch('setUserIp', ip)
 
@@ -117,6 +132,9 @@ export const actions = {
   },
   async setUserIp({commit}, payload) {
     commit('SET_USER_IP', payload)
+  },
+  async setClickId({commit}, payload) {
+    commit('SET_CLICK_ID', payload)
   },
   async getCities({commit, state}, params) {
     // console.log(state.source);
@@ -145,8 +163,8 @@ export const actions = {
     const {data} = await this.$axios.post('analytics', params)
     this.$cookies.set('session_uuid', data.session_uuid)
   },
-  async registerOutclick({commit}, params) {
-    const {data} = await this.$axios.post('analytics/outclick', params)
+  async registerOutclick({commit,state}, params) {
+    const {data} = await this.$axios.post('analytics/outclick', {...params, clickId: state.clickId})
   },
   async registerEmailClick({commit}, params) {
     const {data} = await this.$axios.post('analytics/email/click', params)
