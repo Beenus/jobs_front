@@ -14,6 +14,9 @@
     <div class="mobile" v-else>
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateMobile" :job="job" :index="index+1"/>
+
+        <div v-if="(index+1) % 5 === 0" id='div-gpt-ad-1686131774629-0' style='min-width: 300px; min-height: 250px;'/>
+
         <div v-if="isRouteCorrect && pageData.suggestions && index===7">
           <Suggestions :top="true"/>
         </div>
@@ -133,6 +136,10 @@ export default {
     }
   },
   mounted() {
+    googletag.cmd.push(function () {
+      googletag.display('div-gpt-ad-1686131774629-0');
+    });
+
     // this.scroll()
     document.addEventListener('mouseleave', this.mouseLeave)
 
