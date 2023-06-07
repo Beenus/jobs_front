@@ -1423,6 +1423,14 @@
   dependencies:
     http-proxy-middleware "^1.0.6"
 
+"@nuxtjs/router@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/router/-/router-1.7.0.tgz#631b85c1e853580d558aa49572da2d0474e0c832"
+  integrity sha512-7OXEYqE/7uM/7Bx1Ab8udyFgBux9h5IisJqNLMNa5hxt9oBtF43VXHEnnQV4FtYpKyg8ysTFDT9FJlC+tGqpQg==
+  dependencies:
+    consola "^2.15.3"
+    defu "^5.0.0"
+
 "@nuxtjs/sitemap@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-2.4.0.tgz#6a9fa1c35e161f87375d59949d973568cec40614"
@@ -5850,6 +5858,13 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha512-Y1wZESM7VUThYY+4W+X4ySH2maqcA+p7UR+w8VWNWVAd6lwuXXWz/w/Cz43J/dI2I+PS6wD5N+bJUF+gjWvIqg==
 
+nuxt-vuex-router-sync@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/nuxt-vuex-router-sync/-/nuxt-vuex-router-sync-0.0.3.tgz#fa7cd6b967dbab7e9efccd1ac2dfca4335ec1ad4"
+  integrity sha512-mCnQEdu7s5+qxBzTZapSAw4tiustmbkb3WZlF5+RaN6wkRy/CMqrNhlcbhsJ8KsUiUZy4Ca2OcxDzZdYvQE24Q==
+  dependencies:
+    vuex-router-sync "^5.0.0"
+
 nuxt@^2.15.8:
   version "2.15.8"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.15.8.tgz#946cba46bdaaf0e3918aa27fd9ea0fed8ed303b0"
@@ -8572,6 +8587,16 @@ vue-no-ssr@^1.1.1:
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
 
+vue-router-webcache@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/vue-router-webcache/-/vue-router-webcache-1.1.6.tgz#555eec8136eeb38fa31126b42806d0346c7d8b1d"
+  integrity sha512-E/migzkPbIaEAuHUa+UhT9Fc6XYEr93k3N9DWoWjvU6DjhSE6py2SsXDBXBv+dvSdSlGLAXqCXxCl4Eou0OIcg==
+  dependencies:
+    consola "^2.15.3"
+    defu "^5.0.0"
+    lodash.template "^4.5.0"
+    nuxt-vuex-router-sync "^0.0.3"
+
 vue-router@^3.5.1:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.6.5.tgz#95847d52b9a7e3f1361cb605c8e6441f202afad8"
@@ -8619,6 +8644,11 @@ vue@^2.6.12, vue@^2.7.10:
   dependencies:
     "@vue/compiler-sfc" "2.7.14"
     csstype "^3.1.0"
+
+vuex-router-sync@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/vuex-router-sync/-/vuex-router-sync-5.0.0.tgz#1a225c17a1dd9e2f74af0a1b2c62072e9492b305"
+  integrity sha512-Mry2sO4kiAG64714X1CFpTA/shUH1DmkZ26DFDtwoM/yyx6OtMrc+MxrU+7vvbNLO9LSpgwkiJ8W+rlmRtsM+w==
 
 vuex@^3.6.2:
   version "3.6.2"

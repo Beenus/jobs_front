@@ -72,6 +72,10 @@ export default {
   buildModules: [
     '@nuxtjs/google-fonts',
     '@nuxtjs/device',
+    'vue-router-webcache/nuxt',
+    ['@nuxtjs/router', {
+      keepDefaultRouter: true,
+    }],
   ],
 
   device: {
