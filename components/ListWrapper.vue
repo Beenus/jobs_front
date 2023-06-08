@@ -15,8 +15,14 @@
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateMobile" :job="job" :index="index+1"/>
 
+        <GptAd v-if="(index+1) % 3 === 0"
+               ad-unit="lineup"
+               :collapseEmptyDiv="true"
+               :size="[300, 250]"
+        />
+
         <GptAd v-if="(index+1) % 4 === 0"
-               ad-unit="22937936231"
+               ad-unit="22937936231/lineup"
                :collapseEmptyDiv="true"
                :size="[300, 250]"
         />
