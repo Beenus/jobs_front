@@ -112,8 +112,11 @@ export default {
   },
 
   gptAds: {
+    networkCode: 22641207500,
     responsive: true,
     collapseEmptyDivs: true,
-    // ghostMode: true
+    // ghostMode: true,
+    // debug: true,
+    individualRefresh: true,
   }
 }
