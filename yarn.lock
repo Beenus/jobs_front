@@ -10,6 +10,11 @@
     "@jridgewell/gen-mapping" "^0.1.0"
     "@jridgewell/trace-mapping" "^0.3.9"
 
+"@ax2/gpt-ads-module@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@ax2/gpt-ads-module/-/gpt-ads-module-0.6.0.tgz#cd6e89d2863e6cacca6d9325a7b9f45882c5190b"
+  integrity sha512-a+CTB1jsSjm0G53AMIqf6A3YJckAZzkIme8LBOMW7VmDoYnty2hj7G2XtdSI2tNu7rXY7W7916pZBv+6j7E9+A==
+
 "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"

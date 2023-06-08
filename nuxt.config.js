@@ -90,6 +90,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/sitemap',
     'cookie-universal-nuxt',
+    '@ax2/gpt-ads-module',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -108,5 +109,11 @@ export default {
       return data.routes
     },
     gzip: false
+  },
+
+  gptAds: {
+    responsive: true,
+    collapseEmptyDivs: true,
+    // ghostMode: true
   }
 }

@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@ax2/gpt-ads-module": "^0.6.0",
     "@nuxt/image": "^0.7.1",
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/google-fonts": "^2.0.0",
