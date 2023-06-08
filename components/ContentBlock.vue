@@ -3,6 +3,10 @@
     <div class="container">
       <div class="content-wrapper">
         <div class="content-part">
+          <GptAd ad-unit="Content"
+                 :collapseEmptyDiv="true"
+                 :size="[300, 600]"
+          />
           <h1>{{ title }}</h1>
           <div class="content-text" v-html="parsedContent"></div>
 

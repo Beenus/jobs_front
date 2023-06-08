@@ -17,6 +17,10 @@
         <div class="sidebar-wrap" :class="{headerVisible: isHeaderVisible}" v-if="shortTemplate">
           <PopularPages/>
           <Subscribe/>
+          <GptAd ad-unit="Right_to_lineup"
+                 :collapseEmptyDiv="true"
+                 :size="[300, 250]"
+          />
         </div>
       </div>
     </div>
