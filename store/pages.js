@@ -5,6 +5,7 @@ export const state = () => ({
   popularPages: {},
   popularTopics: {},
   popularSearches: {},
+  suggestions: null,
   error: {},
   fetching: false,
 })
@@ -32,6 +33,9 @@ export const mutations = {
   },
   SET_POPULAR_SEARCHES(state, payload) {
     state.popularSearches = payload
+  },
+  SET_SUGGESTIONS(state, payload) {
+    state.suggestions = payload
   },
 }
 
@@ -67,6 +71,21 @@ export const actions = {
     commit('SET_POPULAR_PAGES', data?.popularPages)
     commit('SET_POPULAR_TOPICS', data?.popularTopics)
     commit('SET_POPULAR_SEARCHES', data?.popularSearches)
+  },
+  async generateNewSuggestions({commit}, keyword) {
+    let suggestions = null
+    try {
+      const {data} = await this.$axios.get(`generateNewSuggestions`, {params: {keyword}})
+      suggestions = data?.description
+    } catch {
+      const {data} = await this.$axios.get(`generateNewSuggestions`, {params: {keyword}})
+      suggestions = data?.description
+    }
+
+    commit('SET_SUGGESTIONS', suggestions)
+  },
+  clearSuggestions({commit}) {
+    commit('SET_SUGGESTIONS', null)
   },
   clearPageData({commit}) {
     commit('SET_PAGE_DATA_CLEAR')
