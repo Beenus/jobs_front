@@ -109,6 +109,8 @@ export const actions = {
 
     let clickId = $cookies.get('gclid') || $cookies.get('msclkid');
 
+    await dispatch('pages/getPopularPages', route?.params?.slug)
+
     dispatch('setClickId', clickId)
     dispatch('setLocation', getters['location'])
     dispatch('setUserIp', ip)
