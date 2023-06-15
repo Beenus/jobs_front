@@ -43,6 +43,9 @@ export default {
     }
   },
   async asyncData({store, route, from, error}) {
+    await store.dispatch('pages/clearPageData')
+    await store.dispatch('pages/getPopularPages', route?.params?.slug)
+
     if (route.query.search) {
       await store.dispatch('setSearch', route.query.search)
     }

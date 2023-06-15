@@ -112,8 +112,6 @@ export const actions = {
     dispatch('setClickId', clickId)
     dispatch('setLocation', getters['location'])
     dispatch('setUserIp', ip)
-
-    await dispatch('pages/getPopularPages', route?.params?.slug)
   },
   async toggleContentModal({commit}, payload) {
     commit('SET_CONTENT_MODAL', payload)

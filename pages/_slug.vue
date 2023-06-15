@@ -50,6 +50,7 @@ export default {
   async asyncData({store, route, error}) {
     try {
       const page = await store.dispatch('pages/getPageData', route.params.slug)
+      await store.dispatch('pages/getPopularPages', route?.params?.slug)
 
       await store.dispatch('setSearch', page.keyword)
       await store.dispatch('jobs/getJobs', {route: route.name, clear: true, loader: true})

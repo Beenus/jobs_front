@@ -3,7 +3,7 @@ import Pages from "@/pages/index.vue";
 export const state = () => ({
   list: [],
   meta: {},
-  perPage: 15,
+  perPage: 10,
   page: 1,
   error: null,
   fetching: false,
@@ -53,7 +53,7 @@ export const actions = {
       if (payload.force) {
         commit('SET_PAGE_UP', true)
       }
-      
+
       const params = {
         ip: rootState.userIp,
         search: rootState.search,

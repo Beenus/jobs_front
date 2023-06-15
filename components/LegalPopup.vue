@@ -27,7 +27,8 @@ export default {
         case 'contact':
           return () => import(`@/components/Legal/ContactUs.vue`)
         case 'exit':
-          return () => import(`@/components/Legal/ExitSteps.vue`)
+          return () => import(`@/components/Legal/ExitSuggestions.vue`)
+          // return () => import(`@/components/Legal/ExitSteps.vue`)
           // return () => import(`@/components/Legal/Exit.vue`)
         case 'email':
         case 'email custom':

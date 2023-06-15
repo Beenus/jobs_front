@@ -1,18 +1,18 @@
 <template>
   <div class="list-item-mobile" :class="{ribbon: job.ribbon, visited: isVisited}">
-    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="ribbon"
+    <a :href="job.url" target="_blank" :ontouchstart="job.onmousedown" @click="registerOutclick" class="ribbon"
        v-if="job.ribbon" :class="job.ribbon.color || 'green'">{{ job.ribbon.text }}</a>
 
-    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick"
+    <a :href="job.url" target="_blank" :ontouchstart="job.onmousedown" @click="registerOutclick"
        class="title">{{ job.jobtitle }}</a>
     <div class="company-location">
       <a class="company">{{ companyShort }}</a>
-      <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick"
+      <a :href="job.url" target="_blank" :ontouchstart="job.onmousedown" @click="registerOutclick"
          class="location">{{ locationShort }}</a>
     </div>
-    <a :href="job.url" target="_blank" :onmousedown="job.onmousedown" @click="registerOutclick" class="description"
+    <a :href="job.url" target="_blank" :ontouchstart="job.onmousedown" @click="registerOutclick" class="description"
        v-html="descriptionShort + '...<span>Read More</span>'"/>
-    <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onMouseDown="job.onmousedown"
+    <CTA text="View Salary & More Info" :link="job.url" target="_blank" :onTouchStart="job.onmousedown"
          @click.native="registerOutclick"/>
   </div>
 </template>
@@ -197,6 +197,7 @@ export default {
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
+      word-break: break-all;
 
       &::before {
         content: '';

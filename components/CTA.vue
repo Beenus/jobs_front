@@ -1,6 +1,6 @@
 <template>
   <a v-if="link" class="cta" :class="{themeColor, visited}" target="_blank" :href="link"
-     :onmousedown="onMouseDown">{{ text }}</a>
+     :onmousedown="onMouseDown" :onTouchStart="onTouchStart">{{ text }}</a>
   <div v-else class="cta" :class="{themeColor, visited}">{{ text }}</div>
 </template>
 
@@ -16,6 +16,10 @@ export default {
       default: 'More Info'
     },
     onMouseDown: {
+      require: false,
+      default: '',
+    },
+    onTouchStart: {
       require: false,
       default: '',
     },
