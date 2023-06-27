@@ -56,7 +56,7 @@ export default {
   plugins: [
     {src: "~/plugins/vClickOutside", ssr: false},
     {src: "~/plugins/portalVue.js", ssr: false},
-    {src: '~/plugins/helpers', ssr: false},
+    {src: '~/plugins/helpers', ssr: true},
   ],
   //Runtime Config
   publicRuntimeConfig: {

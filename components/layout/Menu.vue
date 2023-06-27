@@ -5,6 +5,8 @@
         <div class="menu-items">
           <nuxt-link to="/" class="item" @click.native="closeMenu">Search for a Job</nuxt-link>
           <a class="item" @click="contact">Contact Us</a>
+          <nuxt-link to="/about" class="item" @click.native="closeMenu">About Us</nuxt-link>
+          <nuxt-link to="/faq" class="item" @click.native="closeMenu">FAQs</nuxt-link>
           <nuxt-link to="/partner-with-us" class="item" @click.native="closeMenu">Partner With Us</nuxt-link>
         </div>
       </div>
