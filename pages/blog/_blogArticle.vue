@@ -8,7 +8,8 @@
             {{ article.title }}
           </h1>
 
-          <time>Last Update: {{ article.date_full }}</time>
+          <!--          <time>Last Update: {{ article.date_full }}</time>-->
+          <nuxt-link :to="`/blog?category=${article.category.slug}`" class="category"> {{ article.category.name }}</nuxt-link>
 
           <nuxt-img
             class="blog-image"
@@ -123,18 +124,42 @@ export default {
     }
 
     h1 {
-      max-width: 560px;
       font-weight: 800;
       font-size: 36px;
       line-height: 42px;
       color: #112536;
       margin-top: 0;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
 
       @media(max-width: $screen-xs-max) {
         font-size: 24px;
         line-height: 30px;
-        max-width: 290px;
+      }
+    }
+
+    .category {
+      border-radius: 25px;
+      background: #F5F5F5;
+      height: 38px;
+      padding: 5px 15px;
+      margin-bottom: 10px;
+      color: #246BFD;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration-line: underline;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: .3s;
+
+      @media(max-width: $screen-xs-max) {
+        font-size: 14px;
+        height: 32px;
+      }
+
+      &:hover {
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+        transform: translateY(-1px);
       }
     }
 
