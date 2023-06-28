@@ -18,6 +18,9 @@
                     <div class="title">Useful links</div>
                     <div class="links" id="menu-links-container">
                       <nuxt-link to="/">Homepage</nuxt-link>
+                      <nuxt-link to="/about">About Us</nuxt-link>
+                      <nuxt-link to="/blog">Blog</nuxt-link>
+                      <nuxt-link to="/faq">FAQs</nuxt-link>
                       <a @click="openPopup('terms')">Terms of Use</a>
                       <a @click="openPopup('advertiserDisclosure')">Advertiser Disclosure</a>
                       <a @click="openPopup('privacy')">Privacy Policy</a>

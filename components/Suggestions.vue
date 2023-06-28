@@ -6,10 +6,8 @@
       </div>
       <div class="job-pages-wrapper" :class="{bottom, top, open}">
         <div class="job-pages" :class="{bottom, top}">
-          <a @click="openSuggestion(suggestion)" class="job-page" v-for="(suggestion, index) in suggestions" :title="suggestion"
-             :key="index" :class="{bottom, top}">
-            {{ suggestion }}
-          </a>
+          <a @click="openSuggestion(suggestion)" class="job-page" v-for="(suggestion, index) in suggestions"
+             :title="suggestion" :key="index" :class="{bottom, top}">{{ suggestion.trim() }}</a>
         </div>
       </div>
     </div>

@@ -7,9 +7,7 @@
       <div class="job-pages-wrapper" :class="{bottom, top, open}">
         <div class="job-pages" :class="{bottom, top}">
           <nuxt-link class="job-page" v-for="(page, index) in popularPages" :to="page.slug" :title="page.name"
-                     :key="index" :class="{bottom, top}">
-            {{ page.name }}
-          </nuxt-link>
+                     :key="index" :class="{bottom, top}">{{ page.name }}</nuxt-link>
         </div>
       </div>
     </div>

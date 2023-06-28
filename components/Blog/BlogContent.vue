@@ -20,6 +20,7 @@
             <div class="title">Latest Articles</div>
             <ArticleSmall v-for="article in latest" :key="article.id" :article="article"/>
             <nuxt-link class="all-articles" :to="`/blog`">All Articles</nuxt-link>
+            <BlogSuggestions/>
           </div>
         </div>
       </div>
@@ -176,6 +177,7 @@ export default {
       line-height: 11px;
       color: #000000;
       margin-top: 10px;
+      margin-bottom: 30px;
     }
   }
 }

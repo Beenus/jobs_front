@@ -99,6 +99,7 @@ export default {
   image: {
     domains: [
       'recommended-jobs.com',
+      'recommended-jobs.s3.us-east-2.amazonaws.com',
     ]
   },
 
