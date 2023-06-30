@@ -140,6 +140,10 @@ export default {
       line-height: 22px;
       color: #000000;
       margin-bottom: 30px;
+
+      b, strong {
+        font-weight: bold;
+      }
     }
   }
 }
