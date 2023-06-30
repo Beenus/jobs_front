@@ -22,6 +22,7 @@
 
     <HomepagePopularPages :type="'topics'" :title="'Explore job types <br/>you are interested in.'"/>
     <HomepagePopularPages :type="'searches'" :title="'Find the right job <br/>titles for you.'"/>
+    <LazyBlogList :isHomepage="true"/>
 
     <HomepageSubscribe/>
   </div>
@@ -40,6 +41,9 @@ export default {
         }
       ]
     }
+  },
+  async asyncData({store}) {
+    await store.dispatch('blog/getLatestArticles')
   },
   computed: {
     fetching() {

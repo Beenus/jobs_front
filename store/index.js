@@ -163,7 +163,7 @@ export const actions = {
     const {data} = await this.$axios.post('analytics', params)
     this.$cookies.set('session_uuid', data.session_uuid)
   },
-  async registerOutclick({commit,state}, params) {
+  async registerOutclick({commit, state}, params) {
     const {data} = await this.$axios.post('analytics/outclick', {...params, clickId: state.clickId})
   },
   async registerEmailClick({commit}, params) {

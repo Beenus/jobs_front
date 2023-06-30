@@ -2,6 +2,7 @@ export const state = () => ({
   list: [],
   categories: [],
   blogArticleData: {},
+  latestArticles: [],
 })
 
 export const getters = {}
@@ -18,6 +19,10 @@ export const mutations = {
   SET_BLOG_ARTICLE_DATA(state, payload) {
     state.blogArticleData = payload
   },
+
+  SET_LATEST_ARTICLES(state, payload) {
+    state.latestArticles = payload
+  },
 }
 
 export const actions = {
@@ -33,6 +38,15 @@ export const actions = {
     const {data} = await this.$axios.get(`blog/${payload.slug}`, {params})
     commit('SET_BLOG_ARTICLE_DATA', data.data)
     return data.data
+  },
+
+  async getLatestArticles({commit}, id) {
+    const {data} = await this.$axios.get(`blog/latest`, {
+      params: {
+        id,
+      }
+    })
+    commit('SET_LATEST_ARTICLES', data.latest_articles)
   },
 }
 
