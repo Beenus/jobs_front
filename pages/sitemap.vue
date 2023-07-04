@@ -82,6 +82,7 @@ export default {
 
     ul {
       margin-top: 0;
+      padding-left: 15px;
     }
   }
 }

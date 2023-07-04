@@ -87,7 +87,7 @@ export const actions = {
     }
 
     try {
-      const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
+      const {data} = await this.$axios.get(`https://pro.ip-api.com/json/${ip}?key=${process.env.IP_API_KEY}`)
 
       dispatch('setUserLocation', data)
       dispatch('setUserOriginalLocation', data)
