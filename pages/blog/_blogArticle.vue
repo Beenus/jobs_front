@@ -51,7 +51,7 @@ export default {
       ]
     }
   },
-  async asyncData({store, route}) {
+  async asyncData({store, route, app}) {
     const payload = {
       slug: route.params.blogArticle,
       params: {
@@ -59,7 +59,15 @@ export default {
       }
     }
 
-    await store.dispatch('blog/getBlogArticleData', payload)
+    let article = await store.dispatch('blog/getBlogArticleData', payload)
+
+    await store.dispatch('registerPageView', {
+      type: 'BLOG_ARTICLE',
+      page_id: article.id,
+      session: app.$cookies.get('session_uuid'),
+      ip: store.state.userIp,
+      country: store.state.userOriginalLocation?.country,
+    })
 
     return {}
   },

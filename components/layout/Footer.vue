@@ -28,6 +28,11 @@
                   </div>
                   <div class="column">
                     <div class="title" id="contact-link-container">
+                      <nuxt-link to="/sitemap">Sitemap</nuxt-link>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="title" id="contact-link-container">
                       <a @click="openPopup('contact')">Contact Us</a>
                     </div>
                   </div>

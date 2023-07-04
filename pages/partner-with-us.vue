@@ -97,7 +97,16 @@
 <script>
 export default {
   name: 'Partner',
-  data() {
+  async asyncData({store, route, app}) {
+    await store.dispatch('registerPageView', {
+      type: 'PARTNER_WITH_US',
+      locale: route.params.lang,
+      page_id: null,
+      session: app.$cookies.get('session_uuid'),
+      ip: store.state.ip,
+      country: store.state.userLocationCountry?.country,
+    })
+
     return {
       name: '',
       email: '',

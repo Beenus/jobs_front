@@ -104,10 +104,10 @@ export default {
   },
 
   sitemap: {
-    exclude: ['/'],
+    exclude: ['/', '/unsubscribe', '/redirect'],
     routes: async () => {
       const {data} = await axios.get(`${process.env.API_URL}/sitemap`)
-      return data.routes
+      return data.routes.concat(data.blogs)
     },
     gzip: false
   },

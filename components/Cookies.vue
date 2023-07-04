@@ -24,10 +24,10 @@ export default {
   },
   computed: {
     userOriginalLocation() {
-      return this.$store.state.userOriginalLocation?.countryCode
+      return this.$store.state.userOriginalLocation?.countryCode?.toLowerCase()
     },
     isNotCookiesCountry() {
-      return !['us', 'ca'].includes(this.userOriginalLocation.toLowerCase())
+      return !['us', 'ca'].includes(this.userOriginalLocation)
     }
   },
   watch: {

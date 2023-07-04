@@ -86,11 +86,12 @@ export const actions = {
       $cookies.set('msclkid', route.query.msclkid)
     }
 
-    const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
-    if (data && ip) {
+    try {
+      const {data} = await this.$axios.get(`http://ip-api.com/json/${ip}`)
+
       dispatch('setUserLocation', data)
       dispatch('setUserOriginalLocation', data)
-    } else {
+    } catch {
       dispatch('setUserLocation', {
         city: 'New York',
         country: 'United States',
