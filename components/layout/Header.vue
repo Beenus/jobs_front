@@ -36,6 +36,9 @@ export default {
   },
   computed: {
     isShowMenu() {
+      if (process.browser) {
+        document.body.style.overflow = this.$store.state.isShowMenu ? 'hidden' : 'initial'
+      }
       return this.$store.state.isShowMenu
     },
     isHeaderVisible() {

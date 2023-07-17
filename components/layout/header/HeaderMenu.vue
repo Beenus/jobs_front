@@ -46,7 +46,7 @@ export default {
       display: flex;
       flex-flow: column;
       position: fixed;
-      top: 55px;
+      top: 0;
       right: 0;
       width: 100%;
       max-width: 290px;

@@ -94,12 +94,12 @@ export default {
 
   &.visited {
     cursor: not-allowed;
-    background: #f5d090;
+    background: linear-gradient(90deg, #246BFD 0%, #053FB8 100%);
   }
 
 
   &:hover {
-    background: #f5d090;
+    background: linear-gradient(90deg, #246BFD 0%, #053FB8 100%);
   }
 
   &.blue {

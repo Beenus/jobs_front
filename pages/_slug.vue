@@ -270,7 +270,7 @@ export default {
     .inputs {
       max-width: 640px;
 
-      @media (max-width: $screen-md-max) {
+      @media (max-width: $screen-sm-max) {
         max-width: 100%;
       }
     }
