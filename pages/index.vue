@@ -1,6 +1,5 @@
 <template>
   <div class="homepage">
-
     <div class="content">
       <div class="container">
         <div class="top">
@@ -79,7 +78,7 @@ export default {
   justify-content: space-between;
 
   .content {
-    background: #246BFD;
+    background: linear-gradient(90deg, #053FB8 0%, #246BFD 100%);
     padding: 186px 15px 240px;
     width: 100%;
 
@@ -161,7 +160,7 @@ export default {
   }
 
   .img {
-    background: #246BFD url("~/assets/img/hp_chairs.png") no-repeat 50% 100%;
+    background: url("~/assets/img/hp_chairs.png") no-repeat 50% 100%;
     max-width: 350px;
     height: 210px;
     width: 100%;

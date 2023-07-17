@@ -54,9 +54,12 @@ export const actions = {
         commit('SET_PAGE_UP', true)
       }
 
+      let wordsArr = ['near', 'me', 'jobs', 'in'];
+      let regex = new RegExp("\\b" + wordsArr.join('|') + "\\b", "gi")
+
       const params = {
         ip: rootState.userIp,
-        search: rootState.search,
+        search: rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim(),
         location: rootState.userLocation.city,
         countryCode: rootState.userLocation.countryCode,
         region: rootState.userLocation.region,
@@ -69,6 +72,7 @@ export const actions = {
       commit('SET_JOBS', {list: data.list, clear: payload.clear})
       commit('SET_JOBS_META', data.meta)
       commit('SET_FETCHING', false)
+      commit('SET_SEARCH', params.search, { root: true })
 
       if (payload.clear === undefined || payload.force) {
         await this.$router.push({path: '/jobs', query: {search: params.search, location: rootGetters['location']}})

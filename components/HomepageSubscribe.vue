@@ -6,7 +6,8 @@
           <div class="title">Get the latest jobs <br/>delivered right to your <br/>inbox <span>.</span></div>
         </div>
         <div class="right">
-          <KeywordSearch @change="changeKeyword" :shouldFocus="false" :native="true" :isHeader="true" placeholder="Job, Company or Keyword"/>
+          <KeywordSearch @change="changeKeyword" :shouldFocus="false" :native="true" :isHeader="true"
+                         placeholder="Job, Company or Keyword"/>
           <CitySearch @change="changeLocation" :native="true" :isHeader="true" placeholder="New York, US"/>
           <div class="input-wrapper">
             <div class="label" v-if="email">Email Address</div>
@@ -91,7 +92,7 @@ export default {
 
 <style scoped lang="scss">
 .homepage-subscribe {
-  background: #246BFD;
+  background: #EEF0F8;
   padding: 55px 15px 35px;
   width: 100%;
 
@@ -106,6 +107,10 @@ export default {
 
     .right {
       min-width: 275px;
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .title {
@@ -113,7 +118,7 @@ export default {
       font-weight: 600;
       font-size: 42px;
       line-height: 60px;
-      color: #FFFFFF;
+      color: #000;
       margin-top: 10px;
 
       @media (max-width: $screen-xs-max) {
@@ -122,6 +127,7 @@ export default {
         font-weight: 600;
         font-size: 28px;
         line-height: 30px;
+        margin-bottom: 15px;
       }
 
       span {
@@ -147,6 +153,7 @@ export default {
       width: 100%;
       position: relative;
       margin-top: 10px;
+      max-width: 375px;
 
       &::before {
         content: '';
@@ -231,7 +238,7 @@ export default {
       font-size: 12px;
       line-height: 14px;
       text-align: center;
-      color: #fff;
+      color: #000;
 
       &.bold {
         font-weight: 700;

@@ -2,13 +2,10 @@
   <div :class="[headerClass, {[fixedClass]: isFixed}, {scrolled: lastScrollTop >= minScroll}]">
     <slot/>
     <div class="mobile-search-location" v-if="listPage">
-      <div class="inputs">
-        <KeywordSearch class="fixedHeader" :isHeader="true" placeholder="Job Title" @onEnter="search"/>
-        <CitySearch class="fixedHeader" :isHeader="true" placeholder="New York, US" @onEnter="search"/>
-        <div class="search desktop" v-if="!fetching" @click="search"/>
-      </div>
+      <JobPageSearch/>
 
-      <PopularPages/>
+      <Suggestions v-if="isRouteCorrect && suggestions"/>
+      <PopularPages v-else/>
     </div>
   </div>
 </template>
@@ -44,7 +41,6 @@ export default {
       check: null,
       isFixed: false,
       lastScrollTop: 0,
-      fetching: false,
     };
   },
   mounted() {
@@ -54,15 +50,18 @@ export default {
   computed: {
     listPage() {
       return this.$route.name === 'jobs' || this.$route.name === 'slug'
-    }
+    },
+    isRouteCorrect() {
+      return this.$nuxt.$route.name === 'slug'
+    },
+    suggestions() {
+      return this.$store.state.pages?.pageData?.suggestions
+    },
   },
   beforeDestroy() {
     this.removeEvent();
   },
   methods: {
-    searchMobile() {
-      this.$router.push('/')
-    },
     getScrollTop() {
       return window.pageYOffset || document.documentElement.scrollTop;
     },
@@ -88,9 +87,6 @@ export default {
     },
     removeEvent() {
       window.removeEventListener('scroll', this.check);
-    },
-    async search() {
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: true, force: true, loader: true})
     },
   },
 }
@@ -132,65 +128,7 @@ export default {
       background: #f0f0f0;
       padding: 15px 0 15px 15px;
 
-      .inputs {
-        display: flex;
-        width: 100%;
-        padding-right: 15px;
-
-        .fixedHeader {
-          margin-bottom: 0;
-
-          &:nth-child(1) {
-            background: #FFFFFF;
-            border: 2px solid #000000;
-            border-radius: 8px 0 0 8px;
-          }
-
-          &:nth-child(2) {
-            background: #FFFFFF;
-            border: 2px solid #000000;
-            border-radius: 0;
-          }
-
-          &::before {
-            content: none;
-          }
-
-          :deep(input) {
-            height: 34px;
-            padding: 7px 11px;
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 16px;
-            color: #000000;
-          }
-
-          :deep(.label) {
-            display: none;
-          }
-        }
-
-        .search {
-          background: #000000;
-          border: 2px solid #000000;
-          border-radius: 0 8px 8px 0;
-          min-width: 32px;
-          height: 38px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          &::before {
-            display: block;
-            content: '';
-            background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
-            min-width: 17px;
-            min-height: 17px;
-          }
-        }
-      }
-
-      :deep(.popular-jobs) {
+      :deep(.popular-jobs), :deep(.suggestions) {
         padding-left: 0;
         margin: 10px 0 0 0;
 

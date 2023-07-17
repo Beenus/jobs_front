@@ -16,7 +16,6 @@
     </client-only>
     <Cookies/>
     <LegalPopup v-if="isShowLegalPopup"/>
-    <Menu v-if="isShowMenu"/>
   </div>
 </template>
 

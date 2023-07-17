@@ -4,12 +4,11 @@
     <div class="list" :class="{short: shortTemplate}">
       <div class="sidebar left"></div>
       <div class="container">
-        <div class="title-sort">
-          <div class="title desktop">Available jobs {{ search ? `for "${search}"` : '' }} in "{{ location }}"
+        <div class="title-sort" :class="{isHeaderVisible}">
+          <div class="inner-container">
+            <div class="sidebar left"></div>
+            <JobPageSearch/>
           </div>
-          <div class="title mobile">Jobs founds in "{{ location }}"</div>
-
-          <div class="sort-counting"></div>
         </div>
         <ListWrapper :isMobileWidth="isMobileWidth" :template="template"/>
       </div>
@@ -186,7 +185,7 @@ export default {
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  padding: 45px 0 40px;
+  padding: 65px 0 40px;
   background: #f0f0f0;
 
   @media (max-width: $screen-sm-max) {
@@ -212,6 +211,7 @@ export default {
         position: sticky;
         top: 15px;
         transition: .3s;
+        z-index: 2;
 
         &.headerVisible {
           top: 75px;
@@ -266,9 +266,31 @@ export default {
   .title-sort {
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background: #f0f0f0;
+    padding: 15px 0;
+
+    @media (max-width: $screen-md-max) {
+      padding: 15px;
+    }
 
     @media (max-width: $screen-xs-max) {
       display: none;
+    }
+
+    &.isHeaderVisible {
+      top: 67px;
+    }
+
+    .inner-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
     }
 
     .title {
@@ -288,24 +310,24 @@ export default {
 
         @media (max-width: $screen-xs-max) {
           display: flex;
-          font-weight: 700;
-          font-size: 18px;
-          line-height: 16px;
-          color: #000000;
         }
       }
     }
 
     .sort-counting {
-      @media (max-width: $screen-xs-max) {
-        display: none;
-      }
-
       .counting {
         font-weight: 400;
         font-size: 16px;
         line-height: 21px;
         color: #737373;
+      }
+    }
+
+    .inputs {
+      max-width: 640px;
+
+      @media (max-width: $screen-md-max) {
+        max-width: 100%;
       }
     }
   }

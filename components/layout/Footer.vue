@@ -1,5 +1,5 @@
 <template>
-  <footer :class="{homepage: isHomepage}">
+  <footer>
     <div class="footer-wrapper-new">
       <div class="top-part-wrapper">
         <div class="container">
@@ -8,9 +8,7 @@
               <div class="top-part">
                 <div class="left-part">
                   <nuxt-link to="/">
-                    <img v-if="isHomepage" :src="require('assets/img/svg/logo_footer_homepage.svg')"
-                         alt="Recommended-Jobs.com"/>
-                    <img v-else :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
+                    <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
                   </nuxt-link>
                 </div>
                 <div class="right-part">
@@ -33,7 +31,8 @@
                   </div>
                   <div class="column">
                     <div class="title" id="contact-link-container">
-                      <a @click="openPopup('contact')">Contact Us</a>
+                      <nuxt-link to="/contact-us">Contact Us</nuxt-link>
+<!--                      <a @click="openPopup('contact')">Contact Us</a>-->
                     </div>
                   </div>
                   <div class="column">
@@ -109,14 +108,13 @@ export default {
 
 <style scoped lang="scss">
 footer {
-  background: linear-gradient(180deg, #246BFD 0%, #679BFF 100%);
-  padding: 0 15px;
+  background: linear-gradient(90deg, #053FB8 0%, #246BFD 100%);
 
   .footer-wrapper-new {
     .top-part {
       display: flex;
       justify-content: space-between;
-      padding: 45px 0 50px;
+      padding: 45px 0 0;
 
       @media (max-width: $screen-xs-max) {
         flex-flow: column;
@@ -200,8 +198,8 @@ footer {
       text-align: center;
       color: #fff;
 
-      &-wrapper {
-        border-top: 1px solid #3176FF;
+      @media (max-width: $screen-xs-max) {
+        padding: 0 15px;
       }
     }
 
@@ -213,46 +211,12 @@ footer {
       color: #fff;
       padding: 23px 0;
 
+      @media (max-width: $screen-xs-max) {
+        padding: 23px 15px;
+      }
+
       &-wrapper {
         border-top: 1px solid #3176FF;
-      }
-    }
-  }
-
-  &.homepage {
-    background: #fff;
-
-    .footer-wrapper-new {
-      .top-part {
-        .right-part {
-          .column {
-            .title, .title > a, .title > div {
-              color: #000;
-            }
-
-            .links {
-              a {
-                color: #000;
-              }
-            }
-          }
-        }
-      }
-
-      .middle-part {
-        color: #000;
-
-        &-wrapper {
-          border-top: 1px solid #F5F5F5;
-        }
-      }
-
-      .bottom-part {
-        color: #000;
-
-        &-wrapper {
-          border-top: 1px solid #F5F5F5;
-        }
       }
     }
   }

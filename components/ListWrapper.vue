@@ -3,9 +3,6 @@
     <div class="desktop" v-if="!isMobileWidth">
       <div class="item-wrapper" v-for="(job, index) in list" :key="index">
         <component :is="templateDesktop" :job="job" :index="index+1"/>
-        <div v-if="isRouteCorrect && pageData.suggestions && index===7">
-          <Suggestions :top="true"/>
-        </div>
         <div v-if="((index+1) % 10 === 0) && !shortTemplate">
           <Subscribe/>
         </div>
@@ -21,9 +18,6 @@
                :size="[300, 250]"
         />
 
-        <div v-if="isRouteCorrect && pageData.suggestions && index===7">
-          <Suggestions :top="true"/>
-        </div>
         <div v-if="(index+1) % 10 === 0 && !pageData.suggestions">
           <Subscribe/>
         </div>
@@ -56,9 +50,6 @@ export default {
     }
   },
   computed: {
-    isRouteCorrect() {
-      return this.$nuxt.$route.name === 'slug'
-    },
     pageData() {
       return this.$store.state.pages.pageData
     },

@@ -8,25 +8,12 @@
               <div class="menu-button" @click="showMenu" :class="{open: isShowMenu}"/>
               <div class="logo">
                 <nuxt-link :to="'/'">
-                  <img :src="require('assets/img/svg/logo_footer.svg')" alt="Recommended-Jobs.com"/>
+                  <img :src="require('assets/img/svg/logo.svg')" alt="Top10SolarCompanies.com"/>
                 </nuxt-link>
               </div>
             </div>
-
-            <div class="search-inputs" v-if="!isHomepage">
-              <div class="inputs">
-                <KeywordSearch :isHeader="true" placeholder="Job, Company or Keyword" @onEnter="search"/>
-                <CitySearch :isHeader="true" placeholder="New York, US" @onEnter="search"/>
-                <div class="search desktop" v-if="!fetching" @click="search">Search</div>
-                <div class="search fetching" v-else>Searching...</div>
-                <!--                <div class="search mobile" v-if="!fetching" @click="searchMobile">Search Jobs</div>-->
-              </div>
-            </div>
-
-            <div class="notification" @click="showPopup">
-              <!--              <div class="text">Search Jobs</div>-->
-              <div class="icon"/>
-            </div>
+            <div class="menu-layout" @click="showMenu" :class="{isHeaderVisible}" v-if="isShowMenu"/>
+            <HeaderMenu :open="isShowMenu" @closeMenu="showMenu"/>
           </div>
         </div>
       </div>
@@ -36,10 +23,11 @@
 
 <script>
 import FixedHeader from "@/components/layout/header/FixedHeader.vue";
+import HeaderMenu from "~/components/layout/header/HeaderMenu.vue";
 
 export default {
   name: "Header",
-  components: {FixedHeader},
+  components: {HeaderMenu, FixedHeader},
   props: ['isHomepage'],
   data() {
     return {
@@ -47,23 +35,14 @@ export default {
     }
   },
   computed: {
-    fetching() {
-      return this.$store.state.jobs.fetching
-    },
     isShowMenu() {
       return this.$store.state.isShowMenu
     },
+    isHeaderVisible() {
+      return this.$store.state.isHeaderVisible
+    },
   },
   methods: {
-    async search() {
-      await this.$store.dispatch('jobs/getJobs', {route: this.$route.name, clear: true, force: true, loader: true})
-    },
-    searchMobile() {
-      this.$router.push('/')
-    },
-    showPopup() {
-      this.$store.dispatch('showLegalPopup', 'email')
-    },
     showMenu() {
       this.$store.dispatch('showMenu')
     },
@@ -78,10 +57,10 @@ export default {
 .main-header {
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, #246BFD 0%, #246BFD 100%);
+  background: #fff;
   height: 68px;
   padding: 0 15px;
-  border-bottom: 1px solid #4380FF;
+  border-bottom: 1px solid #EBECF1;
 
   @media (max-width: $screen-xs-max) {
     height: 55px;
@@ -95,12 +74,16 @@ export default {
     @media (max-width: $screen-xs-max) {
       width: 100%;
       margin-right: 0;
+      flex-flow: row-reverse;
     }
 
     .menu-button {
-      margin-right: 15px;
       cursor: pointer;
-      //display: none;
+      display: none;
+
+      @media (max-width: $screen-xs-max) {
+        display: flex;
+      }
 
       &::before {
         content: '';
@@ -112,7 +95,7 @@ export default {
 
       &.open {
         &::before {
-          background: url("~/assets/img/svg/close-white.svg") center / contain no-repeat;
+          background: url("~/assets/img/svg/close-dark.svg") center / contain no-repeat;
         }
       }
     }
@@ -140,131 +123,22 @@ export default {
     align-items: center;
   }
 
-  .search-inputs {
-    display: flex;
-    align-items: center;
-    max-width: 640px;
-    width: 100%;
+  .menu-layout {
+    display: none;
 
     @media (max-width: $screen-xs-max) {
-      display: none;
-    }
-
-    .inputs {
+      transition: .3s;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      position: fixed;
+      top: 55px;
+      left: 0;
+      background: rgba(0, 0, 0, 0.60);
       width: 100%;
+      height: 100vh;
 
-      .search-wrapper {
-        width: 100%;
-        position: relative;
+      &.isHeaderVisible {
+        top: 0;
       }
-
-      .search {
-        margin-left: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        width: 100%;
-        max-width: 120px;
-        min-width: 100px;
-        height: 40px;
-        background: #FEC461;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 16px;
-        color: #000000;
-
-        &:hover {
-          background: #f5d090;
-        }
-
-        &.desktop {
-          font-weight: 600;
-          font-size: 14px;
-          line-height: 16px;
-
-          &::before {
-            content: '';
-            display: block;
-            pointer-events: none;
-            z-index: 1;
-            background: url("~/assets/img/svg/magnify_glass_dark.svg") center / cover no-repeat;
-            width: 11px;
-            height: 13px;
-            margin-right: 5px;
-          }
-
-          @media (max-width: $screen-xs-max) {
-            display: none;
-          }
-        }
-
-        &.mobile {
-          display: none;
-
-          @media (max-width: $screen-xs-max) {
-            display: flex;
-            border-radius: 8px;
-            font-size: 14px;
-            height: 36px;
-          }
-        }
-      }
-    }
-  }
-
-  .notification {
-    min-width: 30px;
-    min-height: 28px;
-    cursor: pointer;
-    margin-left: 15px;
-    //display: flex;
-    //align-items: center;
-    //justify-content: flex-end;
-    //
-    //@media (max-width: $screen-xs-max) {
-    //  max-width: 130px;
-    //  height: 34px;
-    //  width: 100%;
-    //  border: 2px solid #FFFFFF;
-    //  border-radius: 30px;
-    //  padding: 0 10px 0 0 ;
-    //}
-
-    &:hover {
-      opacity: 0.9;
-    }
-
-    .text {
-      display: none;
-
-      @media (max-width: $screen-xs-max) {
-        display: block;
-        white-space: nowrap;
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 16px;
-        color: #FFFFFF;
-      }
-    }
-
-    &::before {
-      display: block;
-      content: '';
-      background: url("~/assets/img/svg/notif.svg") center / contain no-repeat;
-      min-width: 30px;
-      min-height: 28px;
-
-      //  @media (max-width: $screen-xs-max) {
-      //    background: url("~/assets/img/svg/magnify_glass_white.svg") center / contain no-repeat;
-      //    min-width: 17px;
-      //    min-height: 17px;
-      //    margin-right: 5px;
-      //  }
     }
   }
 }
