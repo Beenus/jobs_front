@@ -141,15 +141,16 @@ export default {
 
     &.right {
       padding-left: 36px;
+      padding-top: 15px;
 
       .sidebar-wrap {
         position: sticky;
-        top: 15px;
+        top: 140px;
         transition: .3s;
         z-index: 2;
 
         &.headerVisible {
-          top: 75px;
+          top: 145px;
         }
       }
 
@@ -213,8 +214,8 @@ export default {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
-    background: #f0f0f0;
+    z-index: 3;
+    background: #fff;
     padding: 15px 0;
     transition: .3s;
 

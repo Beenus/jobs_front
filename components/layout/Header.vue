@@ -1,5 +1,5 @@
 <template>
-  <FixedHeader :hideScrollDown="true" @change="headerFixed">
+  <FixedHeader :hideScrollDown="false" @change="headerFixed">
     <header>
       <div class="main-header">
         <div class="container">
@@ -35,7 +35,13 @@ export default {
     }
   },
   computed: {
+    isMobileWidth() {
+      return this.$device ? this.$device.isMobileOrTablet : this.windowSize ? this.windowSize?.x < 768 : false
+    },
     isShowMenu() {
+      if (process.browser && this.isMobileWidth) {
+        document.body.style.overflow = this.$store.state.isShowMenu ? 'hidden' : 'initial'
+      }
       return this.$store.state.isShowMenu
     },
     isHeaderVisible() {

@@ -37,13 +37,15 @@ export default {
 
     &:nth-child(1) {
       background: #FFFFFF;
-      border: 2px solid #000000;
+      border: 1px solid #000000;
       border-radius: 8px 0 0 8px;
+      margin-right: 0;
+      border-right: none;
     }
 
     &:nth-child(2) {
       background: #FFFFFF;
-      border: 2px solid #000000;
+      border: 1px solid #000000;
       border-radius: 0;
     }
 
