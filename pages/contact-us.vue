@@ -1,6 +1,7 @@
 <template>
   <div class="contact-us">
     <div class="container">
+      <Breadcrumbs :links="breadcrumbs"/>
       <div class="contact-us-form" v-if="!isDone">
         <div class="form-title">Get in touch</div>
         <div class="form-subtitle">
@@ -43,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   name: "contact-us",
   data() {
@@ -60,6 +62,16 @@ export default {
       isSending: false,
       isDone: false,
       error: null,
+      breadcrumbs: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'Contact',
+          link: null
+        }
+      ],
     }
   },
   computed: {
@@ -104,6 +116,10 @@ export default {
 <style scoped lang="scss">
 .contact-us {
   padding-top: 30px;
+
+  > .container {
+    padding: 0 15px;
+  }
 
   &-form {
     display: flex;

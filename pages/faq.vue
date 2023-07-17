@@ -1,5 +1,8 @@
 <template>
   <div class="faq">
+    <div class="container">
+      <Breadcrumbs :links="breadcrumbs"/>
+    </div>
     <LegalTwoSidebars title="FAQs" :anchors="anchors">
       <div class="paragraph" v-for="(item, index) in content" :key="index">
         <div class="title" :id="item.anchor">{{ item.title }}</div>
@@ -78,7 +81,17 @@ export default {
           anchor: app.$slugify("10. How can I contact the support team at Recommended-Jobs.com?"),
           text: "If you have any questions, concerns, or technical issues, our support team is here to assist you. You can reach out to us through the \"Contact\" or \"Support\" section on our website. We strive to provide prompt and helpful assistance to ensure you have a seamless experience on Recommended-Jobs.com. <br/><br/> <b>If you have any additional questions or need further assistance, please don't hesitate to reach out to us. We're here to help you in your journey towards finding the perfect career opportunity.</b>",
         },
-      ]
+      ],
+      breadcrumbs: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'FAQs',
+          link: null
+        }
+      ],
     }
   },
   methods: {},
@@ -96,4 +109,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.faq {
+  padding-top: 30px;
+
+  > .container {
+    padding: 0 15px;
+  }
+}
 </style>

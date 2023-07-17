@@ -4,6 +4,8 @@
       <!--      <div class="bg" v-if="article.image" :style="{background:`url(${article.image}) no-repeat`}"/>-->
       <div class="container">
         <div class="page-title">
+          <Breadcrumbs :links="breadcrumbs"/>
+
           <h1>
             {{ article.title }}
           </h1>
@@ -69,7 +71,23 @@ export default {
       country: store.state.userOriginalLocation?.country,
     })
 
-    return {}
+    return {
+
+      breadcrumbs: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'Blog',
+          link: '/blog'
+        },
+        {
+          name: article.title,
+          link: null
+        }
+      ],
+    }
   },
   computed: {
     article() {

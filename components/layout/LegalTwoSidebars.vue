@@ -51,7 +51,7 @@ export default {
 .legal {
   .content-part {
     display: flex;
-    margin-top: 65px;
+    margin-top: 25px;
 
     @media (max-width: $screen-xs-max) {
       margin-top: 15px;

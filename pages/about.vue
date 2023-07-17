@@ -1,5 +1,8 @@
 <template>
   <div class="about-us">
+    <div class="container">
+      <Breadcrumbs :links="breadcrumbs"/>
+    </div>
     <LegalTwoSidebars title="About Us" :anchors="anchors">
       <div class="paragraph" v-for="(item, index) in content" :key="index">
         <div class="title" :id="item.anchor">{{ item.title }}</div>
@@ -68,7 +71,17 @@ export default {
           anchor: app.$slugify("Join Us Today and Shape Your Future"),
           text: "Join us today and experience the future of job searching. Let Recommended-Jobs.com be your compass as you navigate the vast landscape of career opportunities. Together, we'll uncover the hidden gems that will shape your future and lead you to the career you've always dreamed of.<br/><br/> <b>Welcome to Recommended-Jobs.com, where personalized recommendations meet limitless possibilities.</b>",
         },
-      ]
+      ],
+      breadcrumbs: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'About Us',
+          link: null
+        }
+      ],
     }
   },
   methods: {},
@@ -86,4 +99,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.about-us {
+  padding-top: 30px;
+
+  > .container {
+    padding: 0 15px;
+  }
+}
 </style>

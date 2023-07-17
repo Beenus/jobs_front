@@ -1,7 +1,10 @@
 <template>
   <div class="blog">
-    <div class="container">
-      <h1 class="title">Recommended Jobs Blog</h1>
+    <div class="top-wrap">
+      <div class="container">
+        <Breadcrumbs :links="breadcrumbs"/>
+        <h1 class="title">Recommended Jobs Blog</h1>
+      </div>
     </div>
     <LazyBlogCategories/>
     <LazyBlogList/>
@@ -43,8 +46,18 @@ export default {
       }
     })
 
-    return {}
-
+    return {
+      breadcrumbs: [
+        {
+          name: 'Home',
+          link: '/'
+        },
+        {
+          name: 'Blog',
+          link: null
+        }
+      ],
+    }
   },
   methods: {},
   computed: {
@@ -67,10 +80,14 @@ export default {
 
 <style scoped lang="scss">
 .blog {
-  padding-top: 70px;
+  padding-top: 30px;
 
   @media (max-width: $screen-xs-max) {
     padding-top: 30px;
+  }
+
+  .top-wrap {
+    padding: 0 15px;
   }
 
   .title {

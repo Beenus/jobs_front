@@ -273,6 +273,7 @@ export default {
     z-index: 1;
     background: #f0f0f0;
     padding: 15px 0;
+    transition: .3s;
 
     @media (max-width: $screen-md-max) {
       padding: 15px;
