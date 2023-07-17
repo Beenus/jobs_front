@@ -51,6 +51,10 @@ export default {
       await store.dispatch('setSearch', route.query.search)
     }
 
+    if (route.query.keyword) {
+      await store.dispatch('setSearch', route.query.keyword)
+    }
+
     if (route.query.location) {
       await store.dispatch('setLocation', route.query.location)
       const location = route.query.location.split(',');
