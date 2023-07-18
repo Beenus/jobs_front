@@ -44,12 +44,12 @@ export default {
   height: 40px;
   width: 150px;
   max-width: 100%;
-  color: #fff;
+  color: #000;
   text-decoration: none;
   font-weight: 600;
-  transition: .3s;
+  background: linear-gradient(90deg, #FEC461 0%, #FFD792 100%);
   border-radius: 8px;
-  background: linear-gradient(90deg, #053FB8 0%, #246BFD 100%);
+  transition: .3s;
 
   //
   //background-image: linear-gradient(45deg, rgb(254, 196, 97), rgb(255, 224, 176), rgb(254, 196, 97));
@@ -94,12 +94,12 @@ export default {
 
   &.visited {
     cursor: not-allowed;
-    background: linear-gradient(90deg, #246BFD 0%, #053FB8 100%);
+    background: #f5d090;
   }
 
 
   &:hover {
-    background: linear-gradient(90deg, #246BFD 0%, #053FB8 100%);
+    background: #f5d090;
   }
 
   &.blue {
