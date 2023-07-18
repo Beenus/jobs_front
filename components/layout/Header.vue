@@ -50,7 +50,9 @@ export default {
   },
   methods: {
     showMenu() {
-      this.$store.dispatch('showMenu')
+      if (process.browser && this.isMobileWidth) {
+        this.$store.dispatch('showMenu')
+      }
     },
     headerFixed(isHeaderVisible) {
       this.$store.dispatch('changeIsHeaderVisible', isHeaderVisible)

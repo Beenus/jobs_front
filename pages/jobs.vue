@@ -4,12 +4,7 @@
     <div class="list" :class="{short: shortTemplate}">
       <div class="sidebar left"></div>
       <div class="container">
-        <div class="title-sort" :class="{isHeaderVisible}">
-          <div class="inner-container">
-            <div class="sidebar left"></div>
-            <JobPageSearch/>
-          </div>
-        </div>
+        <TitleSort :isHeaderVisible="isHeaderVisible"/>
         <ListWrapper :isMobileWidth="isMobileWidth" :template="template"/>
       </div>
       <div class="sidebar right" :class="{short: shortTemplate}">
@@ -260,76 +255,6 @@ export default {
           margin: 0;
         }
 
-      }
-    }
-  }
-
-  .title-sort {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 3;
-    background: #fff;
-    padding: 15px 0;
-    transition: .3s;
-
-    @media (max-width: $screen-md-max) {
-      padding: 15px;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      display: none;
-    }
-
-    &.isHeaderVisible {
-      top: 67px;
-    }
-
-    .inner-container {
-      max-width: 1350px;
-      margin: 0 auto;
-      display: flex;
-      width: 100%;
-    }
-
-    .title {
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 21px;
-      color: #000000;
-
-      &.desktop {
-        @media (max-width: $screen-xs-max) {
-          display: none;
-        }
-      }
-
-      &.mobile {
-        display: none;
-
-        @media (max-width: $screen-xs-max) {
-          display: flex;
-        }
-      }
-    }
-
-    .sort-counting {
-      .counting {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 21px;
-        color: #737373;
-      }
-    }
-
-    .inputs {
-      max-width: 640px;
-
-      @media (max-width: $screen-sm-max) {
-        max-width: 100%;
       }
     }
   }
