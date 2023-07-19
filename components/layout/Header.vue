@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       searchOpen: false,
+      windowSize: null,
     }
   },
   computed: {
@@ -57,7 +58,17 @@ export default {
     headerFixed(isHeaderVisible) {
       this.$store.dispatch('changeIsHeaderVisible', isHeaderVisible)
     },
+    onResize() {
+      this.windowSize = {x: window.innerWidth, y: window.innerHeight}
+    },
   },
+  mounted() {
+    this.onResize()
+    window.addEventListener('resize', this.onResize)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  }
 }
 </script>
 

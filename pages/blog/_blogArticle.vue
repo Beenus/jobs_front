@@ -72,7 +72,6 @@ export default {
     })
 
     return {
-
       breadcrumbs: [
         {
           name: 'Home',
