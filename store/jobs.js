@@ -60,9 +60,9 @@ export const actions = {
       const params = {
         ip: rootState.userIp,
         search: rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim(),
-        location: rootState.userLocation.city,
-        countryCode: rootState.userLocation.countryCode,
-        region: rootState.userLocation.region,
+        location: rootState.userLocation?.city || rootState.userOriginalLocation?.city,
+        countryCode: rootState.userLocation?.countryCode || rootState.userOriginalLocation?.countryCode,
+        region: rootState.userLocation?.region || rootState.userOriginalLocation?.region,
         perPage: rootState.jobs.perPage,
         page: rootState.jobs.page,
         clickId: rootState.clickId,
@@ -72,10 +72,10 @@ export const actions = {
       commit('SET_JOBS', {list: data.list, clear: payload.clear})
       commit('SET_JOBS_META', data.meta)
       commit('SET_FETCHING', false)
-      commit('SET_SEARCH', params.search, { root: true })
+      commit('SET_SEARCH', params.search, {root: true})
 
       if (payload.clear === undefined || payload.force) {
-        await this.$router.push({path: '/jobs', query: {search: params.search, location: rootGetters['location']}})
+        await this.$router.push({path: '/jobs', query: {search: params.search, location: params.location}})
       }
     } catch (e) {
       if (e?.response) {
