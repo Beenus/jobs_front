@@ -54,7 +54,7 @@ export const actions = {
         commit('SET_PAGE_UP', true)
       }
 
-      let wordsArr = ['near', ' me', 'jobs', 'in'];
+      let wordsArr = ['near', ' me', 'jobs', ' in'];
       let regex = new RegExp("\\b" + wordsArr.join('|') + "\\b", "gi")
 
       const params = {
