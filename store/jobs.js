@@ -59,7 +59,7 @@ export const actions = {
 
       const params = {
         ip: rootState.userIp,
-        search: rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim(),
+        search: rootState.search ? rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim() : '',
         location: rootState.userLocation?.city || rootState.userOriginalLocation?.city,
         countryCode: rootState.userLocation?.countryCode || rootState.userOriginalLocation?.countryCode,
         region: rootState.userLocation?.region || rootState.userOriginalLocation?.region,

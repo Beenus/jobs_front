@@ -4,6 +4,6 @@ export default function ({ route, redirect }) {
     const nextPath = path.replace(/\/+$/, '') || '/';
     const nextRoute = { path: nextPath, query, hash };
 
-    redirect(nextRoute);
+    redirect(301, nextRoute);
   }
 }
