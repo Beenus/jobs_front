@@ -57,11 +57,9 @@ export const actions = {
       let wordsArr = ['near', ' me', 'jobs', ' in'];
       let regex = new RegExp("\\b" + wordsArr.join('|') + "\\b", "gi")
 
-      let jobsSearch = rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim()
-
       const params = {
         ip: rootState.userIp,
-        search: jobsSearch ? jobsSearch : '',
+        search: rootState.search.replace(regex, '').replace(/\s+/g, ' ').trim(),
         location: rootState.userLocation?.city || rootState.userOriginalLocation?.city,
         countryCode: rootState.userLocation?.countryCode || rootState.userOriginalLocation?.countryCode,
         region: rootState.userLocation?.region || rootState.userOriginalLocation?.region,
