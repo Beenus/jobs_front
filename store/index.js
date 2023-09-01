@@ -90,6 +90,10 @@ export const actions = {
       $cookies.set('msclkid', route.query.msclkid)
     }
 
+    if (route.query.utm_content) {
+      $cookies.set('utm_content', route.query.utm_content)
+    }
+
     try {
       const {data} = await this.$axios.get(`https://pro.ip-api.com/json/${ip}?key=${process.env.IP_API_KEY}`)
 
@@ -112,7 +116,7 @@ export const actions = {
       })
     }
 
-    let clickId = $cookies.get('gclid') || $cookies.get('msclkid');
+    let clickId = $cookies.get('utm_content') || $cookies.get('gclid') || $cookies.get('msclkid');
 
     await dispatch('pages/getPopularPages', route?.params?.slug)
 
