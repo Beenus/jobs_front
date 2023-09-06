@@ -45,6 +45,12 @@ export default {
     },
   },
   mounted() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js')
+      })
+    }
+
     this.$store.dispatch('hideSubscribe', this.$cookies.get('email_subs_hide'))
     if (this.$route.query?.legal) {
       switch (this.$route.query?.legal) {

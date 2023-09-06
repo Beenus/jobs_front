@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html {{ HTML_ATTRS }}>
 <head {{ HEAD_ATTRS }}>
+  <script> (function(document, window) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://trk-consulatu.com/scripts/push/script/3mg6qk7e1n?url=" + encodeURI(self.location.hostname) + "&alturl=" + encodeURI(self.location.pathname);
+    script.onload = function() {
+      push_init();
+      push_subscribe();
+    };
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })(document, window); </script>
+
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11086659232"></script>
   <script>
